@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="hr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>White Life RP - Puna Galerija Vozila</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+    <style>
+        /* Specifični stilovi za Galeriju */
+        .gallery-header {
+            background-color: #1a1a1a;
+            padding: 80px 0 40px;
+            text-align: center;
+        }
+        .gallery-header h1 {
+            font-size: 48px;
+            color: #00bcd4;
+        }
+        .gallery-header p {
+            font-size: 18px;
+            margin-top: 10px;
+        }
+        
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            padding: 50px 20px;
+        }
+        
+        .gallery-item {
+            background-color: #222;
+            padding: 15px;
+            border-radius: 8px;
+            text-align: center;
+            border: 2px solid #333;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        .gallery-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 188, 212, 0.3);
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            border-radius: 5px;
+            margin-bottom: 10px;
+            border: 1px solid #00bcd4;
+        }
+        
+        .gallery-item h4 {
+            font-size: 20px;
+            margin-bottom: 5px;
+            color: #f5f5f5;
+        }
+        .gallery-item p {
+            font-size: 22px;
+            font-weight: 700;
+            color: #ffc107; /* Zlatna boja za cijenu */
+        }
+
+        /* Dugme za povratak */
+        .back-btn {
+            background-color: #00bcd4;
+            color: #121212;
+            padding: 10px 25px;
+            border-radius: 5px;
+            font-weight: 700;
+            text-transform: uppercase;
+            margin-top: 30px;
+            display: inline-block;
+        }
+        .back-btn:hover {
+            background-color: #4dd0e1;
+        }
+
+        @media (max-width: 768px) {
+            .gallery-header h1 {
+                font-size: 36px;
+            }
+        }
+
+    </style>
+</head>
+<body>
+
+    <div class="gallery-header">
+        <div class="container">
+            <h1>PREMIUM CUSTOM VOZILA</h1>
+            <p>Ispod je puna lista vozila dostupnih za kupnju putem donacija.</p>
+            <a href="index.html#auto" class="back-btn">NAZAD NA POČETNU STRANICU</a>
+        </div>
+    </div>
+
+    <section class="content-section">
+        <div class="container gallery-grid">
+            
+            <div class="gallery-item">
+                <img src="auto_01.jpg" alt="Vozilo 1">
+                <h4>GOLF 7</h4>
+                <p>Cijena: 10€</p>
+            </div>
+            <div class="gallery-item">
+                <img src="auto_02.jpg" alt="Vozilo 2">
+                <h4>AUDI A4</h4>
+                <p>Cijena: 15€</p>
+            </div>
+            <div class="gallery-item">
+                <img src="auto_03.jpg" alt="Vozilo 3">
+                <h4>BMW M3</h4>
+                <p>Cijena: 20€</p>
+            </div>
+            <div class="gallery-item">
+                <img src="auto_04.jpg" alt="Vozilo 4">
+                <h4>TESLA MODEL S</h4>
+                <p>Cijena: 25€</p>
+            </div>
+            <div class="gallery-item">
+                <img src="auto_05.jpg" alt="Vozilo 5">
+                <h4>LAMBORGHINI</h4>
+                <p>Cijena: 30€</p>
+            </div>
+            
+            <div class="gallery-item">
+                <img src="auto_06.jpg" alt="Vozilo 6">
+                <h4>CUSTOM SUV</h4>
+                <p>Cijena: 18€</p>
+            </div>
+            <div class="gallery-item">
+                <img src="auto_07.jpg" alt="Vozilo 7">
+                <h4>CUSTOM BIKE</h4>
+                <p>Cijena: 8€</p>
+            </div>
+            <div class="gallery-item">
+                <img src="auto_08.jpg" alt="Vozilo 8">
+                <h4>PORSCHE 911</h4>
+                <p>Cijena: 35€</p>
+            </div>
+            <div class="gallery-item">
+                <img src="auto_09.jpg" alt="Vozilo 9">
+                <h4>MERCEDES C63</h4>
+                <p>Cijena: 22€</p>
+            </div>
+            <div class="gallery-item">
+                <img src="auto_10.jpg" alt="Vozilo 10">
+                <h4>SUPRA MK4</h4>
+                <p>Cijena: 20€</p>
+            </div>
+            <div class="gallery-item">
+                <img src="auto_11.jpg" alt="Vozilo 11">
+                <h4>FORD MUSTANG</h4>
+                <p>Cijena: 19€</p>
+            </div>
+            <div class="gallery-item">
+                <img src="auto_12.jpg" alt="Vozilo 12">
+                <h4>CHEVY CAMARO</h4>
+                <p>Cijena: 17€</p>
+            </div>
+            <div class="gallery-item">
+                <img src="auto_13.jpg" alt="Vozilo 13">
+                <h4>JEEP CHEROKEE</h4>
+                <p>Cijena: 14€</p>
+            </div>
+            <div class="gallery-item">
+                <img src="auto_14.jpg" alt="Vozilo 14">
+                <h4>SUBARU IMPREZA</h4>
+                <p>Cijena: 13€</p>
+            </div>
+            <div class="gallery-item">
+                <img src="auto_15.jpg" alt="Vozilo 15">
+                <h4>FERRARI F40</h4>
+                <p>Cijena: 50€</p>
+            </div>
+            
+        </div>
+    </section>
+    </body>
+</html>

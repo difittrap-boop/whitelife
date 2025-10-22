@@ -1,0 +1,509 @@
+/* GLOBALNI STILOVI I RESET */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Roboto', sans-serif;
+    background-color: #121212; /* Tamna pozadina */
+    color: #f5f5f5; /* Svijetli tekst */
+    line-height: 1.6;
+}
+
+h1, h2, h3, h4 {
+    font-family: 'Montserrat', sans-serif;
+    color: #ffffff;
+    font-weight: 700;
+}
+
+a {
+    color: #00bcd4; /* Svijetlo plava za linkove */
+    text-decoration: none;
+    transition: color 0.3s;
+}
+
+a:hover {
+    color: #4dd0e1;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+/* HEADER I NAVIGACIJA - LOGO LIJEVO, NAVIGACIJA CENTRIRANA */
+header {
+    background-color: rgba(0, 0, 0, 0.9);
+    color: #f5f5f5;
+    display: flex;
+    justify-content: space-between; /* Gura logo lijevo, a eventualno dugme desno */
+    align-items: center;
+    padding: 15px 40px;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    border-bottom: 2px solid #00bcd4;
+}
+
+/* Pozicioniranje navigacije u centar ekrana */
+nav {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex; /* Osigurava da su linkovi u nizu */
+}
+
+.logo {
+    font-size: 24px;
+    font-weight: 700;
+    color: #00bcd4; /* Akcent boja */
+    z-index: 1001; /* Osigurava da je logo iznad navigacije */
+}
+
+nav a {
+    color: #f5f5f5;
+    margin: 0 15px; /* Razmak između linkova */
+    font-weight: 400;
+    font-size: 16px;
+    text-transform: uppercase;
+    transition: color 0.3s;
+}
+
+nav a:hover {
+    color: #00bcd4;
+}
+
+/* Sakrivamo dugme za mobilnu prijavu na desktopu */
+.join-btn-mobile {
+    display: none !important; 
+}
+
+/* HERO SEKCIJA */
+.hero-section {
+    background: url('hero_background.jpg') no-repeat center center/cover; /* Zamijeni sa SVOJOM slikom */
+    height: 80vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    position: relative;
+    box-shadow: inset 0 0 0 2000px rgba(0, 0, 0, 0.5); /* Tamni overlay */
+}
+
+.hero-content {
+    color: #ffffff;
+}
+
+.hero-content h1 {
+    font-size: 60px;
+    margin-bottom: 10px;
+    color: #ffffff;
+    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.8);
+}
+
+.hero-content h2 {
+    font-size: 24px;
+    margin-bottom: 40px;
+    color: #f5f5f5;
+    font-weight: 400;
+}
+
+.server-status {
+    background-color: rgba(0, 188, 212, 0.9); /* Plavi akcent */
+    padding: 10px 20px;
+    margin-top: 30px;
+    border-radius: 5px;
+    display: inline-block;
+    font-weight: 700;
+}
+
+/* GUMBOVI (CTA) */
+.cta-buttons {
+    margin-top: 20px;
+}
+
+.btn {
+    padding: 12px 30px;
+    border-radius: 5px;
+    font-weight: 700;
+    text-transform: uppercase;
+    transition: background-color 0.3s, transform 0.2s;
+    margin: 0 10px;
+    display: inline-block;
+}
+
+.primary-btn {
+    background-color: #00bcd4;
+    color: #121212;
+    border: 2px solid #00bcd4;
+}
+
+.primary-btn:hover {
+    background-color: #4dd0e1;
+    transform: translateY(-2px);
+}
+
+.secondary-btn {
+    background-color: transparent;
+    color: #f5f5f5;
+    border: 2px solid #f5f5f5;
+}
+
+.secondary-btn:hover {
+    background-color: #f5f5f5;
+    color: #121212;
+    transform: translateY(-2px);
+}
+
+.large-btn {
+    padding: 15px 40px;
+    font-size: 18px;
+    margin-top: 20px;
+}
+
+/* GLAVNE SEKCIJE SADRŽAJA */
+.content-section {
+    padding: 80px 0;
+    text-align: center;
+}
+
+.dark-bg {
+    background-color: #1a1a1a;
+}
+
+.content-section h2 {
+    font-size: 36px;
+    margin-bottom: 50px;
+    border-bottom: 3px solid #00bcd4;
+    display: inline-block;
+    padding-bottom: 10px;
+}
+
+.info-block {
+    text-align: left;
+    margin-bottom: 40px;
+    padding: 20px;
+    border: 1px solid #333;
+    border-left: 5px solid #00bcd4;
+    background-color: #1e1e1e;
+    border-radius: 5px;
+}
+
+.info-block h3 {
+    color: #00bcd4;
+    margin-bottom: 15px;
+}
+
+/* PRAVILA (ACCORDION) STIL */
+.rules {
+    margin-top: 50px;
+}
+
+.rule-item {
+    background-color: #222;
+    margin-bottom: 10px;
+    border-radius: 5px;
+    border: 1px solid #333;
+    overflow: hidden;
+}
+
+.rule-item summary {
+    padding: 15px;
+    font-weight: 700;
+    cursor: pointer;
+    background-color: #2a2a2a;
+    border-left: 5px solid #00bcd4;
+    transition: background-color 0.3s;
+}
+
+.rule-item summary:hover {
+    background-color: #333;
+}
+
+.rule-item ul {
+    list-style: none;
+    padding: 10px 25px 15px;
+    text-align: left;
+}
+
+.rule-item li {
+    margin-bottom: 8px;
+}
+
+.mt-20 {
+    margin-top: 20px;
+}
+
+/* NOVI STILOVI ZA CUSTOM AUTO SLIDER */
+.slider-container {
+    display: flex;
+    justify-content: center;
+    margin-top: 40px;
+}
+
+.car-item.single-slide {
+    background-color: #222;
+    padding: 15px;
+    border-radius: 8px;
+    width: 650px; /* Povećana širina za slajder */
+    max-width: 90%; /* Osigurava da je responsivan na mobitelu */
+    text-align: center;
+    box-shadow: 0 0 20px rgba(0, 188, 212, 0.2); 
+    transition: opacity 0.5s ease-in-out; /* Glatki prelaz na kontejneru */
+}
+
+.car-item.single-slide img {
+    width: 100%;
+    height: 350px; /* Fiksna visina slike (za uniformnost) */
+    object-fit: cover; /* Sprečava deformaciju slike */
+    border-radius: 5px;
+    margin-bottom: 10px;
+    border: 3px solid #00bcd4;
+    transition: opacity 1s; /* Glatki prelaz na slici */
+}
+
+
+/* DONACIJE/TRGOVINA */
+.emphasis-text {
+    font-style: italic;
+    color: #ffc107;
+    margin-bottom: 15px;
+}
+
+.donation-perks {
+    display: flex;
+    justify-content: center;
+    margin: 30px 0;
+}
+
+.donation-perks ul {
+    list-style: none;
+    padding: 0;
+    text-align: left;
+}
+
+.donation-perks li {
+    margin-bottom: 10px;
+    font-size: 18px;
+}
+
+.donation-perks li i.icon {
+    color: #00bcd4;
+    margin-right: 10px;
+}
+
+/* STAFF */
+.staff-grid {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    margin-top: 40px;
+    flex-wrap: wrap;
+}
+
+.staff-member {
+    background-color: #222;
+    padding: 20px;
+    border-radius: 8px;
+    width: 250px;
+    text-align: center;
+    border: 1px solid #333;
+}
+
+.staff-member img {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-bottom: 15px;
+    border: 3px solid #00bcd4;
+}
+
+/* PODNOŽJE (FOOTER) */
+footer {
+    background-color: #000;
+    color: #999;
+    padding: 40px 0 10px;
+    font-size: 14px;
+}
+
+footer .container {
+    display: flex;
+    justify-content: space-between;
+    text-align: left;
+    flex-wrap: wrap;
+}
+
+.footer-info, .footer-links, .footer-social {
+    width: 30%;
+    margin-bottom: 30px;
+}
+
+footer h4 {
+    color: #f5f5f5;
+    margin-bottom: 15px;
+    font-size: 16px;
+}
+
+.footer-links a, .footer-social a {
+    display: block;
+    color: #999;
+    margin-bottom: 5px;
+}
+
+.footer-links a:hover, .footer-social a:hover {
+    color: #00bcd4;
+}
+
+.copyright {
+    text-align: center;
+    margin-top: 20px;
+    border-top: 1px solid #333;
+    padding-top: 10px;
+    width: 100%;
+}
+
+.ip-address {
+    color: #00bcd4;
+    font-weight: 700;
+}
+
+.small-text {
+    font-size: 12px;
+    color: #999;
+    margin-top: 10px;
+    display: block;
+}
+
+/* NOVI STILOVI ZA GALERIJA.HTML */
+
+.gallery-header {
+    background-color: #1a1a1a;
+    padding: 80px 0 40px;
+    text-align: center;
+}
+.gallery-header h1 {
+    font-size: 48px;
+    color: #00bcd4;
+}
+.gallery-header p {
+    font-size: 18px;
+    margin-top: 10px;
+}
+
+.gallery-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+    padding: 50px 20px;
+}
+
+.gallery-item {
+    background-color: #222;
+    padding: 15px;
+    border-radius: 8px;
+    text-align: center;
+    border: 2px solid #333;
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+.gallery-item:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0, 188, 212, 0.3);
+}
+
+.gallery-item img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    border-radius: 5px;
+    margin-bottom: 10px;
+    border: 1px solid #00bcd4;
+}
+
+.gallery-item h4 {
+    font-size: 20px;
+    margin-bottom: 5px;
+    color: #f5f5f5;
+}
+.gallery-item p {
+    font-size: 22px;
+    font-weight: 700;
+    color: #ffc107; /* Zlatna boja za cijenu */
+}
+
+.back-btn {
+    background-color: #00bcd4;
+    color: #121212;
+    padding: 10px 25px;
+    border-radius: 5px;
+    font-weight: 700;
+    text-transform: uppercase;
+    margin-top: 30px;
+    display: inline-block;
+}
+.back-btn:hover {
+    background-color: #4dd0e1;
+}
+
+/* RESPONSIVNOST (ZA MOBITELE) */
+@media (max-width: 768px) {
+    header {
+        padding: 10px 20px;
+        /* Vraćamo space-between za mobilnu verziju da logo bude lijevo, a dugme desno */
+        justify-content: space-between; 
+        position: static; 
+    }
+    
+    /* Na mobitelu uklanjamo apsolutno pozicioniranje */
+    nav {
+        position: static;
+        transform: none;
+        display: none; /* Sakrij nav na mobitelu */
+    }
+
+    .join-btn-mobile {
+        /* Prikazujemo dugme samo ako je potrebno za mobilni prikaz */
+        display: block;
+        padding: 8px 15px;
+        background-color: #00bcd4;
+        color: #121212;
+        border: none;
+        border-radius: 5px;
+        font-weight: 700;
+        cursor: pointer;
+    }
+
+    .hero-content h1 {
+        font-size: 40px;
+    }
+
+    .hero-content h2 {
+        font-size: 18px;
+    }
+
+    .cta-buttons a {
+        display: block;
+        margin: 15px auto;
+        width: 80%;
+    }
+
+    .car-item.single-slide {
+        width: 100%; /* Slajder na cijelu širinu */
+    }
+
+    .car-item.single-slide img {
+        height: 250px; /* Manja visina na mobitelu */
+    }
+
+    .footer-info, .footer-links, .footer-social {
+        width: 100%;
+    }
+
+    footer .container {
+        text-align: center;
+        flex-direction: column;
+    }
+}
