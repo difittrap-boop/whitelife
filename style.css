@@ -645,3 +645,68 @@ footer h4 {
         gap: 5px;
     }
 }
+
+/* ************************************** */
+/* STILOVI ZA MODAL/LIGHTBOX ZA SLIKU */
+/* ************************************** */
+.modal {
+    display: none; /* Skriveno po defaultu */
+    position: fixed; /* Ostaje na mjestu čak i pri skrolanju */
+    z-index: 2000; /* Postavite visoko iznad svega */
+    left: 0;
+    top: 0;
+    width: 100%; 
+    height: 100%;
+    overflow: auto; /* Omogućava skrolanje ako je sadržaj prevelik */
+    background-color: rgba(0,0,0,0.9); /* Crni prozirni overlay */
+    padding-top: 60px; /* Mali razmak od vrha */
+}
+
+/* Sadržaj Modala (Slika) */
+.modal-content {
+    margin: auto;
+    display: block;
+    /* Fiksna maksimalna širina za sve slike (ključno za fiksnu "rezoluciju") */
+    width: 80%; /* Maksimalna širina, npr. 80% prozora */
+    max-width: 800px; /* Fiksna maksimalna širina - ovo je ključno */
+    height: auto;
+    border: 5px solid #00bcd4; /* Plavi okvir oko slike */
+    border-radius: 5px;
+    box-shadow: 0 0 20px rgba(0, 188, 212, 0.5);
+    /* Animacija za glatki dolazak */
+    animation-name: zoom;
+    animation-duration: 0.6s;
+}
+
+/* Animacija (opcionalno) */
+@keyframes zoom {
+    from {transform:scale(0)} 
+    to {transform:scale(1)}
+}
+
+/* Dugme za zatvaranje (X) */
+.close-btn {
+    position: absolute;
+    top: 15px;
+    right: 35px;
+    color: #f1f1f1;
+    font-size: 40px;
+    font-weight: bold;
+    transition: 0.3s;
+    cursor: pointer;
+}
+
+.close-btn:hover,
+.close-btn:focus {
+    color: #bbb;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+/* Responsivnost za modal */
+@media only screen and (max-width: 700px){
+    .modal-content {
+        width: 100%;
+        max-width: 90%;
+    }
+}
