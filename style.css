@@ -649,35 +649,41 @@ footer h4 {
 /* ************************************** */
 /* STILOVI ZA MODAL/LIGHTBOX ZA SLIKU */
 /* ************************************** */
+/* ************************************** */
+/* STILOVI ZA MODAL/LIGHTBOX ZA SLIKU (POPRAVAK) */
+/* ************************************** */
 .modal {
-    display: none; /* Skriveno po defaultu */
-    position: fixed; /* Ostaje na mjestu čak i pri skrolanju */
-    z-index: 2000; /* Postavite visoko iznad svega */
+    display: none; /* KLJUČNO: OVO GA SAKRIVA KAD SE STRANICA UČITA */
+    position: fixed; 
+    z-index: 2000; 
     left: 0;
     top: 0;
     width: 100%; 
     height: 100%;
-    overflow: auto; /* Omogućava skrolanje ako je sadržaj prevelik */
-    background-color: rgba(0,0,0,0.9); /* Crni prozirni overlay */
-    padding-top: 60px; /* Mali razmak od vrha */
+    overflow: auto; 
+    background-color: rgba(0,0,0,0.9);
+
+    /* Ovi Flexbox stilovi se aktiviraju tek kada JavaScript postavi display: flex */
+    align-items: center; 
+    justify-content: center; 
+    padding-top: 0; 
 }
 
 /* Sadržaj Modala (Slika) */
 .modal-content {
-    margin: auto;
+    margin: 0;
     display: block;
-    /* Fiksna maksimalna širina za sve slike (ključno za fiksnu "rezoluciju") */
-    width: 80%; /* Maksimalna širina, npr. 80% prozora */
-    max-width: 800px; /* Fiksna maksimalna širina - ovo je ključno */
+    width: 80%;
+    max-width: 800px;
     height: auto;
-    border: 5px solid #00bcd4; /* Plavi okvir oko slike */
+    border: 5px solid #00bcd4; /* Plava linija koju vidiš */
     border-radius: 5px;
     box-shadow: 0 0 20px rgba(0, 188, 212, 0.5);
-    /* Animacija za glatki dolazak */
     animation-name: zoom;
     animation-duration: 0.6s;
 }
 
+/* Ostatak (close-btn i @keyframes) ostaje isti */
 /* Animacija (opcionalno) */
 @keyframes zoom {
     from {transform:scale(0)} 
