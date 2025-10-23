@@ -7,176 +7,302 @@
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <link rel="stylesheet" href="style.css">
-    <style>
-        /* Specifični stilovi za Galeriju */
-        .gallery-header {
-            background-color: #1a1a1a;
-            padding: 80px 0 40px;
-            text-align: center;
-        }
-        .gallery-header h1 {
-            font-size: 48px;
-            color: #00bcd4;
-        }
-        .gallery-header p {
-            font-size: 18px;
-            margin-top: 10px;
-        }
-        
-        .gallery-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 30px;
-            padding: 50px 20px;
-        }
-        
-        .gallery-item {
-            background-color: #222;
-            padding: 15px;
-            border-radius: 8px;
-            text-align: center;
-            border: 2px solid #333;
-            transition: transform 0.3s, box-shadow 0.3s;
-        }
-        .gallery-item:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 20px rgba(0, 188, 212, 0.3);
-        }
-
-        .gallery-item img {
-            width: 100%;
-            height: 200px;
-            object-fit: cover;
-            border-radius: 5px;
-            margin-bottom: 10px;
-            border: 1px solid #00bcd4;
-        }
-        
-        .gallery-item h4 {
-            font-size: 20px;
-            margin-bottom: 5px;
-            color: #f5f5f5;
-        }
-        .gallery-item p {
-            font-size: 22px;
-            font-weight: 700;
-            color: #ffc107; /* Zlatna boja za cijenu */
-        }
-
-        /* Dugme za povratak */
-        .back-btn {
-            background-color: #00bcd4;
-            color: #121212;
-            padding: 10px 25px;
-            border-radius: 5px;
-            font-weight: 700;
-            text-transform: uppercase;
-            margin-top: 30px;
-            display: inline-block;
-        }
-        .back-btn:hover {
-            background-color: #4dd0e1;
-        }
-
-        @media (max-width: 768px) {
-            .gallery-header h1 {
-                font-size: 36px;
-            }
-        }
-
-    </style>
 </head>
 <body>
 
+    <header>
+        <a href="index.html" class="logo">WHITE LIFE</a>
+        <nav>
+            <a href="index.html#home">POČETNA</a>
+            <a href="index.html#info">INFO</a>
+            <a href="index.html#auto">CUSTOM AUTO</a>
+            <a href="galerija.html" class="active">VOZILA</a>
+            <a href="index.html#trgovina">TRGOVINA</a>
+            <a href="index.html#staff">STAFF</a>
+        </nav>
+        <button class="join-btn-mobile">PRIDRUŽI SE</button>
+    </header>
+
     <div class="gallery-header">
         <div class="container">
-            <h1>PREMIUM CUSTOM VOZILA</h1>
-            <p>Ispod je puna lista vozila dostupnih za kupnju putem donacija.</p>
-            <a href="index.html#auto" class="back-btn">NAZAD NA POČETNU STRANICU</a>
+            <h1>PREMIUM VOZILA</h1>
+            <p>Pregled svih dostupnih custom modela u našoj ponudi.</p>
         </div>
     </div>
 
-    <section class="content-section">
-        <div class="container gallery-grid">
+    <section class="content-section dark-bg">
+        <div class="container">
             
-            <div class="gallery-item">
-                <img src="auto_01.jpg" alt="Vozilo 1">
-                <h4>GOLF 7</h4>
-                <p>Cijena: 10€</p>
+            <div class="gallery-grid">
+                
+                <details class="gallery-item" open>
+                    <summary>
+                        <img src="auto_01.jpg" alt="G63 Long" class="main-img">
+                        <div class="summary-info">
+                            <h4>G63long</h4>
+                            <span class="price">40€</span>
+                        </div>
+                    </summary>
+                    <div class="gallery-content">
+                        <h5>Karakteristike</h5>
+                        <ul>
+                            <li><i class="fas fa-bolt"></i> Snaga motora: 585 KS</li>
+                            <li><i class="fas fa-tachometer-alt"></i> Maks. brzina: 240 km/h</li>
+                            <li><i class="fas fa-truck"></i> Klasa: Terenac</li>
+                        </ul>
+                        <h5>Dodatne slike</h5>
+                        <div class="photo-gallery">
+                            <img src="auto_01_a.jpg" alt="Detalj G63long 1">
+                            <img src="auto_01_b.jpg" alt="Detalj G63long 2">
+                            <img src="auto_01_c.jpg" alt="Detalj G63long 3">
+                        </div>
+                    </div>
+                </details>
+
+                <details class="gallery-item" open>
+                    <summary>
+                        <img src="auto_02.jpg" alt="Ferrari SF90" class="main-img">
+                        <div class="summary-info">
+                            <h4>Ferrari SF90</h4>
+                            <span class="price">60€</span>
+                        </div>
+                    </summary>
+                    <div class="gallery-content">
+                        <h5>Karakteristike</h5>
+                        <ul>
+                            <li><i class="fas fa-bolt"></i> Snaga motora: 1000 KS (hibrid)</li>
+                            <li><i class="fas fa-tachometer-alt"></i> Maks. brzina: 340 km/h</li>
+                            <li><i class="fas fa-car"></i> Klasa: Super sport</li>
+                        </ul>
+                        <h5>Dodatne slike</h5>
+                        <div class="photo-gallery">
+                            <img src="auto_02_a.jpg" alt="Detalj Ferrari SF90 1">
+                            <img src="auto_02_b.jpg" alt="Detalj Ferrari SF90 2">
+                            <img src="auto_02_c.jpg" alt="Detalj Ferrari SF90 3">
+                        </div>
+                    </div>
+                </details>
+
+                <details class="gallery-item" open>
+                    <summary>
+                        <img src="auto_03.jpg" alt="M6 E24" class="main-img">
+                        <div class="summary-info">
+                            <h4>M6 E24</h4>
+                            <span class="price">30€</span>
+                        </div>
+                    </summary>
+                    <div class="gallery-content">
+                        <h5>Karakteristike</h5>
+                        <ul>
+                            <li><i class="fas fa-bolt"></i> Snaga motora: 286 KS</li>
+                            <li><i class="fas fa-tachometer-alt"></i> Maks. brzina: 255 km/h</li>
+                            <li><i class="fas fa-car"></i> Klasa: Klasični sport</li>
+                        </ul>
+                        <h5>Dodatne slike</h5>
+                        <div class="photo-gallery">
+                            <img src="auto_03_a.jpg" alt="Detalj M6 E24 1">
+                            <img src="auto_03_b.jpg" alt="Detalj M6 E24 2">
+                            <img src="auto_03_c.jpg" alt="Detalj M6 E24 3">
+                        </div>
+                    </div>
+                </details>
+
+                <details class="gallery-item" open>
+                    <summary>
+                        <img src="auto_04.jpg" alt="Porsche Carrera" class="main-img">
+                        <div class="summary-info">
+                            <h4>Carrera Porsche</h4>
+                            <span class="price">45€</span>
+                        </div>
+                    </summary>
+                    <div class="gallery-content">
+                        <h5>Karakteristike</h5>
+                        <ul>
+                            <li><i class="fas fa-bolt"></i> Snaga motora: 385 KS</li>
+                            <li><i class="fas fa-tachometer-alt"></i> Maks. brzina: 300 km/h</li>
+                            <li><i class="fas fa-car"></i> Klasa: Sportski coupé</li>
+                        </ul>
+                        <h5>Dodatne slike</h5>
+                        <div class="photo-gallery">
+                            <img src="auto_04_a.jpg" alt="Detalj Carrera Porsche 1">
+                            <img src="auto_04_b.jpg" alt="Detalj Carrera Porsche 2">
+                            <img src="auto_04_c.jpg" alt="Detalj Carrera Porsche 3">
+                        </div>
+                    </div>
+                </details>
+
+                <details class="gallery-item" open>
+                    <summary>
+                        <img src="auto_05.jpg" alt="488 Spider" class="main-img">
+                        <div class="summary-info">
+                            <h4>488sp</h4>
+                            <span class="price">55€</span>
+                        </div>
+                    </summary>
+                    <div class="gallery-content">
+                        <h5>Karakteristike</h5>
+                        <ul>
+                            <li><i class="fas fa-bolt"></i> Snaga motora: 720 KS</li>
+                            <li><i class="fas fa-tachometer-alt"></i> Maks. brzina: 340 km/h</li>
+                            <li><i class="fas fa-car"></i> Klasa: Super sport</li>
+                        </ul>
+                        <h5>Dodatne slike</h5>
+                        <div class="photo-gallery">
+                            <img src="auto_05_a.jpg" alt="Detalj 488sp 1">
+                            <img src="auto_05_b.jpg" alt="Detalj 488sp 2">
+                            <img src="auto_05_c.jpg" alt="Detalj 488sp 3">
+                        </div>
+                    </div>
+                </details>
+
+                <details class="gallery-item" open>
+                    <summary>
+                        <img src="auto_06.jpg" alt="Alpina B7 BLACK EDITION" class="main-img">
+                        <div class="summary-info">
+                            <h4>Alpina B7 BLACK EDITION</h4>
+                            <span class="price">38€</span>
+                        </div>
+                    </summary>
+                    <div class="gallery-content">
+                        <h5>Karakteristike</h5>
+                        <ul>
+                            <li><i class="fas fa-bolt"></i> Snaga motora: 600 KS</li>
+                            <li><i class="fas fa-tachometer-alt"></i> Maks. brzina: 330 km/h</li>
+                            <li><i class="fas fa-car"></i> Klasa: Luksuzna limuzina</li>
+                        </ul>
+                        <h5>Dodatne slike</h5>
+                        <div class="photo-gallery">
+                            <img src="auto_06_a.jpg" alt="Detalj Alpina B7 1">
+                            <img src="auto_06_b.jpg" alt="Detalj Alpina B7 2">
+                            <img src="auto_06_c.jpg" alt="Detalj Alpina B7 3">
+                        </div>
+                    </div>
+                </details>
+
+                <details class="gallery-item" open>
+                    <summary>
+                        <img src="auto_07.jpg" alt="Pagani" class="main-img">
+                        <div class="summary-info">
+                            <h4>Pagani</h4>
+                            <span class="price">80€</span>
+                        </div>
+                    </summary>
+                    <div class="gallery-content">
+                        <h5>Karakteristike</h5>
+                        <ul>
+                            <li><i class="fas fa-bolt"></i> Snaga motora: 730 KS</li>
+                            <li><i class="fas fa-tachometer-alt"></i> Maks. brzina: 370 km/h</li>
+                            <li><i class="fas fa-rocket"></i> Klasa: Hiper automobil</li>
+                        </ul>
+                        <h5>Dodatne slike</h5>
+                        <div class="photo-gallery">
+                            <img src="auto_07_a.jpg" alt="Detalj Pagani 1">
+                            <img src="auto_07_b.jpg" alt="Detalj Pagani 2">
+                            <img src="auto_07_c.jpg" alt="Detalj Pagani 3">
+                        </div>
+                    </div>
+                </details>
+
+                <details class="gallery-item" open>
+                    <summary>
+                        <img src="auto_08.jpg" alt="Bentley" class="main-img">
+                        <div class="summary-info">
+                            <h4>Bentley</h4>
+                            <span class="price">42€</span>
+                        </div>
+                    </summary>
+                    <div class="gallery-content">
+                        <h5>Karakteristike</h5>
+                        <ul>
+                            <li><i class="fas fa-bolt"></i> Snaga motora: 635 KS</li>
+                            <li><i class="fas fa-tachometer-alt"></i> Maks. brzina: 333 km/h</li>
+                            <li><i class="fas fa-car"></i> Klasa: Luksuzni GT</li>
+                        </ul>
+                        <h5>Dodatne slike</h5>
+                        <div class="photo-gallery">
+                            <img src="auto_08_a.jpg" alt="Detalj Bentley 1">
+                            <img src="auto_08_b.jpg" alt="Detalj Bentley 2">
+                            <img src="auto_08_c.jpg" alt="Detalj Bentley 3">
+                        </div>
+                    </div>
+                </details>
+
+                <details class="gallery-item" open>
+                    <summary>
+                        <img src="auto_09.jpg" alt="Bugatti" class="main-img">
+                        <div class="summary-info">
+                            <h4>Bugatti</h4>
+                            <span class="price">100€</span>
+                        </div>
+                    </summary>
+                    <div class="gallery-content">
+                        <h5>Karakteristike</h5>
+                        <ul>
+                            <li><i class="fas fa-bolt"></i> Snaga motora: 1500 KS</li>
+                            <li><i class="fas fa-tachometer-alt"></i> Maks. brzina: 420 km/h</li>
+                            <li><i class="fas fa-rocket"></i> Klasa: Hiper automobil</li>
+                        </ul>
+                        <h5>Dodatne slike</h5>
+                        <div class="photo-gallery">
+                            <img src="auto_09_a.jpg" alt="Detalj Bugatti 1">
+                            <img src="auto_09_b.jpg" alt="Detalj Bugatti 2">
+                            <img src="auto_09_c.jpg" alt="Detalj Bugatti 3">
+                        </div>
+                    </div>
+                </details>
+                
+                <details class="gallery-item" open>
+                    <summary>
+                        <img src="auto_10.jpg" alt="Ferrari 812 GTS by MANSORY" class="main-img">
+                        <div class="summary-info">
+                            <h4>Ferrari 812 GTS by MANSORY</h4>
+                            <span class="price">75€</span>
+                        </div>
+                    </summary>
+                    <div class="gallery-content">
+                        <h5>Karakteristike</h5>
+                        <ul>
+                            <li><i class="fas fa-bolt"></i> Snaga motora: 800+ KS</li>
+                            <li><i class="fas fa-tachometer-alt"></i> Maks. brzina: 340+ km/h</li>
+                            <li><i class="fas fa-car"></i> Klasa: Tuning Super sport</li>
+                        </ul>
+                        <h5>Dodatne slike</h5>
+                        <div class="photo-gallery">
+                            <img src="auto_10_a.jpg" alt="Detalj Ferrari 812 1">
+                            <img src="auto_10_b.jpg" alt="Detalj Ferrari 812 2">
+                            <img src="auto_10_c.jpg" alt="Detalj Ferrari 812 3">
+                        </div>
+                    </div>
+                </details>
+                
+            </div> <a href="index.html#trgovina" class="btn back-btn">NAZAD NA TRGOVINU</a>
+
+        </div> </section>
+
+    <footer>
+        <div class="container">
+            <div class="footer-info">
+                <h4>WHITE LIFE RP</h4>
+                <p>Premium Roleplay iskustvo na Balkanu. Pridružite se zajednici danas.</p>
+                <p class="small-text mt-20">Sav sadržaj je vlasništvo White Life RP tima.</p>
             </div>
-            <div class="gallery-item">
-                <img src="auto_02.jpg" alt="Vozilo 2">
-                <h4>AUDI A4</h4>
-                <p>Cijena: 15€</p>
+            <div class="footer-links">
+                <h4>Linkovi</h4>
+                <a href="index.html#info">Info</a>
+                <a href="index.html#rules">Pravila</a>
+                <a href="index.html#trgovina">Donacije</a>
+                <a href="galerija.html">Vozila</a>
             </div>
-            <div class="gallery-item">
-                <img src="auto_03.jpg" alt="Vozilo 3">
-                <h4>BMW M3</h4>
-                <p>Cijena: 20€</p>
+            <div class="footer-social">
+                <h4>Kontakt</h4>
+                <a href="#"><i class="fab fa-discord"></i> Discord</a>
+                <a href="#"><i class="fab fa-instagram"></i> Instagram</a>
+                <a href="#"><i class="fab fa-facebook"></i> Facebook</a>
             </div>
-            <div class="gallery-item">
-                <img src="auto_04.jpg" alt="Vozilo 4">
-                <h4>TESLA MODEL S</h4>
-                <p>Cijena: 25€</p>
+            <div class="copyright">
+                &copy; 2025 White Life RolePlay. All Rights Reserved.
             </div>
-            <div class="gallery-item">
-                <img src="auto_05.jpg" alt="Vozilo 5">
-                <h4>LAMBORGHINI</h4>
-                <p>Cijena: 30€</p>
-            </div>
-            
-            <div class="gallery-item">
-                <img src="auto_06.jpg" alt="Vozilo 6">
-                <h4>CUSTOM SUV</h4>
-                <p>Cijena: 18€</p>
-            </div>
-            <div class="gallery-item">
-                <img src="auto_07.jpg" alt="Vozilo 7">
-                <h4>CUSTOM BIKE</h4>
-                <p>Cijena: 8€</p>
-            </div>
-            <div class="gallery-item">
-                <img src="auto_08.jpg" alt="Vozilo 8">
-                <h4>PORSCHE 911</h4>
-                <p>Cijena: 35€</p>
-            </div>
-            <div class="gallery-item">
-                <img src="auto_09.jpg" alt="Vozilo 9">
-                <h4>MERCEDES C63</h4>
-                <p>Cijena: 22€</p>
-            </div>
-            <div class="gallery-item">
-                <img src="auto_10.jpg" alt="Vozilo 10">
-                <h4>SUPRA MK4</h4>
-                <p>Cijena: 20€</p>
-            </div>
-            <div class="gallery-item">
-                <img src="auto_11.jpg" alt="Vozilo 11">
-                <h4>FORD MUSTANG</h4>
-                <p>Cijena: 19€</p>
-            </div>
-            <div class="gallery-item">
-                <img src="auto_12.jpg" alt="Vozilo 12">
-                <h4>CHEVY CAMARO</h4>
-                <p>Cijena: 17€</p>
-            </div>
-            <div class="gallery-item">
-                <img src="auto_13.jpg" alt="Vozilo 13">
-                <h4>JEEP CHEROKEE</h4>
-                <p>Cijena: 14€</p>
-            </div>
-            <div class="gallery-item">
-                <img src="auto_14.jpg" alt="Vozilo 14">
-                <h4>SUBARU IMPREZA</h4>
-                <p>Cijena: 13€</p>
-            </div>
-            <div class="gallery-item">
-                <img src="auto_15.jpg" alt="Vozilo 15">
-                <h4>FERRARI F40</h4>
-                <p>Cijena: 50€</p>
-            </div>
-            
         </div>
-    </section>
-    </body>
+    </footer>
+</body>
 </html>
