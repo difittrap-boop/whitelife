@@ -34,6 +34,30 @@ a:hover {
     padding: 20px;
 }
 
+/* ------------------------------------- */
+/* NOVE ANIMACIJE I SKROLL EFEKTI KLASA */
+/* ------------------------------------- */
+
+/* Početno stanje za sve elemente koji se animiraju pri skrolanju */
+.scroll-reveal {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+}
+
+/* Krajnje stanje kada se element vidi */
+.scroll-reveal.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Kašnjenja za sekvencijalni izgled */
+.scroll-reveal.delay-1 { transition-delay: 0.1s; }
+.scroll-reveal.delay-2 { transition-delay: 0.2s; }
+.scroll-reveal.delay-3 { transition-delay: 0.3s; }
+.scroll-reveal.delay-4 { transition-delay: 0.4s; }
+
+
 /* HEADER I NAVIGACIJA - LOGO LIJEVO, NAVIGACIJA CENTRIRANA */
 header {
     background-color: rgba(0, 0, 0, 0.9);
@@ -46,6 +70,14 @@ header {
     top: 0;
     z-index: 1000;
     border-bottom: 2px solid #00bcd4;
+    /* Dodajem animaciju za Header pri učitavanju */
+    opacity: 0;
+    animation: fadeInDown 0.8s ease-out forwards;
+}
+
+@keyframes fadeInDown {
+    from { opacity: 0; transform: translateY(-20px); }
+    to { opacity: 1; transform: translateY(0); }
 }
 
 /* Pozicioniranje navigacije u centar ekrana */
@@ -95,6 +127,15 @@ nav a:hover {
 
 .hero-content {
     color: #ffffff;
+    /* Animacija za Hero content */
+    animation: fadeInUp 1s ease-out forwards;
+    opacity: 0;
+    animation-delay: 0.3s;
+}
+
+@keyframes fadeInUp {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
 }
 
 .hero-content h1 {
@@ -130,20 +171,22 @@ nav a:hover {
     border-radius: 5px;
     font-weight: 700;
     text-transform: uppercase;
-    transition: background-color 0.3s, transform 0.2s;
+    transition: background-color 0.3s, transform 0.2s, box-shadow 0.3s;
     margin: 0 10px;
     display: inline-block;
 }
 
 .primary-btn {
     background-color: #00bcd4;
-    color: #121212;
+    color: #121212; /* Tekst je taman */
     border: 2px solid #00bcd4;
 }
 
 .primary-btn:hover {
     background-color: #4dd0e1;
+    color: #121212; /* POPRAVAK: Eksplicitno zadržavamo taman tekst na hoveru */
     transform: translateY(-2px);
+    box-shadow: 0 4px 15px rgba(0, 188, 212, 0.5);
 }
 
 .secondary-btn {
@@ -156,6 +199,7 @@ nav a:hover {
     background-color: #f5f5f5;
     color: #121212;
     transform: translateY(-2px);
+    box-shadow: 0 4px 15px rgba(245, 245, 245, 0.5);
 }
 
 .large-btn {
@@ -207,7 +251,7 @@ nav a:hover {
     margin-bottom: 10px;
     border-radius: 5px;
     border: 1px solid #333;
-    overflow: hidden;
+    /* Uklanjamo overflow: hidden ovdje jer otežava Details animaciju */
 }
 
 .rule-item summary {
@@ -221,6 +265,15 @@ nav a:hover {
 
 .rule-item summary:hover {
     background-color: #333;
+}
+
+/* NOVI CSS ZA DETAILS ANIMACIJU */
+.rule-item[open] > *:not(summary) {
+    animation: sweep 0.5s ease-out;
+}
+@keyframes sweep {
+    0% {opacity: 0; transform: translateY(-10px);}
+    100% {opacity: 1; transform: translateY(0);}
 }
 
 .rule-item ul {
@@ -274,20 +327,31 @@ nav a:hover {
 }
 
 .donation-perks {
-    display: flex;
-    justify-content: center;
-    margin: 30px 0;
+    /* Ovdje mijenjamo: uklanjamo display: flex; i centriramo blok */
+    display: block; /* Postavljamo na blok element */
+    margin: 30px auto; /* Centriranje: koristi auto margine lijevo/desno */
+    max-width: 600px; /* Dodajemo maksimalnu širinu da lista ne ide preko cijele stranice */
+    text-align: center; /* Centriranje teksta unutar bloka */
 }
 
 .donation-perks ul {
     list-style: none;
     padding: 0;
+    /* Centriramo samu listu unutar bloka, a tekst liste ostaje lijevo */
+    display: inline-block; 
     text-align: left;
+    margin-top: 15px;
 }
 
 .donation-perks li {
     margin-bottom: 10px;
     font-size: 18px;
+    transition: transform 0.3s;
+}
+/* Ostatak .donation-perks li koda ostaje isti... */
+
+.donation-perks li:hover {
+    transform: translateX(10px); /* Mali hover efekt na listi */
 }
 
 .donation-perks li i.icon {
@@ -311,6 +375,11 @@ nav a:hover {
     width: 250px;
     text-align: center;
     border: 1px solid #333;
+    transition: transform 0.3s, box-shadow 0.3s; /* Tranzicija za hover */
+}
+.staff-member:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0, 188, 212, 0.3);
 }
 
 .staff-member img {
@@ -320,6 +389,10 @@ nav a:hover {
     object-fit: cover;
     margin-bottom: 15px;
     border: 3px solid #00bcd4;
+    transition: border-color 0.3s;
+}
+.staff-member img:hover {
+    border-color: #ffc107; /* Sekundarna boja na hoveru */
 }
 
 /* PODNOŽJE (FOOTER) */
@@ -352,10 +425,12 @@ footer h4 {
     display: block;
     color: #999;
     margin-bottom: 5px;
+    transition: color 0.3s, transform 0.3s;
 }
 
 .footer-links a:hover, .footer-social a:hover {
     color: #00bcd4;
+    transform: translateX(5px);
 }
 
 .copyright {
@@ -386,7 +461,15 @@ footer h4 {
     background-color: #1a1a1a;
     padding: 80px 0 40px;
     text-align: center;
+    /* Dodajem animaciju za galerija header */
+    opacity: 0;
+    animation: fadeIn 1s ease-out forwards;
 }
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
 .gallery-header h1 {
     font-size: 48px;
     color: #00bcd4;
@@ -413,7 +496,7 @@ footer h4 {
     text-align: left; 
     border: 2px solid #333;
     transition: transform 0.3s, box-shadow 0.3s;
-    overflow: visible; /* Mora biti visible da se proširi */
+    overflow: hidden; /* Ponovo hidden za height tranziciju */
     /* KLJUČNO: Fiksna visina za zatvoreni element. Visina je dovoljno velika 
        da sadrži sliku i naslov. */
     height: 300px;
@@ -428,6 +511,16 @@ footer h4 {
     height: auto; 
     min-height: 450px; /* Minimalna visina kad je otvoren */
 }
+
+.gallery-item[open] .gallery-content {
+    animation: fadeInContent 0.5s ease-out; /* Animacija sadržaja pri otvaranju */
+}
+
+@keyframes fadeInContent {
+    from { opacity: 0; transform: translateY(-10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
 
 .gallery-item:hover {
     transform: translateY(-5px);
@@ -477,12 +570,13 @@ footer h4 {
     position: absolute;
     right: 0;
     top: 50%;
-    transform: translateY(-50%);
-    transition: transform 0.2s;
+    transform: translateY(-50%) rotate(0deg); /* Početna rotacija */
+    transition: transform 0.3s ease-out; /* Tranzicija za rotaciju */
 }
 
 .gallery-item[open] .summary-info::after {
     content: '▼';
+    transform: translateY(-50%) rotate(180deg); /* Rotacija kada je otvoreno */
 }
 
 
@@ -564,6 +658,7 @@ footer h4 {
 }
 .back-btn:hover {
     background-color: #4dd0e1;
+    color: #121212; /* POPRAVAK: Eksplicitno zadržavamo taman tekst na hoveru */
 }
 
 /* RESPONSIVNOST (ZA MOBITELE) */
@@ -646,9 +741,6 @@ footer h4 {
     }
 }
 
-/* ************************************** */
-/* STILOVI ZA MODAL/LIGHTBOX ZA SLIKU */
-/* ************************************** */
 /* ************************************** */
 /* STILOVI ZA MODAL/LIGHTBOX ZA SLIKU (POPRAVAK) */
 /* ************************************** */
