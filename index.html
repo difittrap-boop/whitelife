@@ -3,34 +3,41 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>White Life RolePlay</title>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
+    <title>White Life RolePlay - Premium Balkan Server</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700;800&family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
     <header>
-        <a href="#home" class="logo">WHITE LIFE</a>
+        <a href="#home" class="logo">WHITE LIFE <span style="color: #FFD700; font-size: 12px; font-weight: 600;">RP</span></a>
         <nav>
-            <a href="#home">POČETNA</a>
+            <a href="#home" class="active">POČETNA</a>
             <a href="#info">INFO</a>
             <a href="#auto">CUSTOM AUTO</a>
             <a href="#trgovina">TRGOVINA</a>
             <a href="#staff">STAFF</a>
         </nav>
-        <button class="join-btn-mobile">PRIDRUŽI SE</button>
+        <a href="https://discord.gg/2GfEJR3tgM" class="btn primary-btn join-btn-mobile" target="_blank">PRIDRUŽI SE</a>
     </header>
 
-    <section id="home" class="hero-section">
-        <div class="hero-content">
-            <h1>WHITE LIFE ROLEPLAY</h1>
-            <h2>Premium iskustvo na Balkanu.</h2>
-            <p class="server-status">SERVER ONLINE • 45/64 IGRAČA</p>
-            <div class="cta-buttons">
-                <a href="https://discord.gg/2GfEJR3tgM" class="btn primary-btn large-btn" target="_blank">PRIDRUŽI SE DISCORDU</a>
-                <a href="https://cfx.re/join/ja499p" class="btn secondary-btn large-btn">POVEŽI SE NA SERVER</a>
+    <section id="home" class="hero-section" style="background: url('hero_background.jpg') no-repeat center center/cover;">
+        <div class="container hero-content">
+            <h1 class="scroll-reveal">WHITE LIFE ROLEPLAY</h1>
+            <h2 class="scroll-reveal delay-1">Premium iskustvo na Balkanu. Kreiraj svoju priču.</h2>
+            <p class="scroll-reveal delay-2">Dobrodošli na novi nivo FiveM Roleplay-a. Fokusirani smo na kvalitetan RP, jedinstvene mehanike i stabilnu ekonomiju.</p>
+            
+            <div class="cta-buttons scroll-reveal delay-3">
+                <a href="https://discord.gg/2GfEJR3tgM" class="btn primary-btn" target="_blank">
+                    <i class="fab fa-discord"></i> PRIDRUŽI SE DISCORDU
+                </a>
+                <a href="https://cfx.re/join/ja499p" class="btn secondary-btn">
+                    <i class="fas fa-play"></i> POVEŽI SE NA SERVER
+                </a>
             </div>
+
+            <p class="server-status scroll-reveal delay-4">SERVER ONLINE • 45/64 IGRAČA</p>
         </div>
     </section>
 
@@ -38,53 +45,38 @@
         <div class="container">
             <h2 class="scroll-reveal">INFO & PRAVILA</h2>
             
-            <div class="info-block scroll-reveal delay-1">
-                <h3>O NAMA:</h3>
-                <p>
-                    Dobrodošli na White Life Roleplay, server otvoren s jednom jednostavnom vizijom: 
-                    Stvoriti mjesto gdje je zabava prioritet, ali pravila su temelj.
-                </p>
-                <p>
-                    Mi smo Medium Roleplay zajednica, što znači da nudimo uravnoteženo iskustvo: 
-                    dovoljno slobode za kreativne priče, ali uz strukturu i pravila koja osiguravaju 
-                    poštovanje i dosljednost. 
-                </p>
-                <p>
-                    Naš fokus je na pričama koje sami stvarate, dinamičnim interakcijama i pozitivnoj atmosferi.
-                    Naš aktivni tim developera neprestano radi na uvođenju novih, zabavnih mehanika 
-                    i jedinstvenih prilika za RP, dok se naš Staff brine da se svako osjeća dobrodošlo. 
-                    Pridruži nam se i započni svoju White Life priču!
-                </p>
-            </div>
+            <div class="info-grid">
+                <div class="info-block card scroll-reveal delay-1">
+                    <h3><i class="fas fa-info-circle"></i> O NAMA</h3>
+                    <p>
+                        White Life RP je Medium Roleplay zajednica s jasnom vizijom: pružiti maksimalnu zabavu uz minimalnu toksičnost. Naš tim developera neprestano uvodi nove, optimizirane skripte i mehanike, osiguravajući da je svaka sesija svježa i zanimljiva. 
+                        Kod nas su igrači kreatori priče, a Staff je tu samo da osigura fer i konzistentno okruženje.
+                    </p>
+                    <p class="mt-20" style="color: var(--color-accent-primary);">Aktivna podrška, redovni eventovi i profesionalan Staff tim.</p>
+                </div>
 
-            <div class="info-block rules scroll-reveal delay-2">
-                <h3>PRAVILA SERVERA (KLJUČNO ZA ZABAVU!)</h3>
-                <p>Da bismo osigurali da svi uživaju u pričanju priča, obavezno je poznavanje osnovnih principa. Detaljna pravila nalaze se na Discordu.</p>
+                <div class="info-block card rules scroll-reveal delay-2">
+                    <h3><i class="fas fa-gavel"></i> KLJUČNA PRAVILA</h3>
+                    <p style="margin-bottom: 20px;">Za kvalitetan RP, ključno je poznavanje osnova. Uvijek se ponašajte kao da ste u stvarnom životu.</p>
+                    
+                    <details class="rule-item">
+                        <summary>Metagaming & Powergaming</summary>
+                        <ul>
+                            <li>Metagaming (MG): Koristiti OOC (Discord) informacije u IC (In-Character) situacijama je strogo zabranjeno.</li>
+                            <li>Powergaming (PG): Ne forsiraj radnje; uvijek daj priliku drugoj strani za reakciju.</li>
+                        </ul>
+                    </details>
                 
-                <details class="rule-item">
-                    <summary>Opća RP Pravila (In-Character/IC)</summary>
-                    <ul>
-                        <li>Metagaming (MG): Strogo je zabranjeno korištenje OOC informacija (Discord, Twitch streamovi) za dobivanje IC prednosti. IC i OOC moraju biti odvojeni!</li>
-                        <li>Powergaming (PG): Ne smijete forsirati radnje na drugim igračima (npr. ne dozvoljava se pisanje u /me da ste nešto učinili drugom igraču bez da ste mu dali šansu da se obrani). Izbjegavajte nerealistične, nadmoćne (OP) radnje.</li>
-                        <li>RDM & VDM: Random Deathmatch (RDM) i Vehicle Deathmatch (VDM) su zabranjeni. Ne smijete napasti ili ubiti drugog igrača bez jasnog, opravdanog RP razloga i jasne inicijacije RP-a prije napada.</li>
-                        <li>Fear RP (Strah): Uvijek morate pokazati realan strah za svoj život i imovinu. Ako vam je pištolj uperen u glavu, morate se ponašati onako kako bi se vaša karakterna ličnost ponašala u stvarnosti.</li>
-                        <li>New Life Rule (NLR): Ako vaš lik umre (završi u bolnici nakon smrti), mora zaboraviti događaje koji su doveli do smrti. Također se ne smije vraćati na mjesto smrti s ciljem osvete.</li>
-                        <li>Combat Logging/Avoiding RP: Izlazak iz igre (disconnect) kako bi se izbjegle RP posljedice ili interakcije (hapšenje, pljačka, razmjena vatre) je strogo zabranjen.</li>
-                    </ul>
-                </details>
-            
-                <details class="rule-item">
-                    <summary>OOC Pravila (Out-of-Character)</summary>
-                    <ul>
-                        <li>Poštovanje Zajednice: Budite pristojni i ugodni prema svim igračima i Staffu, bez obzira na to što se događa u RP-u. Nema mjesta za toksično ponašanje, uvrede ili diskriminaciju.</li>
-                        <li>OOC Komunikacija: OOC chat u igri koristi se isključivo za kratka pitanja Staffu ili tehničke probleme. Produžena OOC komunikacija u igri je zabranjena.</li>
-                        <li>Trolling i Griefing: Aktivno uništavanje tuđeg RP iskustva, namjerno trolanje, baitanje policije (Cop Baiting bez kvalitetnog RP razloga) i spam su zabranjeni.</li>
-                        <li>Privatnost: Zabranjeno je dijeliti bilo kakve privatne informacije drugih igrača (Adrese, imena, itd.) bez njihovog izričitog pristanka.</li>
-                        <li>Rasprave o Pravilima: Ako dođe do neslaganja oko pravila, nastavite RP situaciju, a problem riješite naknadno putem tiketa ili prijave. Ne svađajte se u igri.</li>
-                    </ul>
-                </details>
-                
-                <a href="https://discord.gg/2GfEJR3tgM" class="btn secondary-btn mt-20" target="_blank">PROČITAJ DETALJNA PRAVILA NA DISCORDU</a>
+                    <details class="rule-item">
+                        <summary>RDM, VDM i Fear RP</summary>
+                        <ul>
+                            <li>RDM/VDM: Napad bez jasnog RP razloga i inicijacije je zabranjen.</li>
+                            <li>Fear RP: Uvijek pokazuj strah za svoj život i imovinu. Ako si pod prijetnjom, ponašaj se realno.</li>
+                        </ul>
+                    </details>
+                    
+                    <a href="https://discord.gg/2GfEJR3tgM" class="btn primary-btn mt-30" style="width: 100%;" target="_blank">DETALJNA PRAVILA NA DISCORDU</a>
+                </div>
             </div>
             
         </div>
@@ -92,176 +84,192 @@
     
     <section id="auto" class="content-section dark-bg">
         <div class="container">
-            <h2 class="scroll-reveal">EKSKLUZIVNI CUSTOM AUTOMOBILI</h2>
-            <p class="emphasis-text scroll-reveal delay-1">Pogledajte dio naše ponude custom vozila koja su dostupna samo na White Life RolePlay serveru.</p>
+            <h2>EKSKLUZIVNI CUSTOM AUTOMOBILI</h2>
+            <p style="color: var(--color-text-muted); font-style: italic;">Vozni park dizajniran isključivo za White Life RolePlay. Uživaj u vožnji s najboljim modelima.</p>
             
-            <div class="slider-container scroll-reveal delay-2">
+            <div class="slider-container">
                 <div class="car-item single-slide" id="auto-slider">
                     <img src="auto_01.jpg" id="slider-image" alt="Custom Vozilo">
-                    <h4 id="slider-title">G63 Long - (10€)</h4>
+                    <div class="slide-info">
+                        <h4 id="slider-title">G63 Long - (10€)</h4>
+                    </div>
                 </div>
             </div>
             
-            <div class="cta-buttons mt-20 scroll-reveal delay-3">
-                <a href="galerija.html" class="btn secondary-btn large-btn">
-                    POGLEDAJ PUNU GALERIJU I CIJENE
+            <div class="cta-buttons mt-40"> 
+                <a href="galerija.html" class="btn secondary-btn large-btn" id="gallery-cta">
+                    <i class="fas fa-car-side"></i> POGLEDAJ PUNU GALERIJU I CIJENE
                 </a>
             </div>
-
-            <p class="small-text scroll-reveal delay-4">Slike automobila se automatski mijenjaju. Pronađi svoje omiljeno vozilo!</p>
-
         </div>
     </section>
 
     <section id="trgovina" class="content-section">
         <div class="container">
-            <h2 class="scroll-reveal">TRGOVINA / DONACIJE</h2>
-            <p class="emphasis-text scroll-reveal delay-1">Donacije su isključivo namijenjene za pokrivanje troškova servera i razvoj. Nismo Pay-to-Win!</p>
-            <p class="scroll-reveal delay-2">Svi kupljeni predmeti su kozmetičke prirode ili pružaju "Quality of Life" pogodnosti koje ne utječu na moć u Roleplayu. Sve kupovine trenutno idu preko našeg Discord servera!</p>
+            <h2 class="scroll-reveal">PREMIUM TRGOVINA / DONACIJE</h2>
+            <p class="scroll-reveal delay-1" style="color: var(--color-accent-secondary); font-size: 18px; font-weight: 600;">
+                <i class="fas fa-donate"></i> Donacije su isključivo namijenjene za stabilnost servera.
+            </p>
+            <p class="scroll-reveal delay-2" style="color: var(--color-text-muted);">
+                Svi predmeti su kozmetičke prirode (odjeća, custom boje, tablice) ili pružaju Quality of Life pogodnosti. Nismo Pay-to-Win.
+            </p>
 
             <div class="donation-perks scroll-reveal delay-3">
-                <h4>PRIMJERI POGODNOSTI:</h4>
+                <h4>DOSTUPNE POGODNOSTI:</h4>
                 <ul>
-                    <li><i class="fas fa-star icon"></i> Prioritetni ulazak na server (VIP Rank)</li>
-                    <li><i class="fas fa-tshirt icon"></i> Ekskluzivna odjeća i dodaci</li>
-                    <li><i class="fas fa-car icon"></i> Posebne tablice i boje za vozila</li>
+                    <li><i class="fas fa-crown icon"></i> Prioritetni ulazak na server (VIP Rank)</li>
+                    <li><i class="fas fa-tshirt icon"></i> Ekskluzivna odjeća, maske i custom dodaci</li>
+                    <li><i class="fas fa-car-crash icon"></i> Manji cooldowni za mehaničarske servise</li>
+                    <li><i class="fas fa-palette icon"></i> Premium boje i custom registarske tablice</li>
                 </ul>
             </div>
-             <a href="https://discord.gg/2GfEJR3tgM" class="btn primary-btn large-btn scroll-reveal delay-4" target="_blank">OBRATI SE STAFFU NA DISCORDU</a>
+             <a href="https://discord.gg/2GfEJR3tgM" class="btn primary-btn large-btn scroll-reveal delay-4" target="_blank">
+                 <i class="fab fa-discord"></i> OBRATI SE STAFFU ZA DONACIJE
+            </a>
         </div>
     </section>
 
     <section id="staff" class="content-section dark-bg">
         <div class="container">
-            <h2 class="scroll-reveal">NAŠ STAFF TIM</h2>
-            <p class="emphasis-text scroll-reveal delay-1">Posvećeni Staff tim brine o redu i razvoju servera.</p>
+            <h2 class="scroll-reveal">CORE STAFF TIM</h2>
+            <p class="scroll-reveal delay-1" style="color: var(--color-text-muted);">Naš tim je posvećen 24/7 razvoju servera i osiguravanju ugodnog iskustva.</p>
             
             <div class="staff-grid scroll-reveal delay-2">
                 <div class="staff-member">
                     <img src="avatar_owner.jpg" alt="Vlasnik">
-                    <h4>Ime Vlasnika</h4>
-                    <p>Vlasnik & Developer</p>
+                    <h4>DIFIT</h4>
+                    <p>Vlasnik</p>
                 </div>
                 <div class="staff-member">
                     <img src="avatar_admin.jpg" alt="Admin">
-                    <h4>Ime Admina</h4>
-                    <p>Glavni Administrator</p>
+                    <h4>SREĆKO</h4>
+                    <p>Glavni Developer</p>
                 </div>
+                <div class="staff-member">
+                    <img src="avatar_support.jpg" alt="Support">
+                    <h4>NUGA</h4>
+                    <p>Vlasnik</p>
                 </div>
+            </div>
         </div>
     </section>
 
     <footer>
         <div class="container scroll-reveal">
             <div class="footer-info">
-                <h4>White Life RolePlay</h4>
-                <p>IP ADRESA: <span class="ip-address">https://cfx.re/join/ja499p</span></p>
-                <span class="small-text">Platforma: FiveM / GTA V</span>
+                <h4>WHITE LIFE RP</h4>
+                <p>Premium Roleplay iskustvo na Balkanu. Kreiraj svoju priču s nama. Pridruži se zajednici danas!</p>
+                <p class="small-text mt-20">IP ADRESA: <span class="ip-address">https://cfx.re/join/ja499p</span></p>
+                <span class="small-text">Platforma: FiveM / GTA V | &copy; 2025 White Life Roleplay</span>
             </div>
             <div class="footer-links">
                 <h4>BRZI LINKOVI</h4>
                 <a href="#home">Početna</a>
                 <a href="#info">Pravila</a>
-                <a href="https://discord.gg/2GfEJR3tgM" target="_blank">Discord</a>
+                <a href="#trgovina">Donacije</a>
+                <a href="galerija.html">Vozila</a>
             </div>
             <div class="footer-social">
                 <h4>PRONAĐI NAS</h4>
-                <a href="https://discord.gg/2GfEJR3tgM" target="_blank"><i class="fab fa-discord"></i> Discord</a>
-                <a href="#" target="_blank"><i class="fab fa-instagram"></i> Instagram</a>
-                <a href="#" target="_blank"><i class="fab fa-youtube"></i> YouTube</a>
+                <a href="https://discord.gg/2GfEJR3tgM" target="_blank"><i class="fab fa-discord"></i> Discord Server</a>
+                <a href="#" target="_blank"><i class="fab fa-instagram"></i> Instagram (@WhiteLifeRP)</a>
+                <a href="#" target="_blank"><i class="fab fa-youtube"></i> YouTube Kanal</a>
             </div>
-
             <div class="copyright">
-                <p>&copy; 2025 White Life Roleplay. Sva prava pridržana.</p>
+                <p>Dizajn i razvoj od strane tima White Life RP. Sva prava pridržana.</p>
             </div>
         </div>
     </footer>
 
     <script>
-        // --- KOD ZA AUTOMATSKI SLIDER ---
+        // --- KOD ZA AUTOMATSKI SLIDER (Popravljen da se slike rotiraju) ---
 
-        // 1. Definicija Slika i Teksta (SAMO 5 SLIKA)
+        // 1. Definicija Slika i Teksta (5 slika)
         const slides = [
             { img: 'auto_01.jpg', title: 'G63 Long - (10€)' },
-            { img: 'auto_02.jpg', title: 'Ferrari SF90 - (25€)' },
+            { img: 'auto_02.jpg', title: 'Ferrari SF90 - (20€)' },
             { img: 'auto_03.jpg', title: 'M6 E24 - (10€)' },
             { img: 'auto_04.jpg', title: 'Porsche Carrera - (15€)' },
-            { img: 'auto_05.jpg', title: '488 Spider - (25€)' },
+            { img: 'auto_05.jpg', title: '488 Spider - (20€)' },
         ];
 
-        let currentSlide = 0;
+        let currentSlide = -1; // Počinje od -1 da bi prvi poziv postavio na 0
         const sliderImage = document.getElementById('slider-image');
         const sliderTitle = document.getElementById('slider-title');
         const slideContainer = document.getElementById('auto-slider');
 
-        // Funkcija za prebacivanje slajda
+        // Funkcija za inicijalizaciju i promjenu slajdova
         function updateSlide() {
             if (!sliderImage || !slideContainer) return; 
-            
+
             // Fade-out efekt
             sliderImage.style.opacity = 0;
-            slideContainer.style.opacity = 0;
-
+            
             setTimeout(() => {
-                // Ažuriraj indeks i dohvati sljedeći slajd
                 currentSlide = (currentSlide + 1) % slides.length;
                 const nextSlide = slides[currentSlide];
                 
                 // Promijeni sadržaj
                 sliderImage.src = nextSlide.img;
                 sliderImage.alt = nextSlide.title;
-                sliderTitle.textContent = nextSlide.title;
+                sliderTitle.innerHTML = `${nextSlide.title}`;
 
                 // Fade-in efekt
                 sliderImage.style.opacity = 1;
-                slideContainer.style.opacity = 1;
-            }, 500); // Čekaj 500ms dok je opacity 0 (za glatki prelaz)
-
+            }, 500); // Vrijeme fade-outa
         }
 
-        // Pokreni slajder svakih 5 sekundi (5000 milisekundi)
         if (slides.length > 1) {
-            setInterval(updateSlide, 5000);
+            updateSlide(); // Prvi poziv postavlja sliku index 0 i pokreće rotaciju
+            setInterval(updateSlide, 5000); 
         }
         
-        // --- OSTALA JAVASCRIPT FUNKCIONALNOST (Scroll) ---
-        
-        // Funkcija za automatski scroll kada klikneš na link
+        // --- JAVASCRIPT ZA AUTOMATSKI SMOOTH SCROLL ---
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
                 e.preventDefault();
                 const targetId = this.getAttribute('href');
                 if (targetId && targetId !== '#') {
                     document.querySelector(targetId).scrollIntoView({
-                        behavior: 'smooth'
+                        behavior: 'smooth',
+                        block: 'start'
                     });
                 }
             });
         });
 
 
-        // --- NOVI KOD ZA ANIMACIJE PRI SKROLANJU (SCROLL REVEAL) ---
+        // --- KOD ZA ANIMACIJE PRI SKROLANJU (SCROLL REVEAL) - POBOLJŠANJE ---
         const scrollRevealElements = document.querySelectorAll('.scroll-reveal');
+        const offset = 150; 
 
         function checkVisibility() {
             const viewportHeight = window.innerHeight;
 
             scrollRevealElements.forEach(element => {
                 const elementTop = element.getBoundingClientRect().top;
+                const elementBottom = element.getBoundingClientRect().bottom;
 
-                // Ako je element 150px unutar vidljivog dijela ekrana
-                if (elementTop < viewportHeight - 150) {
+                // Provjera vidljivosti
+                const isEnteringViewport = elementTop < viewportHeight - offset; 
+                // Resetiranje klase (ako element izađe iz ekrana, iako je to opcionalno)
+                const isOffScreen = elementBottom < 0 || elementTop >= viewportHeight; 
+
+                if (isEnteringViewport) {
                     element.classList.add('visible');
+                } 
+                
+                if (isOffScreen) {
+                    element.classList.remove('visible');
                 }
             });
         }
-
-        // Pokreni odmah u slučaju da je element već u viewportu (npr. naslov)
-        checkVisibility();
-
-        // Dodaj event listener za skrolanje
-        window.addEventListener('scroll', checkVisibility);
         
+        // Poziv funkcija
+        window.addEventListener('load', checkVisibility); // Provjeri na loadu
+        window.addEventListener('scroll', checkVisibility); // Provjeri na skrolanju
+        
+        checkVisibility(); 
     </script>
 </body>
 </html>

@@ -4,29 +4,28 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>White Life RP - Puna Galerija Vozila</title>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700;800&family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
     <header>
-        <a href="index.html" class="logo">WHITE LIFE</a>
+        <a href="index.html" class="logo">WHITE LIFE <span style="color: #FFD700; font-size: 12px; font-weight: 600;">RP</span></a>
         <nav>
             <a href="index.html#home">POČETNA</a>
             <a href="index.html#info">INFO</a>
-            <a href="index.html#auto">CUSTOM AUTO</a>
-            <a href="galerija.html" class="active">VOZILA</a>
+            <a href="index.html#auto" class="active">CUSTOM AUTO</a>
             <a href="index.html#trgovina">TRGOVINA</a>
             <a href="index.html#staff">STAFF</a>
         </nav>
-        <button class="join-btn-mobile">PRIDRUŽI SE</button>
+        <a href="https://discord.gg/2GfEJR3tgM" class="btn primary-btn join-btn-mobile" target="_blank">PRIDRUŽI SE</a>
     </header>
 
     <div class="gallery-header">
         <div class="container">
             <h1>PREMIUM VOZILA</h1>
-            <p>Pregled svih dostupnih custom modela u našoj ponudi.</p>
+            <p>Pregled svih dostupnih custom modela u našoj ekskluzivnoj ponudi.</p>
         </div>
     </div>
 
@@ -35,55 +34,7 @@
             
             <div class="gallery-grid">
                 
-                <details class="gallery-item scroll-reveal delay-1" open>
-                    <summary>
-                        <img src="auto_01.jpg" alt="G63long" class="main-img">
-                        <div class="summary-info">
-                            <h4>G63long</h4>
-                            <span class="price">10€</span>
-                        </div>
-                    </summary>
-                    <div class="gallery-content">
-                        <h5>Karakteristike</h5>
-                        <ul>
-                            <li><i class="fas fa-bolt"></i> Snaga motora: 585 KS</li>
-                            <li><i class="fas fa-tachometer-alt"></i> Maks. brzina: 240 km/h</li>
-                            <li><i class="fas fa-truck"></i> Klasa: Terenac</li>
-                        </ul>
-                        <h5>Dodatne slike</h5>
-                        <div class="photo-gallery">
-                            <a href="auto_01_a.jpg" ><img src="auto_01_a.jpg" alt="Detalj G63long 1"></a>
-                            <a href="auto_01_b.jpg" ><img src="auto_01_b.jpg" alt="Detalj G63long 2"></a>
-                            <a href="auto_01_c.jpg" ><img src="auto_01_c.jpg" alt="Detalj G63long 3"></a>
-                        </div>
-                    </div>
-                </details>
-
-                <details class="gallery-item scroll-reveal delay-2" open>
-                    <summary>
-                        <img src="auto_02.jpg" alt="Ferrari SF90" class="main-img">
-                        <div class="summary-info">
-                            <h4>Ferrari SF90</h4>
-                            <span class="price">25€</span>
-                        </div>
-                    </summary>
-                    <div class="gallery-content">
-                        <h5>Karakteristike</h5>
-                        <ul>
-                            <li><i class="fas fa-bolt"></i> Snaga motora: 1000 KS (hibrid)</li>
-                            <li><i class="fas fa-tachometer-alt"></i> Maks. brzina: 340 km/h</li>
-                            <li><i class="fas fa-car"></i> Klasa: Super sport</li>
-                        </ul>
-                        <h5>Dodatne slike</h5>
-                        <div class="photo-gallery">
-                            <a href="auto_02_a.jpg" ><img src="auto_02_a.jpg" alt="Detalj Ferrari SF90 1"></a>
-                            <a href="auto_02_b.jpg" ><img src="auto_02_b.jpg" alt="Detalj Ferrari SF90 2"></a>
-                            <a href="auto_02_c.jpg" ><img src="auto_02_c.jpg" alt="Detalj Ferrari SF90 3"></a>
-                        </div>
-                    </div>
-                </details>
-
-                <details class="gallery-item scroll-reveal delay-3" open>
+                <details open class="gallery-item scroll-reveal delay-1">
                     <summary>
                         <img src="auto_03.jpg" alt="M6 E24" class="main-img">
                         <div class="summary-info">
@@ -92,13 +43,13 @@
                         </div>
                     </summary>
                     <div class="gallery-content">
-                        <h5>Karakteristike</h5>
+                        <h5><i class="fas fa-chart-bar"></i> Performanse</h5>
                         <ul>
                             <li><i class="fas fa-bolt"></i> Snaga motora: 286 KS</li>
                             <li><i class="fas fa-tachometer-alt"></i> Maks. brzina: 255 km/h</li>
                             <li><i class="fas fa-car"></i> Klasa: Klasični sport</li>
                         </ul>
-                        <h5>Dodatne slike</h5>
+                        <h5><i class="fas fa-camera"></i> Galerija</h5>
                         <div class="photo-gallery">
                             <a href="auto_03_a.jpg" ><img src="auto_03_a.jpg" alt="Detalj M6 E24 1"></a>
                             <a href="auto_03_b.jpg" ><img src="auto_03_b.jpg" alt="Detalj M6 E24 2"></a>
@@ -107,7 +58,7 @@
                     </div>
                 </details>
 
-                <details class="gallery-item scroll-reveal delay-4" open>
+                <details open class="gallery-item scroll-reveal delay-2">
                     <summary>
                         <img src="auto_04.jpg" alt="Carrera Porsche" class="main-img">
                         <div class="summary-info">
@@ -116,13 +67,13 @@
                         </div>
                     </summary>
                     <div class="gallery-content">
-                        <h5>Karakteristike</h5>
+                        <h5><i class="fas fa-chart-bar"></i> Performanse</h5>
                         <ul>
                             <li><i class="fas fa-bolt"></i> Snaga motora: 385 KS</li>
                             <li><i class="fas fa-tachometer-alt"></i> Maks. brzina: 300 km/h</li>
                             <li><i class="fas fa-car"></i> Klasa: Sportski coupé</li>
                         </ul>
-                        <h5>Dodatne slike</h5>
+                        <h5><i class="fas fa-camera"></i> Galerija</h5>
                         <div class="photo-gallery">
                             <a href="auto_04_a.jpg" ><img src="auto_04_a.jpg" alt="Detalj Carrera Porsche 1"></a>
                             <a href="auto_04_b.jpg" ><img src="auto_04_b.jpg" alt="Detalj Carrera Porsche 2"></a>
@@ -130,23 +81,23 @@
                         </div>
                     </div>
                 </details>
-
-                <details class="gallery-item scroll-reveal delay-1" open>
+                
+                <details open class="gallery-item scroll-reveal delay-3">
                     <summary>
                         <img src="auto_05.jpg" alt="488sp" class="main-img">
                         <div class="summary-info">
                             <h4>488 Spider</h4>
-                            <span class="price">25€</span>
+                            <span class="price">20€</span>
                         </div>
                     </summary>
                     <div class="gallery-content">
-                        <h5>Karakteristike</h5>
+                        <h5><i class="fas fa-chart-bar"></i> Performanse</h5>
                         <ul>
                             <li><i class="fas fa-bolt"></i> Snaga motora: 720 KS</li>
                             <li><i class="fas fa-tachometer-alt"></i> Maks. brzina: 340 km/h</li>
                             <li><i class="fas fa-car"></i> Klasa: Super sport</li>
                         </ul>
-                        <h5>Dodatne slike</h5>
+                        <h5><i class="fas fa-camera"></i> Galerija</h5>
                         <div class="photo-gallery">
                             <a href="auto_05_a.jpg" ><img src="auto_05_a.jpg" alt="Detalj 488sp 1"></a>
                             <a href="auto_05_b.jpg" ><img src="auto_05_b.jpg" alt="Detalj 488sp 2"></a>
@@ -155,22 +106,70 @@
                     </div>
                 </details>
 
-                <details class="gallery-item scroll-reveal delay-2" open>
+                <details open class="gallery-item scroll-reveal delay-4">
                     <summary>
-                        <img src="auto_06.jpg" alt="Alpina B7 BLACK EDITION" class="main-img">
+                        <img src="auto_01.jpg" alt="G63long" class="main-img">
                         <div class="summary-info">
-                            <h4>Alpina B7 BLACK EDITION</h4>
+                            <h4>G63 Long</h4>
+                            <span class="price">10€</span>
+                        </div>
+                    </summary>
+                    <div class="gallery-content">
+                        <h5><i class="fas fa-chart-bar"></i> Performanse</h5>
+                        <ul>
+                            <li><i class="fas fa-bolt"></i> Snaga motora: 585 KS</li>
+                            <li><i class="fas fa-tachometer-alt"></i> Maks. brzina: 240 km/h</li>
+                            <li><i class="fas fa-truck"></i> Klasa: Premium Terenac</li>
+                        </ul>
+                        <h5><i class="fas fa-camera"></i> Galerija</h5>
+                        <div class="photo-gallery">
+                            <a href="auto_01_a.jpg" ><img src="auto_01_a.jpg" alt="Detalj G63long 1"></a>
+                            <a href="auto_01_b.jpg" ><img src="auto_01_b.jpg" alt="Detalj G63long 2"></a>
+                            <a href="auto_01_c.jpg" ><img src="auto_01_c.jpg" alt="Detalj G63long 3"></a>
+                        </div>
+                    </div>
+                </details>
+
+                <details open class="gallery-item scroll-reveal delay-1">
+                    <summary>
+                        <img src="auto_02.jpg" alt="Ferrari SF90" class="main-img">
+                        <div class="summary-info">
+                            <h4>Ferrari SF90</h4>
                             <span class="price">20€</span>
                         </div>
                     </summary>
                     <div class="gallery-content">
-                        <h5>Karakteristike</h5>
+                        <h5><i class="fas fa-chart-bar"></i> Performanse</h5>
+                        <ul>
+                            <li><i class="fas fa-bolt"></i> Snaga motora: 1000 KS (hibrid)</li>
+                            <li><i class="fas fa-tachometer-alt"></i> Maks. brzina: 350 km/h</li>
+                            <li><i class="fas fa-car"></i> Klasa: Super sport</li>
+                        </ul>
+                        <h5><i class="fas fa-camera"></i> Galerija</h5>
+                        <div class="photo-gallery">
+                            <a href="auto_02_a.jpg" ><img src="auto_02_a.jpg" alt="Detalj Ferrari SF90 1"></a>
+                            <a href="auto_02_b.jpg" ><img src="auto_02_b.jpg" alt="Detalj Ferrari SF90 2"></a>
+                            <a href="auto_02_c.jpg" ><img src="auto_02_c.jpg" alt="Detalj Ferrari SF90 3"></a>
+                        </div>
+                    </div>
+                </details>
+
+                <details open class="gallery-item scroll-reveal delay-2">
+                    <summary>
+                        <img src="auto_06.jpg" alt="Alpina B7 BLACK EDITION" class="main-img">
+                        <div class="summary-info">
+                            <h4>Alpina B7</h4>
+                            <span class="price">15€</span>
+                        </div>
+                    </summary>
+                    <div class="gallery-content">
+                        <h5><i class="fas fa-chart-bar"></i> Performanse</h5>
                         <ul>
                             <li><i class="fas fa-bolt"></i> Snaga motora: 600 KS</li>
                             <li><i class="fas fa-tachometer-alt"></i> Maks. brzina: 330 km/h</li>
                             <li><i class="fas fa-car"></i> Klasa: Luksuzna limuzina</li>
                         </ul>
-                        <h5>Dodatne slike</h5>
+                        <h5><i class="fas fa-camera"></i> Galerija</h5>
                         <div class="photo-gallery">
                             <a href="auto_06_a.jpg" ><img src="auto_06_a.jpg" alt="Detalj Alpina B7 1"></a>
                             <a href="auto_06_b.jpg" ><img src="auto_06_b.jpg" alt="Detalj Alpina B7 2"></a>
@@ -178,23 +177,23 @@
                         </div>
                     </div>
                 </details>
-
-                <details class="gallery-item scroll-reveal delay-3" open>
+                
+                <details open class="gallery-item scroll-reveal delay-3">
                     <summary>
                         <img src="auto_07.jpg" alt="Pagani" class="main-img">
                         <div class="summary-info">
                             <h4>Pagani</h4>
-                            <span class="price">30€</span>
+                            <span class="price">20€</span>
                         </div>
                     </summary>
                     <div class="gallery-content">
-                        <h5>Karakteristike</h5>
+                        <h5><i class="fas fa-chart-bar"></i> Performanse</h5>
                         <ul>
                             <li><i class="fas fa-bolt"></i> Snaga motora: 730 KS</li>
                             <li><i class="fas fa-tachometer-alt"></i> Maks. brzina: 370 km/h</li>
                             <li><i class="fas fa-rocket"></i> Klasa: Hiper automobil</li>
                         </ul>
-                        <h5>Dodatne slike</h5>
+                        <h5><i class="fas fa-camera"></i> Galerija</h5>
                         <div class="photo-gallery">
                             <a href="auto_07_a.jpg" ><img src="auto_07_a.jpg" alt="Detalj Pagani 1"></a>
                             <a href="auto_07_b.jpg" ><img src="auto_07_b.jpg" alt="Detalj Pagani 2"></a>
@@ -203,7 +202,7 @@
                     </div>
                 </details>
 
-                <details class="gallery-item scroll-reveal delay-4" open>
+                <details open class="gallery-item scroll-reveal delay-4">
                     <summary>
                         <img src="auto_08.jpg" alt="Bentley" class="main-img">
                         <div class="summary-info">
@@ -212,13 +211,13 @@
                         </div>
                     </summary>
                     <div class="gallery-content">
-                        <h5>Karakteristike</h5>
+                        <h5><i class="fas fa-chart-bar"></i> Performanse</h5>
                         <ul>
                             <li><i class="fas fa-bolt"></i> Snaga motora: 635 KS</li>
                             <li><i class="fas fa-tachometer-alt"></i> Maks. brzina: 333 km/h</li>
                             <li><i class="fas fa-car"></i> Klasa: Luksuzni GT</li>
                         </ul>
-                        <h5>Dodatne slike</h5>
+                        <h5><i class="fas fa-camera"></i> Galerija</h5>
                         <div class="photo-gallery">
                             <a href="auto_08_a.jpg" ><img src="auto_08_a.jpg" alt="Detalj Bentley 1"></a>
                             <a href="auto_08_b.jpg" ><img src="auto_08_b.jpg" alt="Detalj Bentley 2"></a>
@@ -227,57 +226,59 @@
                     </div>
                 </details>
 
-                <details class="gallery-item scroll-reveal delay-1" open>
+                <details open class="gallery-item scroll-reveal delay-1">
                     <summary>
-                        <img src="auto_09.jpg" alt="Bugatti" class="main-img">
+                        <img src="auto_09.jpg" alt="Luksuzni SUV" class="main-img">
                         <div class="summary-info">
                             <h4>Bugatti</h4>
-                            <span class="price">35€</span>
+                            <span class="price">20€</span>
                         </div>
                     </summary>
                     <div class="gallery-content">
-                        <h5>Karakteristike</h5>
+                        <h5><i class="fas fa-chart-bar"></i> Performanse</h5>
                         <ul>
-                            <li><i class="fas fa-bolt"></i> Snaga motora: 1500 KS</li>
-                            <li><i class="fas fa-tachometer-alt"></i> Maks. brzina: 420 km/h</li>
-                            <li><i class="fas fa-rocket"></i> Klasa: Hiper automobil</li>
+                            <li><i class="fas fa-bolt"></i> Snaga motora: 500 KS</li>
+                            <li><i class="fas fa-tachometer-alt"></i> Maks. brzina: 280 km/h</li>
+                            <li><i class="fas fa-truck"></i> Klasa: Luksuzni SUV</li>
                         </ul>
-                        <h5>Dodatne slike</h5>
+                        <h5><i class="fas fa-camera"></i> Galerija</h5>
                         <div class="photo-gallery">
-                            <a href="auto_09_a.jpg" ><img src="auto_09_a.jpg" alt="Detalj Bugatti 1"></a>
-                            <a href="auto_09_b.jpg" ><img src="auto_09_b.jpg" alt="Detalj Bugatti 2"></a>
-                            <a href="auto_09_c.jpg" ><img src="auto_09_c.jpg" alt="Detalj Bugatti 3"></a>
+                            <a href="auto_09_a.jpg" ><img src="auto_09_a.jpg" alt="Detalj 1"></a>
+                            <a href="auto_09_b.jpg" ><img src="auto_09_b.jpg" alt="Detalj 2"></a>
+                            <a href="auto_09_c.jpg" ><img src="auto_09_c.jpg" alt="Detalj 3"></a>
                         </div>
                     </div>
                 </details>
-                
-                <details class="gallery-item scroll-reveal delay-2" open>
+
+                <details open class="gallery-item scroll-reveal delay-2">
                     <summary>
-                        <img src="auto_10.jpg" alt="Ferrari 812 GTS by MANSORY" class="main-img">
+                        <img src="auto_10.jpg" alt="Klasični sportaš" class="main-img">
                         <div class="summary-info">
-                            <h4>Ferrari 812 GTS by MANSORY</h4>
-                            <span class="price">25€</span>
+                            <h4>Ferrari 812 GTS</h4>
+                            <span class="price">20€</span>
                         </div>
                     </summary>
                     <div class="gallery-content">
-                        <h5>Karakteristike</h5>
+                        <h5><i class="fas fa-chart-bar"></i> Performanse</h5>
                         <ul>
-                            <li><i class="fas fa-bolt"></i> Snaga motora: 800+ KS</li>
-                            <li><i class="fas fa-tachometer-alt"></i> Maks. brzina: 340+ km/h</li>
-                            <li><i class="fas fa-car"></i> Klasa: Tuning Super sport</li>
+                            <li><i class="fas fa-bolt"></i> Snaga motora: 320 KS</li>
+                            <li><i class="fas fa-tachometer-alt"></i> Maks. brzina: 260 km/h</li>
+                            <li><i class="fas fa-car"></i> Klasa: Klasični sport</li>
                         </ul>
-                        <h5>Dodatne slike</h5>
+                        <h5><i class="fas fa-camera"></i> Galerija</h5>
                         <div class="photo-gallery">
-                            <a href="auto_10_a.jpg" ><img src="auto_10_a.jpg" alt="Detalj Ferrari 812 1"></a>
-                            <a href="auto_10_b.jpg" ><img src="auto_10_b.jpg" alt="Detalj Ferrari 812 2"></a>
-                            <a href="auto_10_c.jpg" ><img src="auto_10_c.jpg" alt="Detalj Ferrari 812 3"></a>
+                            <a href="auto_10_a.jpg" ><img src="auto_10_a.jpg" alt="Detalj 1"></a>
+                            <a href="auto_10_b.jpg" ><img src="auto_10_b.jpg" alt="Detalj 2"></a>
+                            <a href="auto_10_c.jpg" ><img src="auto_10_c.jpg" alt="Detalj 3"></a>
                         </div>
                     </div>
                 </details>
-                
+
             </div> 
             
-            <a href="index.html#trgovina" class="btn back-btn scroll-reveal delay-3">NAZAD NA TRGOVINU</a>
+            <a href="index.html#trgovina" class="btn primary-btn large-btn back-btn scroll-reveal delay-1">
+                <i class="fas fa-shopping-cart"></i> NAZAD NA TRGOVINU
+            </a>
 
         </div> 
     </section>
@@ -286,24 +287,25 @@
         <div class="container scroll-reveal">
             <div class="footer-info">
                 <h4>WHITE LIFE RP</h4>
-                <p>Premium Roleplay iskustvo na Balkanu. Pridružite se zajednici danas.</p>
-                <p class="small-text mt-20">Sav sadržaj je vlasništvo White Life RP tima.</p>
+                <p>Premium Roleplay iskustvo na Balkanu. Kreiraj svoju priču s nama. Pridruži se zajednici danas!</p>
+                <p class="small-text mt-20">IP ADRESA: <span class="ip-address">https://cfx.re/join/ja499p</span></p>
+                <span class="small-text">Platforma: FiveM / GTA V | &copy; 2025 White Life Roleplay</span>
             </div>
             <div class="footer-links">
-                <h4>Linkovi</h4>
-                <a href="index.html#info">Info</a>
-                <a href="index.html#rules">Pravila</a>
+                <h4>BRZI LINKOVI</h4>
+                <a href="index.html#home">Početna</a>
+                <a href="index.html#info">Pravila</a>
                 <a href="index.html#trgovina">Donacije</a>
                 <a href="galerija.html">Vozila</a>
             </div>
             <div class="footer-social">
-                <h4>Kontakt</h4>
-                <a href="#"><i class="fab fa-discord"></i> Discord</a>
-                <a href="#"><i class="fab fa-instagram"></i> Instagram</a>
-                <a href="#"><i class="fab fa-facebook"></i> Facebook</a>
+                <h4>PRONAĐI NAS</h4>
+                <a href="https://discord.gg/2GfEJR3tgM" target="_blank"><i class="fab fa-discord"></i> Discord Server</a>
+                <a href="#" target="_blank"><i class="fab fa-instagram"></i> Instagram (@WhiteLifeRP)</a>
+                <a href="#" target="_blank"><i class="fab fa-youtube"></i> YouTube Kanal</a>
             </div>
             <div class="copyright">
-                &copy; 2025 White Life RolePlay. All Rights Reserved.
+                <p>Dizajn i razvoj od strane tima White Life RP. Sva prava pridržana.</p>
             </div>
         </div>
     </footer>
@@ -319,57 +321,68 @@
         const modalImage = document.getElementById('modalImage');
         const closeBtn = document.getElementsByClassName('close-btn')[0];
 
-        // Funkcija za otvaranje modala
-	function openModal(imageSrc) {
-        modal.style.display = 'flex'; // ISPRAVNO: Postavlja modal na 'flex' za centriranje
-        modalImage.src = imageSrc;
+        function openModal(imageSrc) {
+            modal.style.display = 'flex'; 
+            modalImage.src = imageSrc;
         }
 
-        // Funkcija za zatvaranje modala
         function closeModal() {
             modal.style.display = 'none';
         }
 
-        // Dodavanje listenera na sve linkove u galeriji
+        // Povezuje sve linkove u galeriji unutar akordiona da pokrenu modal
         document.querySelectorAll('.photo-gallery a').forEach(link => {
             link.addEventListener('click', function(e) {
-                e.preventDefault(); // Sprečava otvaranje u novom tabu
+                e.preventDefault(); 
                 const imageSrc = this.getAttribute('href');
                 openModal(imageSrc);
             });
         });
 
-        // Zatvori modal klikom na 'x'
         closeBtn.onclick = closeModal;
 
-        // Zatvori modal klikom izvan slike
         window.onclick = function(event) {
             if (event.target == modal) {
                 closeModal();
             }
         };
 
-        // --- NOVI KOD ZA ANIMACIJE PRI SKROLANJU (SCROLL REVEAL) ---
+        // --- KOD ZA ANIMACIJE PRI SKROLANJU (SCROLL REVEAL) ---
         const scrollRevealElements = document.querySelectorAll('.scroll-reveal');
+        const offset = 150; 
 
         function checkVisibility() {
             const viewportHeight = window.innerHeight;
 
             scrollRevealElements.forEach(element => {
                 const elementTop = element.getBoundingClientRect().top;
+                const elementBottom = element.getBoundingClientRect().bottom;
 
-                // Ako je element 150px unutar vidljivog dijela ekrana
-                if (elementTop < viewportHeight - 150) {
+                const isEnteringViewport = elementTop < viewportHeight - offset; 
+                const isOffScreen = elementBottom < 0 || elementTop >= viewportHeight; 
+
+                if (isEnteringViewport) {
                     element.classList.add('visible');
+                } 
+                
+                if (isOffScreen) {
+                    element.classList.remove('visible');
                 }
             });
         }
 
-        // Pokreni odmah u slučaju da je element već u viewportu (npr. naslov)
-        checkVisibility();
+        // Funkcija za prisilno prikazivanje na početku za cijelu galeriju
+        function forceGalleryVisible() {
+            const galleryItems = document.querySelectorAll('.gallery-grid .scroll-reveal');
+            galleryItems.forEach(el => el.classList.add('visible'));
+            const backBtn = document.querySelector('.back-btn');
+            if(backBtn) backBtn.classList.add('visible');
+        }
 
-        // Dodaj event listener za skrolanje
+        window.addEventListener('load', forceGalleryVisible);
         window.addEventListener('scroll', checkVisibility);
+        
+        checkVisibility();
 
     </script>
 </body>
