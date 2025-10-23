@@ -227,8 +227,13 @@ nav a:hover {
 }
 
 .info-block {
-    text-align: left;
-    margin-bottom: 40px;
+    /* KLJUČNE IZMJENE ZA CENTRIRANJE BLOKOVA */
+    max-width: 800px;
+    margin: 0 auto 40px auto;
+    
+    /* PROMJENA: Centriramo sav tekst unutar bloka */
+    text-align: center; 
+    
     padding: 20px;
     border: 1px solid #333;
     border-left: 5px solid #00bcd4;
@@ -243,7 +248,8 @@ nav a:hover {
 
 /* PRAVILA (ACCORDION) STIL */
 .rules {
-    margin-top: 50px;
+    max-width: 800px;
+    margin: 50px auto 0 auto;
 }
 
 .rule-item {
@@ -251,7 +257,6 @@ nav a:hover {
     margin-bottom: 10px;
     border-radius: 5px;
     border: 1px solid #333;
-    /* Uklanjamo overflow: hidden ovdje jer otežava Details animaciju */
 }
 
 .rule-item summary {
@@ -261,6 +266,9 @@ nav a:hover {
     background-color: #2a2a2a;
     border-left: 5px solid #00bcd4;
     transition: background-color 0.3s;
+    
+    /* PROMJENA: Centriramo tekst u summary elementu */
+    text-align: center; 
 }
 
 .rule-item summary:hover {
@@ -279,11 +287,17 @@ nav a:hover {
 .rule-item ul {
     list-style: none;
     padding: 10px 25px 15px;
-    text-align: left;
+    
+    /* PROMJENA: Centriramo listu */
+    text-align: center; 
 }
 
 .rule-item li {
     margin-bottom: 8px;
+    
+    /* Opcionalno: kako bi lista i dalje izgledala kao lista, 
+       možemo centrirati samo unutrašnji tekst, ali je često bolje 
+       koristiti text-align: center na cijelom ul-u. */
 }
 
 .mt-20 {
