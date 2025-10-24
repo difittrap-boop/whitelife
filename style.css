@@ -83,7 +83,7 @@ header {
     justify-content: space-between; 
     align-items: center;
     /* LIJEVO/DESNO padding MORA BITI VEĆI za razmak loga! */
-    padding: 1px 20px; /* Vertikalni 1px (uski), Horizontalni 20px (za pomak loga) */
+    padding: 0px 0px; /* Vertikalni 1px (uski), Horizontalni 20px (za pomak loga) */
     position: sticky;
     top: 0;
     z-index: 1000;
@@ -110,7 +110,7 @@ nav {
 }
 
 .logo img {
-    height: 80px; /* Postavite ovdje željenu VELIČINU. Npr. 80px */
+    height: 70px; /* Postavite ovdje željenu VELIČINU. Npr. 80px */
     width: auto;
     display: block;
 }
@@ -205,7 +205,7 @@ header .header-right {
 
 /* 2. Premještanje Nav-a uz logo */
 header nav {
-    margin-left: 40px; /* Razmak od loga */
+    margin-left: 0px; /* Razmak od loga */
 }
 
 /* 3. Stilovi za nove gumbe (Desktop vs Mobile) */
@@ -534,6 +534,75 @@ nav a.active::after {
 }
 /* KRAJ NOVE IZMJENE */
 
+/* ************************************** */
+/* NOVO: STILOVI ZA PONUDE CUSTOM AUTOMOBILA U GALERIJI */
+/* ************************************** */
+
+.gallery-offers-grid {
+    display: grid;
+    /* Na desktopu, raspored u 3 kolone */
+    grid-template-columns: repeat(3, 1fr); 
+    gap: 30px; 
+    margin: 20px auto; /* Razmak gore/dolje */
+    max-width: 1300px; 
+    padding: 0 40px; /* Da se poravna sa .container */
+}
+
+/* Stil za pojedinačnu karticu (ponovo koristimo .info-block.card stilove) */
+.offer-card {
+    /* Reusability: Koristimo već definirane stilove pozadine, sjene i efekta */
+    background-color: var(--color-medium);
+    padding: 20px;
+    border-radius: 12px;
+    border: 1px solid var(--color-accent-primary); /* Naglašeni border */
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+    text-align: center;
+    transition: transform 0.4s ease-in-out;
+}
+
+.offer-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 15px 40px rgba(255, 215, 0, 0.3); /* Zlatni naglasak na hoveru */
+}
+
+.offer-card h3 {
+    font-size: 22px;
+    color: var(--color-accent-secondary); /* Zlatna boja za ponudu */
+    margin-bottom: 8px;
+}
+
+.offer-card .price {
+    font-family: var(--font-secondary);
+    font-size: 30px;
+    font-weight: 800;
+    color: var(--color-accent-primary); /* Plava za isticanje cijene */
+    margin-bottom: 15px;
+}
+
+.offer-card .btn {
+    width: 100%;
+    margin-top: 15px;
+    
+    /* PROMJENA ZA MANJI GUMB */
+    padding: 10px 20px; /* Smanjeno s 14px 30px (iz .btn) */
+    font-size: 13px;    /* Smanjena veličina fonta */
+    max-width: 200px; /* Ograničite maksimalnu širinu gumba */
+    display: block;   /* Da bi margin: auto radio */
+    margin-left: auto;
+    margin-right: auto;
+}
+
+
+/* RESPONSIVNOST za 3 kolone (prelazi u 1 kolonu na manjim ekranima) */
+@media (max-width: 992px) {
+    .gallery-offers-grid {
+        /* Prelazak na 1 kolonu na tabletu i mobitelu */
+        grid-template-columns: 1fr;
+        gap: 20px;
+        padding: 0 20px;
+    }
+}
+
 
 /* CUSTOM AUTO SLIDER */
 .slider-container {
@@ -745,7 +814,7 @@ footer h4 {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); 
     gap: 40px;
-    padding: 60px 0;
+    padding: 1px 0;
 }
 
 .gallery-item {
@@ -855,6 +924,36 @@ footer h4 {
     display: inline-block;
 }
 
+/* ************************************** */
+/* NOVO: STIL ZA PODNASLOV GALERIJE */
+/* ************************************** */
+.gallery-subtitle {
+    font-family: var(--font-secondary); /* Koristimo font za naslove */
+    font-size: 30px; 
+    font-weight: 700;
+    color: var(--color-text-light); 
+    text-align: center;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    margin-top: 30px;  /* Razmak od boxova iznad */
+    margin-bottom: 5px; /* Razmak do liste automobila ispod */
+    padding-bottom: 1px;
+    position: relative;
+    display: block;
+}
+
+/* Dekorativna linija ispod naslova */
+.gallery-subtitle::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 60px;
+    height: 3px;
+    background-color: var(--color-accent-secondary); /* Zlatna crta */
+    border-radius: 2px;
+}
 /* ************************************** */
 /* MODAL/LIGHTBOX (POPRAVAK)             */
 /* ************************************** */
@@ -1069,7 +1168,7 @@ footer h4 {
         font-size: 16px;
     }
     .gallery-grid {
-        gap: 20px;
+        gap: 0x;
         grid-template-columns: 1fr;
     }
     .gallery-item img.main-img {
@@ -1135,7 +1234,7 @@ footer h4 {
     }
 
     .logo img {
-        height: 60px; 
+        height: 30px; 
     }
     
     /* NAVIGACIJA NA MOBILNOM: SKRIVENA */
