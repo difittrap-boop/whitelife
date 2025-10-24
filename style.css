@@ -109,16 +109,73 @@ nav {
     transition: color 0.3s;
 }
 
-nav a {
-    color: var(--color-text-light);
-    margin: 0 18px; 
-    font-weight: 500;
-    font-size: 15px;
-    text-transform: uppercase;
-    position: relative;
+/* ------ POČETAK MODIFIKACIJE ZA NAVIGACIJU (TVOJ ZAHTJEV) ------ */
+
+/* 1. Novi raspored (Logo + Nav lijevo, Gumb desno) */
+header .header-left {
+    display: flex;
+    align-items: center;
 }
 
-/* Podcrtavanje na hover */
+header .header-right {
+    display: flex;
+    align-items: center;
+}
+
+/* 2. Premještanje Nav-a uz logo */
+header nav {
+    margin-left: 40px; /* Razmak od loga */
+}
+
+/* 3. Stilovi za nove gumbe (Desktop vs Mobile) */
+.join-btn-desktop {
+    display: block; /* Prikazan na desktopu */
+    padding: 10px 25px; /* Malo manji gumb za header */
+    font-size: 14px;
+    /* Nasljeđuje .btn i .primary-btn stilove */
+}
+
+.join-btn-mobile {
+    display: none; /* Skriven na desktopu (OBAVEZNO) */
+}
+
+/* 4. "Luksuzni" stil za linkove i ikone */
+nav a {
+    font-family: var(--font-secondary); /* Montserrat (kao kod naslova) */
+    font-weight: 600;
+    font-size: 14px;
+    letter-spacing: 0.5px;
+    color: var(--color-text-muted); /* Prigušena boja za eleganciju */
+    transition: color 0.3s, text-shadow 0.3s;
+    margin: 0 16px;
+    display: flex; /* Za poravnanje ikone i teksta */
+    align-items: center;
+    gap: 8px; /* Razmak između ikone i teksta */
+    position: relative; /* Za crtu ispod */
+}
+
+/* 5. Stilovi za ikone */
+nav a i {
+    font-size: 15px;
+    color: var(--color-accent-primary); /* Ikona u plavoj boji */
+    transition: color 0.3s;
+    width: 20px; /* Fiksna širina da se tekst ne pomjera */
+    text-align: center;
+}
+
+/* 6. Hover i Active stanja */
+nav a:hover,
+nav a.active {
+    color: var(--color-text-light); /* Posvijetli tekst */
+    text-shadow: 0 0 5px rgba(255, 255, 255, 0.3);
+}
+
+nav a:hover i,
+nav a.active i {
+    color: var(--color-accent-secondary); /* Ikona postaje zlatna */
+}
+
+/* 7. Prilagodba donje crte (hover efekt) */
 nav a::after {
     content: '';
     position: absolute;
@@ -126,7 +183,7 @@ nav a::after {
     left: 0;
     width: 0;
     height: 2px;
-    background-color: var(--color-accent-primary);
+    background-color: var(--color-accent-secondary); /* Zlatna crta */
     transition: width 0.3s ease-out;
 }
 
@@ -134,10 +191,8 @@ nav a:hover::after,
 nav a.active::after {
     width: 100%;
 }
+/* ------ KRAJ MODIFIKACIJE ZA NAVIGACIJU ------ */
 
-.join-btn-mobile {
-    display: none !important; 
-}
 
 /* HERO SEKCIJA */
 .hero-section {
@@ -416,9 +471,10 @@ nav a.active::after {
     overflow: hidden;
 }
 
+/* === POPRAVAK OVDJE: Smanjena visina slike (sa 400px na 300px) === */
 .car-item.single-slide img {
     width: 100%;
-    height: 400px; 
+    height: 300px; /* Vraćeno na manju visinu */
     object-fit: cover; 
     border: none; 
     border-bottom: 5px solid var(--color-accent-primary);
@@ -792,8 +848,12 @@ footer h4 {
     nav {
         display: none; 
     }
+    /* DODANO: Sakrij desktop gumb na mobitelu */
+    .join-btn-desktop {
+        display: none;
+    }
     .join-btn-mobile {
-        display: block;
+        display: block; /* OVO SADA RADI JER JE UKLONJEN !important */
         background-color: var(--color-accent-primary);
         color: var(--color-dark);
         padding: 8px 15px;

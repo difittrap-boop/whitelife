@@ -11,17 +11,21 @@
 <body>
 
     <header>
-        <a href="#home" class="logo">WHITE LIFE <span style="color: #FFD700; font-size: 12px; font-weight: 600;">RP</span></a>
-        <nav>
-            <a href="#home" class="active">POČETNA</a>
-            <a href="#info">INFO</a>
-            <a href="#auto">CUSTOM AUTO</a>
-            <a href="#trgovina">TRGOVINA</a>
-            <a href="#staff">STAFF</a>
-        </nav>
-        <a href="https://discord.gg/2GfEJR3tgM" class="btn primary-btn join-btn-mobile" target="_blank">PRIDRUŽI SE</a>
+        <div class="header-left">
+            <a href="#home" class="logo">WHITE LIFE <span style="color: #FFD700; font-size: 12px; font-weight: 600;">RP</span></a>
+            <nav>
+                <a href="#home" class="active"><i class="fas fa-home"></i> POČETNA</a>
+                <a href="#info"><i class="fas fa-info-circle"></i> INFO</a>
+                <a href="#auto"><i class="fas fa-car"></i> CUSTOM AUTO</a>
+                <a href="#trgovina"><i class="fas fa-store"></i> TRGOVINA</a>
+                <a href="#staff"><i class="fas fa-users"></i> STAFF</a>
+            </nav>
+        </div>
+        <div class="header-right">
+            <a href="https://discord.gg/2GfEJR3tgM" class="btn primary-btn join-btn-desktop" target="_blank">PRIDRUŽI SE</a>
+            <a href="https://discord.gg/2GfEJR3tgM" class="btn primary-btn join-btn-mobile" target="_blank">PRIDRUŽI SE</a>
+        </div>
     </header>
-
     <section id="home" class="hero-section" style="background: url('hero_background.jpg') no-repeat center center/cover;">
         <div class="container hero-content">
             <h1 class="scroll-reveal">WHITE LIFE ROLEPLAY</h1>
@@ -84,10 +88,10 @@
     
     <section id="auto" class="content-section dark-bg">
         <div class="container">
-            <h2>EKSKLUZIVNI CUSTOM AUTOMOBILI</h2>
-            <p style="color: var(--color-text-muted); font-style: italic;">Vozni park dizajniran isključivo za White Life RolePlay. Uživaj u vožnji s najboljim modelima.</p>
+            <h2 class="scroll-reveal">EKSKLUZIVNI CUSTOM AUTOMOBILI</h2>
+            <p class="scroll-reveal delay-1" style="color: var(--color-text-muted); font-style: italic;">Vozni park dizajniran isključivo za White Life RolePlay. Uživaj u vožnji s najboljim modelima.</p>
             
-            <div class="slider-container">
+            <div class="slider-container scroll-reveal delay-2">
                 <div class="car-item single-slide" id="auto-slider">
                     <img src="auto_01.jpg" id="slider-image" alt="Custom Vozilo">
                     <div class="slide-info">
@@ -96,7 +100,7 @@
                 </div>
             </div>
             
-            <div class="cta-buttons mt-40"> 
+            <div class="cta-buttons mt-40 scroll-reveal"> 
                 <a href="galerija.html" class="btn secondary-btn large-btn" id="gallery-cta">
                     <i class="fas fa-car-side"></i> POGLEDAJ PUNU GALERIJU I CIJENE
                 </a>
@@ -241,7 +245,9 @@
 
         // --- KOD ZA ANIMACIJE PRI SKROLANJU (SCROLL REVEAL) - POBOLJŠANJE ---
         const scrollRevealElements = document.querySelectorAll('.scroll-reveal');
-        const offset = 150; 
+        
+        // === POPRAVAK OVDJE: Smanjen 'offset' sa 150 na 100 ===
+        const offset = 100; 
 
         function checkVisibility() {
             const viewportHeight = window.innerHeight;

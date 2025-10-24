@@ -11,17 +11,21 @@
 <body>
 
     <header>
-        <a href="index.html" class="logo">WHITE LIFE <span style="color: #FFD700; font-size: 12px; font-weight: 600;">RP</span></a>
-        <nav>
-            <a href="index.html#home">POČETNA</a>
-            <a href="index.html#info">INFO</a>
-            <a href="index.html#auto" class="active">CUSTOM AUTO</a>
-            <a href="index.html#trgovina">TRGOVINA</a>
-            <a href="index.html#staff">STAFF</a>
-        </nav>
-        <a href="https://discord.gg/2GfEJR3tgM" class="btn primary-btn join-btn-mobile" target="_blank">PRIDRUŽI SE</a>
+        <div class="header-left">
+            <a href="index.html" class="logo">WHITE LIFE <span style="color: #FFD700; font-size: 12px; font-weight: 600;">RP</span></a>
+            <nav>
+                <a href="index.html#home"><i class="fas fa-home"></i> POČETNA</a>
+                <a href="index.html#info"><i class="fas fa-info-circle"></i> INFO</a>
+                <a href="index.html#auto" class="active"><i class="fas fa-car"></i> CUSTOM AUTO</a>
+                <a href="index.html#trgovina"><i class="fas fa-store"></i> TRGOVINA</a>
+                <a href="index.html#staff"><i class="fas fa-users"></i> STAFF</a>
+            </nav>
+        </div>
+        <div class="header-right">
+            <a href="https://discord.gg/2GfEJR3tgM" class="btn primary-btn join-btn-desktop" target="_blank">PRIDRUŽI SE</a>
+            <a href="https://discord.gg/2GfEJR3tgM" class="btn primary-btn join-btn-mobile" target="_blank">PRIDRUŽI SE</a>
+        </div>
     </header>
-
     <div class="gallery-header">
         <div class="container">
             <h1>PREMIUM VOZILA</h1>
@@ -349,7 +353,8 @@
 
         // --- KOD ZA ANIMACIJE PRI SKROLANJU (SCROLL REVEAL) ---
         const scrollRevealElements = document.querySelectorAll('.scroll-reveal');
-        const offset = 150; 
+        // Vraćeno na 100 da se gumbi i elementi vide odmah, a ne da kasne
+        const offset = 100; 
 
         function checkVisibility() {
             const viewportHeight = window.innerHeight;
