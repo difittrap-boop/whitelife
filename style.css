@@ -1368,3 +1368,157 @@ footer h4 {
     min-height: 450px; 
 }
 }
+/* ************************************** */
+/* NOVO: STIL ZA CUSTOM PAYPAL GUMB */
+/* ************************************** */
+.custom-paypal-btn {
+    /* Osnovni izgled i poravnanje */
+    display: inline-flex; 
+    align-items: center;
+    justify-content: center;
+    gap: 10px; /* Razmak između ikone i teksta */
+    padding: 12px 30px;
+    
+    /* Centriranje unutar kartice i prilagodba širine */
+    width: 100%; 
+    max-width: 200px; /* Ograničeno na širinu postojećih gumba u offer-card */
+    margin-left: auto;
+    margin-right: auto;
+    display: flex; 
+
+    /* Boje i font, koristeći tvoje postojeće varijable */
+    background-color: var(--color-accent-primary); /* Tvoja plava akcent boja */
+    color: var(--color-text-light); /* Svijetli tekst */
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-family: var(--font-secondary); 
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-size: 16px;
+    white-space: nowrap; 
+
+    /* Efekti */
+    transition: background-color 0.3s ease, transform 0.1s ease;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3); 
+}
+
+.custom-paypal-btn:hover {
+    background-color: #00A3B8; /* Malo tamnija nijansa plave na hover */
+    transform: translateY(-2px); 
+    box-shadow: 0 8px 12px rgba(0, 0, 0, 0.4);
+}
+
+.custom-paypal-btn:active {
+    transform: translateY(0); 
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+/* **************************************************** */
+/* IZMJENE ZA SMANJENJE KARTICA I NOVI GUMB ZA KUPNJU */
+/* **************************************************** */
+
+/* **************************************************** */
+/* REVIDIRANI STILOVI ZA GALERIJU: JEDNAKA VISINA I CENTRIRANJE */
+/* **************************************************** */
+
+.gallery-grid {
+    /* Mijenja stari stil da bude kompaktniji */
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); 
+    gap: 20px; 
+    padding-top: 30px;
+    align-items: stretch; /* Osigurava da se kartice unutar reda protežu po visini */
+}
+
+.gallery-item {
+    /* Ključno: Flexbox za organiziranje unutarnjeg sadržaja vertikalno */
+    display: flex;
+    flex-direction: column;
+    height: 100%; /* Da zauzme cijelu visinu Grid ćelije */
+}
+
+/* Smanjenje visine glavne slike */
+.gallery-item .main-img {
+    height: 180px; 
+    object-fit: cover;
+}
+
+/* Manji padding za naslov i cijenu */
+.summary-info {
+    padding: 10px 15px; 
+}
+
+.gallery-content {
+    padding: 15px;
+    padding-bottom: 0; 
+    /* Ključno: neka ovaj blok popuni sav preostali prostor u kartici */
+    flex-grow: 1;
+    /* Unutarnji Flexbox za organiziranje elemenata unutar content boxa */
+    display: flex;
+    flex-direction: column;
+}
+
+/* 4. **ISPRAVAK CENTRIRANJA NASLOVA (Performanse/Galerija)** */
+.gallery-content h5 {
+    margin-top: 15px;
+    margin-bottom: 8px; 
+    /* Koristimo Flexbox za centriranje ikone i teksta */
+    display: flex; 
+    align-items: center;
+    justify-content: center; /* KLJUČ ZA CENTRIRANJE! */
+    gap: 10px; 
+    text-align: center; /* Dodatno osiguranje */
+}
+
+/* 5. Stil za formu koja drži gumb, služi kao "footer" kartice */
+.gallery-content form.buy-car-form {
+    padding: 15px; 
+    padding-top: 10px; 
+    background-color: var(--color-dark); 
+    margin: 0 -1px -1px -1px; 
+    border-top: 1px solid rgba(255, 255, 255, 0.05);
+    /* **KLJUČNO ZA GUMB NA DNU: GURANJE FORME NA DNO** */
+    margin-top: auto; 
+}
+
+.gallery-content form button.buy-car-btn {
+    width: 100%;
+    padding: 12px 25px; 
+    font-size: 14px; 
+    border-radius: 8px; 
+    display: flex; 
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+}
+
+/* 6. Manji prostor u listama performansi */
+.gallery-content ul {
+    list-style: none;
+    padding-left: 0;
+    text-align: left; 
+}
+
+.gallery-content ul li {
+    font-size: 14px;
+    margin-bottom: 5px;
+    display: flex; 
+    align-items: center;
+    gap: 10px;
+}
+
+/* 7. Popravak galerije unutar kartice */
+.photo-gallery {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 5px;
+    margin-bottom: 15px; 
+}
+
+.photo-gallery img {
+    width: 100%;
+    height: 60px; 
+    object-fit: cover;
+    border-radius: 4px;
+    transition: opacity 0.2s;
+}
