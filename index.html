@@ -12,7 +12,7 @@
 
     <header>
         <div class="header-left">
-            <a href="#home" class="logo">WHITE LIFE <span style="color: #FFD700; font-size: 12px; font-weight: 600;">RP</span></a>
+            <a href="/" class="logo"><img src="logo.png" alt="White Life RP Logo"></a>
             <nav>
                 <a href="#home" class="active"><i class="fas fa-home"></i> POČETNA</a>
                 <a href="#info"><i class="fas fa-info-circle"></i> INFO</a>
@@ -90,13 +90,13 @@
                 <div class="car-item single-slide" id="auto-slider">
                     <img src="auto_01.jpg" id="slider-image" alt="Custom Vozilo">
                     <div class="slide-info">
-                        <h4 id="slider-title">G63 Long - (10€)</h4>
+                        <h4 id="slider-title">G63 Long</h4>
                     </div>
                 </div>
             </div>
             
             <div class="cta-buttons mt-40 scroll-reveal"> 
-                <a href="galerija.html" class="btn secondary-btn large-btn" id="gallery-cta">
+                <a href="galerija" class="btn secondary-btn large-btn" id="gallery-cta">
                     <i class="fas fa-car-side"></i> POGLEDAJ PUNU GALERIJU I CIJENE
                 </a>
             </div>
@@ -163,10 +163,10 @@
             </div>
             <div class="footer-links">
                 <h4>BRZI LINKOVI</h4>
-                <a href="#home">Početna</a>
+                <a href="/">Početna</a>
                 <a href="#info">Pravila</a>
                 <a href="#trgovina">Donacije</a>
-                <a href="galerija.html">Vozila</a>
+                <a href="galerija">Vozila</a>
             </div>
             <div class="footer-social">
                 <h4>PRONAĐI NAS</h4>
@@ -185,11 +185,11 @@
 
         // 1. Definicija Slika i Teksta (5 slika)
         const slides = [
-            { img: 'auto_01.jpg', title: 'G63 Long - (10€)' },
-            { img: 'auto_02.jpg', title: 'Ferrari SF90 - (20€)' },
-            { img: 'auto_03.jpg', title: 'M6 E24 - (10€)' },
-            { img: 'auto_04.jpg', title: 'Porsche Carrera - (15€)' },
-            { img: 'auto_05.jpg', title: '488 Spider - (20€)' },
+            { img: 'auto_01.jpg', title: 'G63 Long' },
+            { img: 'auto_02.jpg', title: 'Ferrari SF90' },
+            { img: 'auto_03.jpg', title: 'M6 E24' },
+            { img: 'auto_04.jpg', title: 'Porsche Carrera' },
+            { img: 'auto_05.jpg', title: '488 Spider' },
         ];
 
         let currentSlide = -1; // Počinje od -1 da bi prvi poziv postavio na 0
@@ -212,7 +212,9 @@
                 sliderImage.src = nextSlide.img;
                 sliderImage.alt = nextSlide.title;
                 sliderTitle.innerHTML = `${nextSlide.title}`;
-
+                // NAPOMENA: Ako unutar JS slidera dodate dugme s linkom, 
+                // taj link bi također trebao koristiti href="galerija"
+                
                 // Fade-in efekt
                 sliderImage.style.opacity = 1;
             }, 500); // Vrijeme fade-outa
@@ -271,6 +273,35 @@
         window.addEventListener('scroll', checkVisibility); // Provjeri na skrolanju
         
         checkVisibility(); 
+
+// === KOD ZA AUTOMATSKO POSTAVLJANJE 'active' KLASE NA NAVIGACIJU ===
+
+const sections = document.querySelectorAll('section');
+const navLinks = document.querySelectorAll('header nav a');
+
+function updateActiveLink() {
+    let current = '';
+
+    sections.forEach(section => {
+        // Provjeravamo je li gornji rub sekcije unutar 300px od vrha ekrana
+        const sectionTop = section.offsetTop;
+        if (pageYOffset >= sectionTop - 300) {
+            current = section.getAttribute('id');
+        }
+    });
+
+    navLinks.forEach(link => {
+        link.classList.remove('active');
+        // Provjeravamo odgovara li href linka trenutnom ID-u sekcije
+        if (link.href.includes(current)) {
+            link.classList.add('active');
+        }
+    });
+}
+
+// Pozivamo funkciju pri skrolanju i na učitavanju stranice
+window.addEventListener('scroll', updateActiveLink);
+window.addEventListener('load', updateActiveLink);
     </script>
 </body>
 </html>
