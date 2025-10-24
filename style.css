@@ -1122,25 +1122,36 @@ footer h4 {
     }
     
     /* KLJUČNO: OVO POSTAVLJA LOGO SKROZ LIJEVO (umjesto centralno) */
-    header .header-left {
-        width: 100%; 
+header .header-left {
+        width: 100%;
         display: flex;
-        justify-content: flex-start; /* POSTAVLJA LOGO LIJEVO */
-        margin-bottom: 15px; 
+        align-items: center;
+        justify-content: space-between; 
+        margin-left: 0; /* Resetiraj desktop marginu */
     }
     
     /* NOVO: Manja visina loga za mobilni prikaz */
+.logo {
+        margin-left: 0; /* Ukloni desktop pomak */
+    }
     .logo img {
-        height: 60px; 
+        height: 65px; /* Manja slika loga za mobitel */
     }
     
     /* NAVIGACIJA NA MOBILNOM: Pretpostavka da je skrivena */
-    header nav {
-        margin-left: 0;
-        display: none; 
+header nav {
+        display: flex; /* Koristi flex za kolone */
+        flex-direction: column;
+        position: absolute;
+        top: 82px; /* Postavlja meni ISPOD HEADERA (logo je 80px + padding) */
+        left: 0;
         width: 100%;
-        text-align: center;
-        margin-bottom: -15px; 
+        background-color: rgba(10, 10, 10, 0.98); 
+        height: 0; /* KLJUČNO: Skriven po defaultu */
+        overflow: hidden;
+        transition: height 0.4s ease-in-out;
+        z-index: 999; 
+        border-top: 1px solid var(--color-accent-primary);
     }
     
     /* KRAJ LOGA I PORAVNANJA */
@@ -1272,16 +1283,9 @@ footer h4 {
 
 /* Gumb za otvaranje menija - Vidljiv samo na mobitelu */
 .menu-toggle {
-    display: none; /* Sakrij ga na PC-u */
-    background: none;
-    border: none;
-    color: var(--color-text-light);
-    font-size: 24px;
-    cursor: pointer;
-    padding: 10px;
-    margin-left: auto; /* Gurni ga desno */
-    z-index: 1001; /* Iznad svega */
-}
+        display: block; /* Prikazuje hamburger gumb */
+        margin-left: auto; /* Gura gumb desno */
+    }
 
 /* Pravila za MALE EKRANE (npr. širina manja od 900px) */
 @media (max-width: 900px) {
@@ -1321,20 +1325,31 @@ footer h4 {
     }
 
     /* Izgled linkova u padajućem meniju */
-    header nav a {
+header nav a {
+        margin: 0;
         padding: 15px 25px;
-        border-bottom: 1px solid var(--color-medium);
         text-align: left;
-        font-size: 18px;
+        border-bottom: 1px solid var(--color-medium);
+        /* Uklanja neželjenu crtu koja je preostala od desktop efekta */
+        text-decoration: none !important;
     }
-    
+   /* Resetiraj boju teksta */
+    header nav a, header nav a.active {
+        color: var(--color-text-light) !important; 
+        text-shadow: none !important;
+    }
+header nav a.active i {
+        color: var(--color-accent-secondary) !important; 
+    }
     header nav a:hover {
         background-color: var(--color-medium);
     }
 
     /* Stanje kada je meni OTVOREN (JavaScript dodaje klasu 'open') */
-    header nav.open {
-        height: 275px; /* Dovoljno visoko da prikaže 5 linkova (5 * 55px = 275px) */
+header nav.open {
+        /* Morate izračunati visinu: (5 linkova * 55px padding) = ~275px, stavi malo više za svaki slučaj */
+        height: 300px; 
+        padding: 10px 0;
     }
 
     /* Ostale prilagodbe za mobitel */
