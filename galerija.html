@@ -10,21 +10,19 @@
 </head>
 <body>
 
-<header>
-    <div class="header-left">
-        <a href="/" class="logo"><img src="logo.png" alt="White Life RP Logo"></a>
-        <button class="menu-toggle" id="menuToggle">
-            <i class="fas fa-bars"></i>
-        </button>
-        <nav id="mainNav">
-            <a href="/#home"><i class="fas fa-home"></i> POČETNA</a>
-            <a href="/#info"><i class="fas fa-info-circle"></i> INFO</a>
-            <a href="/#auto" class="active"><i class="fas fa-car"></i> CUSTOM AUTO</a>
-            <a href="/#trgovina"><i class="fas fa-store"></i> TRGOVINA</a>
-            <a href="/#staff"><i class="fas fa-users"></i> STAFF</a>
-        </nav>
-    </div>
-</header>    <div class="gallery-header">
+    <header>
+        <div class="header-left">
+            <a href="index.html" class="logo"><img src="logo.png" alt="White Life RP Logo"></a>
+            <nav>
+                <a href="index.html#home"><i class="fas fa-home"></i> POČETNA</a>
+                <a href="index.html#info"><i class="fas fa-info-circle"></i> INFO</a>
+                <a href="index.html#auto" class="active"><i class="fas fa-car"></i> CUSTOM AUTO</a>
+                <a href="index.html#trgovina"><i class="fas fa-store"></i> TRGOVINA</a>
+                <a href="index.html#staff"><i class="fas fa-users"></i> STAFF</a>
+            </nav>
+        </div>
+    </header>
+    <div class="gallery-header">
         <div class="container">
             <h1>PREMIUM VOZILA</h1>
             <p>Pregled svih dostupnih custom modela u našoj ekskluzivnoj ponudi.</p>
@@ -278,9 +276,9 @@
 
             </div> 
             
-	<a href="/#trgovina" class="btn primary-btn large-btn back-btn scroll-reveal delay-1">
-    	<i class="fas fa-shopping-cart"></i> NAZAD NA TRGOVINU
-	</a>
+            <a href="index.html#trgovina" class="btn primary-btn large-btn back-btn scroll-reveal delay-1">
+                <i class="fas fa-shopping-cart"></i> NAZAD NA TRGOVINU
+            </a>
 
         </div> 
     </section>
@@ -387,29 +385,6 @@
         
         checkVisibility();
 
-// === KOD ZA RESPONZIVNI MOBILNI MENI ===
-const menuToggle = document.getElementById('menuToggle');
-const mainNav = document.getElementById('mainNav');
-const navLinksMobile = document.querySelectorAll('#mainNav a');
-
-if (menuToggle && mainNav) { // Provjera da elementi postoje
-    menuToggle.addEventListener('click', () => {
-        mainNav.classList.toggle('open');
-        // Mijenja ikonu iz hamburgera u X
-        menuToggle.querySelector('i').classList.toggle('fa-bars');
-        menuToggle.querySelector('i').classList.toggle('fa-times');
-    });
-
-    // Zatvori meni nakon klika na link
-    navLinksMobile.forEach(link => {
-        link.addEventListener('click', () => {
-            mainNav.classList.remove('open');
-            // Vrati ikonu na hamburger
-            menuToggle.querySelector('i').classList.add('fa-bars');
-            menuToggle.querySelector('i').classList.remove('fa-times');
-        });
-    });
-}
     </script>
 </body>
 </html>

@@ -1122,36 +1122,25 @@ footer h4 {
     }
     
     /* KLJUČNO: OVO POSTAVLJA LOGO SKROZ LIJEVO (umjesto centralno) */
-header .header-left {
-        width: 100%;
+    header .header-left {
+        width: 100%; 
         display: flex;
-        align-items: center;
-        justify-content: space-between; 
-        margin-left: 0; /* Resetiraj desktop marginu */
+        justify-content: flex-start; /* POSTAVLJA LOGO LIJEVO */
+        margin-bottom: 15px; 
     }
     
     /* NOVO: Manja visina loga za mobilni prikaz */
-.logo {
-        margin-left: 0; /* Ukloni desktop pomak */
-    }
     .logo img {
-        height: 65px; /* Manja slika loga za mobitel */
+        height: 60px; 
     }
     
     /* NAVIGACIJA NA MOBILNOM: Pretpostavka da je skrivena */
-header nav {
-        display: flex; /* Koristi flex za kolone */
-        flex-direction: column;
-        position: absolute;
-        top: 82px; /* Postavlja meni ISPOD HEADERA (logo je 80px + padding) */
-        left: 0;
+    header nav {
+        margin-left: 0;
+        display: none; 
         width: 100%;
-        background-color: rgba(10, 10, 10, 0.98); 
-        height: 0; /* KLJUČNO: Skriven po defaultu */
-        overflow: hidden;
-        transition: height 0.4s ease-in-out;
-        z-index: 999; 
-        border-top: 1px solid var(--color-accent-primary);
+        text-align: center;
+        margin-bottom: -15px; 
     }
     
     /* KRAJ LOGA I PORAVNANJA */
@@ -1278,138 +1267,4 @@ header nav {
     /* NOVO: Dodajemo minimalnu visinu da se box "O NAMA" podudara s visinom 
        "KLJUČNA PRAVILA" boxa kada su detalji zatvoreni. */
     min-height: 450px; 
-}
-/* --- RESPONSIVNA NAVIGACIJA (HAMBURGER MENI) --- */
-
-/* Gumb za otvaranje menija - Vidljiv samo na mobitelu */
-.menu-toggle {
-        display: block; /* Prikazuje hamburger gumb */
-        margin-left: auto; /* Gura gumb desno */
-    }
-
-/* Pravila za MALE EKRANE (npr. širina manja od 900px) */
-@media (max-width: 900px) {
-    
-    header {
-        padding: 10px 20px;
-        justify-content: space-between;
-    }
-    
-    .header-left {
-        width: 100%;
-        display: flex;
-        align-items: center;
-        justify-content: space-between; /* Logo lijevo, gumb desno */
-    }
-
-    /* Prikaz gumba za meni */
-    .menu-toggle {
-        display: block;
-    }
-
-    /* Navigacija se pretvara u padajući meni */
-    header nav {
-        position: absolute;
-        top: 60px; /* Ispod headera */
-        left: 0;
-        width: 100%;
-        background-color: var(--color-dark); /* Tamna pozadina */
-        display: flex;
-        flex-direction: column;
-        height: 0; /* Sakrij navigaciju po defaultu */
-        overflow: hidden;
-        transition: height 0.3s ease-in-out;
-        z-index: 1000;
-        border-top: 1px solid var(--color-medium);
-        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4);
-    }
-
-    /* Izgled linkova u padajućem meniju */
-header nav a {
-        margin: 0;
-        padding: 15px 25px;
-        text-align: left;
-        border-bottom: 1px solid var(--color-medium);
-        /* Uklanja neželjenu crtu koja je preostala od desktop efekta */
-        text-decoration: none !important;
-    }
-   /* Resetiraj boju teksta */
-    header nav a, header nav a.active {
-        color: var(--color-text-light) !important; 
-        text-shadow: none !important;
-    }
-header nav a.active i {
-        color: var(--color-accent-secondary) !important; 
-    }
-    header nav a:hover {
-        background-color: var(--color-medium);
-    }
-
-    /* Stanje kada je meni OTVOREN (JavaScript dodaje klasu 'open') */
-header nav.open {
-        /* Morate izračunati visinu: (5 linkova * 55px padding) = ~275px, stavi malo više za svaki slučaj */
-        height: 300px; 
-        padding: 10px 0;
-    }
-
-    /* Ostale prilagodbe za mobitel */
-    .hero-section h1 {
-        font-size: 48px;
-    }
-    
-    .hero-section h2 {
-        font-size: 20px;
-    }
-    
-    .info-grid {
-        grid-template-columns: 1fr;
-    }
-    
-    .cta-buttons {
-        flex-direction: column;
-    }
-    
-    .cta-buttons a {
-        margin: 10px 0;
-        width: 100%;
-        text-align: center;
-    }
-    
-} /* Kraj Media Query */
-/* --- EKSTREMNA KOREKCIJA: Prisilno uklanjanje svih linija u navigaciji --- */
-
-/* Cilja sve linkove u navigaciji i osigurava da NEMA podvlačenja, border-a ili shadowa */
-header nav a {
-    /* Uklanja podvlačenje i linije s najvećim prioritetom */
-    text-decoration: none !important;
-    border: none !important; /* Uklanja bilo kakav border koji stvara liniju */
-    box-shadow: none !important; /* Uklanja eventualni shadow */
-    transition: color 0.3s;
-}
-
-/* Cilja navigaciju kada se skrolate do "INFO" sekcije */
-header nav {
-    /* Uklanja pravila koja utječu na cijeli blok linkova */
-    text-decoration: none !important;
-    border: none !important;
-    box-shadow: none !important;
-}
-
-/* Pravilo za hover i aktivni link */
-header nav a:hover,
-header nav a.active {
-    color: var(--color-accent-primary); 
-    /* Ako ne želite nikakvu liniju, ostavite 'none' */
-    text-decoration: none !important; 
-    
-    /* Ako je linija border, osigurajte da je i active link čist */
-    border: none !important;
-    box-shadow: none !important;
-}
-
-/* Osiguraj da mobilna navigacija NEMA podvlačenja dok se ne klikne (vizualni red) */
-@media (max-width: 900px) {
-    header nav a:hover {
-        text-decoration: none !important;
-    }
 }
