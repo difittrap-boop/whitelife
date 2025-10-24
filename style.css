@@ -5,6 +5,17 @@
     box-sizing: border-box;
 }
 
+/* === NOVI POPRAVAK: SPREČAVANJE HORIZONTALNOG PRELIJEVANJA (GLAVNI RAZLOG ZUMA) === */
+html, body {
+    overflow-x: hidden; /* Sprečava horizontalni skrol (i zoom) */
+}
+/* Osigurava da slike ne probijaju granice */
+img { 
+    max-width: 100%; 
+    height: auto; 
+}
+/* === KRAJ POPRAVKA === */
+
 :root {
     --color-dark: #0A0A0A;           /* Ultra tamna pozadina */
     --color-medium: #141414;         /* Sekcija pozadina */
@@ -123,79 +134,12 @@ nav {
 
 /* ------ KOREKCIJA ZA NAVIGACIJU NA DESKTOPU ------ */
 
-/* 1. Novi raspored (Logo + Nav lijevo) */
-header .header-left {
-    display: flex;
-    align-items: center;
-    /* Ako je .header-left skroz lijevo, sve će biti skroz lijevo */
-    width: 100%; 
-}
-
-/* 2. Premještanje Nav-a uz logo */
-header nav {
-    margin-left: 15px; /* Razmak između loga i prve navigacijske stavke */
-}
-
-/* 3. Stilovi za linkove i ikone */
-nav a {
-    font-family: var(--font-secondary); 
-    font-weight: 600;
-    font-size: 14px;
-    letter-spacing: 0.5px;
-    color: var(--color-text-muted); 
-    transition: color 0.3s, text-shadow 0.3s;
-    margin: 0 16px;
-    display: flex; 
-    align-items: center;
-    gap: 8px; 
-    position: relative; 
-}
-
-/* 4. Stilovi za ikone */
-nav a i {
-    font-size: 15px;
-    color: var(--color-accent-primary); 
-    transition: color 0.3s;
-    width: 20px; 
-    text-align: center;
-}
-
-/* 5. Hover i Active stanja */
-nav a:hover,
-nav a.active {
-    color: var(--color-text-light); 
-    text-shadow: 0 0 5px rgba(255, 255, 255, 0.3);
-}
-
-nav a:hover i,
-nav a.active i {
-    color: var(--color-accent-secondary); 
-}
-
-/* 6. Prilagodba donje crte (hover efekt) */
-nav a::after {
-    content: '';
-    position: absolute;
-    bottom: -5px;
-    left: 0;
-    width: 0;
-    height: 2px;
-    background-color: var(--color-accent-secondary); 
-    transition: width 0.3s ease-out;
-}
-
-nav a:hover::after,
-nav a.active::after {
-    width: 100%;
-}
-/* ------ KRAJ KOREKCIJE ZA NAVIGACIJU NA DESKTOPU ------ */
-
-/* ------ POČETAK MODIFIKACIJE ZA NAVIGACIJU (TVOJ ZAHTJEV) ------ */
-
 /* 1. Novi raspored (Logo + Nav lijevo, Gumb desno) */
 header .header-left {
     display: flex;
     align-items: center;
+    /* Ako je .header-left skroz lijevo, sve će biti skroz lijevo */
+    width: auto; /* Vraćeno na auto da ne zauzima 100% širine */
 }
 
 header .header-right {
@@ -206,6 +150,7 @@ header .header-right {
 /* 2. Premještanje Nav-a uz logo */
 header nav {
     margin-left: 40px; /* Razmak od loga */
+    display: flex; /* Osiguraj da se prikazuje na PC-u */
 }
 
 /* 3. Stilovi za nove gumbe (Desktop vs Mobile) */
@@ -921,257 +866,23 @@ footer h4 {
     }
 }
 
-@media (max-width: 768px) {
-    .container {
-        padding: 0 20px;
-    }
-    
-    /* HEADER KOREKCIJA */
-    header {
-        padding: 10px 20px;
-        position: static; 
-    }
-    
-    /* ISPRAVKA #4: Komentiramo display:none da bi se navigacija vidjela */
-    nav {
-        /* display: none; */ 
-    }
-    /* DODANO: Sakrij desktop gumb na mobitelu */
-    .join-btn-desktop {
-        display: none;
-    }
-    .join-btn-mobile {
-        display: block; /* OVO SADA RADI JER JE UKLONJEN !important */
-        background-color: var(--color-accent-primary);
-        color: var(--color-dark);
-        padding: 8px 15px;
-        border-radius: 5px;
-        font-weight: 700;
-        cursor: pointer;
-    }
-    
-    /* HERO KOREKCIJA */
-    .hero-section {
-        height: auto; /* Da ne zauzima cijeli ekran na mobitelu */
-        padding-top: 100px; /* Osiguraj prostor od vrha */
-        padding-bottom: 80px;
-        align-items: flex-start;
-    }
-    .hero-content {
-        padding-top: 0;
-    }
-    .hero-content h1 {
-        font-size: 44px; /* Smanji H1 */
-    }
-    .hero-content h2 {
-        font-size: 20px; /* Smanji H2 */
-    }
-    .content-section {
-        padding: 80px 0; /* Manji padding sekcija */
-    }
-    .content-section h2 {
-        font-size: 34px; /* Smanji naslov sekcije */
-        margin-bottom: 40px;
-    }
-
-    /* CTA KOREKCIJA */
-    .cta-buttons {
-        flex-direction: column;
-        gap: 15px; /* Manji razmak */
-    }
-    .btn {
-        width: 100%;
-        padding: 14px 30px; /* Manji padding za gumbe */
-        font-size: 15px;
-    }
-
-    /* INFO & PRAVILA KOREKCIJA */
-    /* Pravila gumb popravak na mobilnom uređaju */
-    .info-block.card.rules .btn {
-        width: 100% !important; 
-        margin-left: 0;
-        margin-right: 0;
-        padding: 16px 40px; 
-        font-size: 16px;
-        text-align: center; 
-    }
-    .info-block.card {
-        padding: 25px; /* Manji padding kartica */
-    }
-    .info-block h3 {
-        font-size: 20px; /* Manji naslov u kartici */
-    }
-
-    /* AUTO SLIDER KOREKCIJA */
-    .car-item.single-slide img {
-        height: 250px; /* Manja visina slike */
-    }
-    .car-item h4 {
-        font-size: 20px; /* Manji naslov slajdera */
-    }
-
-    /* TRGOVINA KOREKCIJA */
-    .donation-perks {
-        padding: 30px;
-    }
-    .donation-perks h4 {
-        font-size: 24px;
-    }
-    .donation-perks ul {
-        grid-template-columns: 1fr; /* Jedna kolona za pogodnosti */
-        gap: 10px;
-    }
-    .donation-perks li {
-        font-size: 15px;
-        padding: 12px;
-    }
-
-    /* STAFF KOREKCIJA */
-    .staff-grid {
-        grid-template-columns: 1fr; /* Jedna kolona za staff */
-        gap: 20px;
-    }
-    .staff-member img {
-        width: 100px;
-        height: 100px;
-    }
-
-    /* FOOTER KOREKCIJA */
-    footer .container {
-        grid-template-columns: 1fr;
-        text-align: center;
-        gap: 20px;
-    }
-    footer h4 {
-        margin-bottom: 10px;
-    }
-    .footer-links a, .footer-social a {
-        display: inline-block; /* Inline linkovi za bolji raspored */
-        margin: 0 10px 10px 10px;
-    }
-    .footer-social a i {
-        margin-right: 5px;
-    }
-    .copyright {
-        grid-column: 1;
-        font-size: 14px;
-    }
-    
-    /* GALERIJA KOREKCIJA */
-    .gallery-header {
-        padding: 60px 0 30px;
-    }
-    .gallery-header h1 {
-        font-size: 36px;
-    }
-    .gallery-header p {
-        font-size: 16px;
-    }
-    .gallery-grid {
-        gap: 20px;
-        grid-template-columns: 1fr;
-    }
-    .gallery-item img.main-img {
-        height: 180px; /* Manja visina glavne slike u galeriji */
-    }
-    .summary-info {
-        padding: 12px 15px;
-    }
-    .summary-info h4 {
-        font-size: 20px;
-    }
-    .summary-info .price {
-        font-size: 22px;
-    }
-    .photo-gallery {
-        gap: 5px; /* Manji razmak između thumbnailova */
-    }
-    .photo-gallery img {
-        height: 50px; /* Manja visina thumbnailova */
-    }
-    .back-btn {
-        width: 100%;
-    }
-    
-    /* MODAL KOREKCIJA */
-    .modal-content {
-        width: 95%;
-        border-width: 3px;
-    }
-    .close-btn {
-        top: 10px;
-        right: 20px;
-        font-size: 40px;
-    }
-}
-
 /* ************************************** */
-/* MODIFICIRANI STILOVI ZA RESPONSIVNOST */
+/* ISPRAVKA 992px (Laptop/Tablet) - Vraća PC layout */
 /* ************************************** */
-
 @media (max-width: 992px) {
-    /* Opšte promjene za manji ekran */
+    /* Uklanjamo pravila koja su uništavala PC header */
     .container {
         padding: 0 20px;
     }
 
-    /* KOREKCIJA LOGA I PORAVNANJE NA MOBILNOM */
-    header {
-        flex-direction: column;
-        align-items: center;
-        /* ISPRAVKA #5: Povećan padding za mobitel */
-        padding: 10px 20px; 
-    }
-    
-    /* KLJUČNO: OVO POSTAVLJA LOGO SKROZ LIJEVO (umjesto centralno) */
-    header .header-left {
-        width: 100%; 
-        display: flex;
-        justify-content: center; /* ISPRAVKA #6: Centriramo logo na mobitelu */
-        margin-bottom: 10px; /* ISPRAVKA #7: Smanjen razmak */
-    }
-    
-    /* NOVO: Uklanjamo marginu loga */
-    .logo {
-        margin-left: 0;
-    }
+    /* NE POSTAVLJAJ header na flex-direction: column; OVDJE */
+    /* NE SKRIVAJ NAVIGACIJU OVDJE */
 
-    /* NOVO: Manja visina loga za mobilni prikaz */
+    /* Samo blaga korekcija veličina */
     .logo img {
-        height: 60px; 
+        height: 70px; /* Malo manji logo */
     }
     
-    /* NAVIGACIJA NA MOBILNOM: Pretpostavka da je skrivena */
-    header nav {
-        margin-left: 0;
-        display: flex; /* ISPRAVKA #8: Prikazujemo navigaciju */
-        flex-wrap: wrap; /* NOVO: Omogućava prelamanje linkova */
-        justify-content: center; /* NOVO: Centrira linkove */
-        width: 100%;
-        text-align: center;
-        margin-bottom: 0px; /* ISPRAVKA #9: Popravak margine */
-    }
-
-    /* NOVO: Stilovi za linkove na mobitelu */
-    header nav a {
-        margin: 5px 10px; /* Smanjujemo razmak */
-        font-size: 12px; /* Smanjujemo font */
-    }
-    header nav a i {
-        font-size: 13px; /* Smanjujemo ikone */
-    }
-    header nav a::after {
-        bottom: -3px; /* Dižemo podcrtu */
-    }
-    
-    /* KRAJ LOGA I PORAVNANJA */
-
-    /* HERO SEKCIJA KOREKCIJA */
-    .hero-content {
-        padding-top: 80px;
-        text-align: center; 
-    }
-
     .hero-content h1 {
         font-size: 50px;
     }
@@ -1182,18 +893,7 @@ footer h4 {
     .hero-content p {
         font-size: 16px;
     }
-
-    .cta-buttons {
-        flex-direction: column;
-        gap: 15px;
-        justify-content: center;
-    }
-    .btn {
-        padding: 14px 30px;
-        font-size: 14px;
-    }
-
-    /* GLAVNE SEKCIJE KOREKCIJA */
+    
     .content-section {
         padding: 80px 0;
     }
@@ -1202,38 +902,22 @@ footer h4 {
         margin-bottom: 40px;
     }
     
+    .cta-buttons {
+        gap: 15px;
+        /* NE PRELAZI NA COLUMN, ostaje row dok ne dođe 768px */
+    }
+    .btn {
+        padding: 14px 30px;
+        font-size: 14px;
+    }
+    
     /* INFO KOREKCIJA */
     .info-grid {
         grid-template-columns: 1fr;
         gap: 30px;
     }
-    .info-block.card:hover {
-        transform: none; 
-        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
-    }
     .info-block h3 {
         font-size: 22px;
-    }
-    
-    /* TRGOVINA KOREKCIJA */
-    .donation-perks {
-        padding: 30px;
-    }
-    .donation-perks h4 {
-        font-size: 24px;
-    }
-    .donation-perks ul {
-        grid-template-columns: 1fr;
-    }
-
-    /* STAFF KOREKCIJA */
-    .staff-grid {
-        grid-template-columns: 1fr;
-        gap: 20px;
-    }
-    .staff-member img {
-        width: 100px;
-        height: 100px;
     }
     
     /* FOOTER KOREKCIJA */
@@ -1246,20 +930,159 @@ footer h4 {
         display: inline-block; 
         margin: 0 10px 10px 10px;
     }
-    .copyright {
-        grid-column: 1;
-        font-size: 14px;
-    }
     
     /* GALERIJA KOREKCIJA */
-    .gallery-header {
-        padding: 60px 0 30px;
-    }
     .gallery-header h1 {
         font-size: 36px;
     }
     .gallery-grid {
         grid-template-columns: 1fr;
+    }
+}
+
+
+/* ************************************** */
+/* MOBILNI UREĐAJI (768px) - AGRESIVNO SMANJENJE I STACKING */
+/* ************************************** */
+@media (max-width: 768px) {
+    .container {
+        padding: 0 10px;
+    }
+    
+    /* === 1. HEADER I NAVIGACIJA - STACKING I SMANJENJE === */
+    header {
+        flex-direction: column; /* Ključno: Stavi elemente u stupac */
+        justify-content: center; /* Centriraj stupac */
+        padding: 5px 10px;
+    }
+    
+    /* ** POPRAVAK: Sila na block ponašanje i centriranje sadržaja unutar headera ** */
+    header .header-left {
+        display: block; 
+        width: 100%; 
+        text-align: center; 
+        margin-left: 0;
+    }
+
+    .logo {
+        margin-left: 0; /* Uklanja lijevu marginu s desktop stila */
+        display: inline-block;
+    }
+
+    .logo img {
+        height: 50px; 
+        margin: 0 auto; /* Centriranje slike */
+    }
+    /* ************************************************************************** */
+    
+    /* Skrivanje desktop gumba i navigacije */
+    header nav {
+        display: none; 
+    }
+    .join-btn-desktop {
+        display: none;
+    }
+    
+    .join-btn-mobile {
+        display: block; /* Prikaz mobilnog gumba */
+        /* Ostali stilovi za mobilni gumb su već u kodu */
+    }
+    
+    /* === 2. FONTOVI I DIMENZIJE (60% redukcija) === */
+    
+    .hero-section {
+        height: auto; 
+        padding-top: 40px;
+        padding-bottom: 40px;
+    }
+    .hero-content h1 {
+        font-size: 48px; /* 60% od 80px */
+    }
+    .hero-content h2 {
+        font-size: 20px; /* 60% od 32px */
+    }
+    .content-section {
+        padding: 40px 0; /* Manji padding sekcija */
+    }
+    .content-section h2 {
+        font-size: 28px; /* 60% od 44px */
+        margin-bottom: 25px;
+    }
+
+    /* CTA GUMBOVI */
+    .cta-buttons {
+        flex-direction: column;
+        gap: 10px;
+    }
+    .btn {
+        width: 100%;
+        padding: 10px 20px; /* 60% od 16px/40px */
+        font-size: 12px;
+    }
+
+    /* INFO & PRAVILA */
+    .info-block.card.rules .btn {
+        width: 100% !important; 
+        padding: 10px 20px; 
+        font-size: 12px;
+    }
+    .info-block.card {
+        padding: 15px;
+    }
+    .info-block h3 {
+        font-size: 18px;
+    }
+    .info-block p {
+        font-size: 14px;
+    }
+    .rule-item summary {
+        font-size: 15px;
+        padding: 12px;
+    }
+    
+    /* STAFF */
+    .staff-grid {
+        grid-template-columns: 1fr;
+        gap: 15px;
+    }
+    .staff-member img {
+        width: 60px;
+        height: 60px;
+    }
+    .staff-member h4 {
+        font-size: 16px;
+    }
+    
+    /* FOOTER */
+    footer {
+        padding: 20px 0 10px;
+        font-size: 12px;
+    }
+    footer .container {
+        grid-template-columns: 1fr;
+    }
+    .copyright {
+        font-size: 12px;
+    }
+    
+    /* GALERIJA */
+    .gallery-header h1 {
+        font-size: 30px;
+    }
+    .gallery-grid {
+        gap: 15px;
+    }
+    .gallery-item img.main-img {
+        height: 150px; 
+    }
+    .summary-info h4 {
+        font-size: 18px;
+    }
+    .summary-info .price {
+        font-size: 20px;
+    }
+    .photo-gallery img {
+        height: 40px; 
     }
 }
 .gallery-content ul {
@@ -1288,5 +1111,4 @@ footer h4 {
     /* NOVO: Dodajemo minimalnu visinu da se box "O NAMA" podudara s visinom 
        "KLJUČNA PRAVILA" boxa kada su detalji zatvoreni. */
     min-height: 450px; 
-}
 }
