@@ -1268,3 +1268,96 @@ footer h4 {
        "KLJUČNA PRAVILA" boxa kada su detalji zatvoreni. */
     min-height: 450px; 
 }
+/* --- RESPONSIVNA NAVIGACIJA (HAMBURGER MENI) --- */
+
+/* Gumb za otvaranje menija - Vidljiv samo na mobitelu */
+.menu-toggle {
+    display: none; /* Sakrij ga na PC-u */
+    background: none;
+    border: none;
+    color: var(--color-text-light);
+    font-size: 24px;
+    cursor: pointer;
+    padding: 10px;
+    margin-left: auto; /* Gurni ga desno */
+    z-index: 1001; /* Iznad svega */
+}
+
+/* Pravila za MALE EKRANE (npr. širina manja od 900px) */
+@media (max-width: 900px) {
+    
+    header {
+        padding: 10px 20px;
+        justify-content: space-between;
+    }
+    
+    .header-left {
+        width: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: space-between; /* Logo lijevo, gumb desno */
+    }
+
+    /* Prikaz gumba za meni */
+    .menu-toggle {
+        display: block;
+    }
+
+    /* Navigacija se pretvara u padajući meni */
+    header nav {
+        position: absolute;
+        top: 60px; /* Ispod headera */
+        left: 0;
+        width: 100%;
+        background-color: var(--color-dark); /* Tamna pozadina */
+        display: flex;
+        flex-direction: column;
+        height: 0; /* Sakrij navigaciju po defaultu */
+        overflow: hidden;
+        transition: height 0.3s ease-in-out;
+        z-index: 1000;
+        border-top: 1px solid var(--color-medium);
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4);
+    }
+
+    /* Izgled linkova u padajućem meniju */
+    header nav a {
+        padding: 15px 25px;
+        border-bottom: 1px solid var(--color-medium);
+        text-align: left;
+        font-size: 18px;
+    }
+    
+    header nav a:hover {
+        background-color: var(--color-medium);
+    }
+
+    /* Stanje kada je meni OTVOREN (JavaScript dodaje klasu 'open') */
+    header nav.open {
+        height: 275px; /* Dovoljno visoko da prikaže 5 linkova (5 * 55px = 275px) */
+    }
+
+    /* Ostale prilagodbe za mobitel */
+    .hero-section h1 {
+        font-size: 48px;
+    }
+    
+    .hero-section h2 {
+        font-size: 20px;
+    }
+    
+    .info-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .cta-buttons {
+        flex-direction: column;
+    }
+    
+    .cta-buttons a {
+        margin: 10px 0;
+        width: 100%;
+        text-align: center;
+    }
+    
+} /* Kraj Media Query */
