@@ -1361,29 +1361,40 @@ footer h4 {
     }
     
 } /* Kraj Media Query */
+/* --- EKSTREMNA KOREKCIJA: Prisilno uklanjanje svih linija u navigaciji --- */
+
+/* Cilja sve linkove u navigaciji i osigurava da NEMA podvlačenja, border-a ili shadowa */
 header nav a {
-    text-decoration: none !important; /* Prisilno uklanja podvlačenje */
-    border-bottom: none !important; /* Prisilno uklanja border koji stvara liniju */
+    /* Uklanja podvlačenje i linije s najvećim prioritetom */
+    text-decoration: none !important;
+    border: none !important; /* Uklanja bilo kakav border koji stvara liniju */
     box-shadow: none !important; /* Uklanja eventualni shadow */
-    transition: color 0.3s; /* Uklonio sam text-decoration iz transition jer je fiksiran na none */
+    transition: color 0.3s;
 }
 
+/* Cilja navigaciju kada se skrolate do "INFO" sekcije */
+header nav {
+    /* Uklanja pravila koja utječu na cijeli blok linkova */
+    text-decoration: none !important;
+    border: none !important;
+    box-shadow: none !important;
+}
+
+/* Pravilo za hover i aktivni link */
 header nav a:hover,
 header nav a.active {
-    color: var(--color-accent-primary); /* Naglašena boja za aktivni/hover link */
+    color: var(--color-accent-primary); 
+    /* Ako ne želite nikakvu liniju, ostavite 'none' */
+    text-decoration: none !important; 
     
-    /* ODABERITE JEDNO: */
-    /* text-decoration: underline;  <-- AKO ŽELITE PODVLAČENJE */
-    text-decoration: none !important; /* <-- AKO NE ŽELITE NIKAKVU LINIJU */
+    /* Ako je linija border, osigurajte da je i active link čist */
+    border: none !important;
+    box-shadow: none !important;
 }
 
 /* Osiguraj da mobilna navigacija NEMA podvlačenja dok se ne klikne (vizualni red) */
 @media (max-width: 900px) {
     header nav a:hover {
         text-decoration: none !important;
-        background-color: transparent !important; /* Osiguraj da nema pozadine na hoveru */
     }
-}
-header nav a.active {
-    border-bottom: none !important;
 }
