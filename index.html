@@ -243,7 +243,6 @@
         // --- KOD ZA ANIMACIJE PRI SKROLANJU (SCROLL REVEAL) - POBOLJŠANJE ---
         const scrollRevealElements = document.querySelectorAll('.scroll-reveal');
         
-        // === POPRAVAK OVDJE: Smanjen 'offset' sa 150 na 100 ===
         const offset = 100; 
 
         function checkVisibility() {
@@ -274,35 +273,54 @@
         
         checkVisibility(); 
 
-// === KOD ZA AUTOMATSKO POSTAVLJANJE 'active' KLASE NA NAVIGACIJU ===
+    // === POTPUNI POPRAVAK ZA 'active' KLASU NA NAVIGACIJI ===
 
-const sections = document.querySelectorAll('section');
-const navLinks = document.querySelectorAll('header nav a');
+    const sections = document.querySelectorAll('section[id]'); // Dohvati sve sekcije koje imaju ID
+    const navLinks = document.querySelectorAll('header nav a');
+    const offsetMargin = 300; // Koliko piksela prije vrha sekcije da se link aktivira
 
-function updateActiveLink() {
-    let current = '';
+    function updateActiveLink() {
+        let currentSectionId = '';
+        
+        // Dodajemo offset na trenutnu poziciju skrolanja
+        const scrollPosition = window.pageYOffset + offsetMargin;
 
-    sections.forEach(section => {
-        // Provjeravamo je li gornji rub sekcije unutar 300px od vrha ekrana
-        const sectionTop = section.offsetTop;
-        if (pageYOffset >= sectionTop - 300) {
-            current = section.getAttribute('id');
+        // Prođi kroz sve sekcije i nađi zadnju koja je u viewportu
+        sections.forEach(section => {
+            // Provjeravamo je li vrh sekcije iznad naše skrol pozicije
+            if (scrollPosition >= section.offsetTop) {
+                currentSectionId = section.getAttribute('id');
+            }
+        });
+
+        // Sada prođi kroz sve linkove i primijeni 'active' klasu
+        navLinks.forEach(link => {
+            link.classList.remove('active');
+            
+            const linkHref = link.getAttribute('href'); // npr. "#info"
+            
+            // Provjeri da link uopće ima href i da počinje sa #
+            if (linkHref && linkHref.startsWith('#')) {
+                const linkId = linkHref.substring(1); // npr. "info"
+                
+                // Usporedi ID linka sa ID-om trenutne sekcije
+                if (linkId === currentSectionId) {
+                    link.classList.add('active');
+                }
+            }
+        });
+
+        // Ako je 'currentSectionId' prazan (npr. na samom vrhu stranice),
+        // nijedan link neće biti aktivan. Popravimo to.
+        const homeLink = document.querySelector('header nav a[href="#home"]');
+        if (!currentSectionId && homeLink) {
+             homeLink.classList.add('active');
         }
-    });
+    }
 
-    navLinks.forEach(link => {
-        link.classList.remove('active');
-        // ISPRAVKA #3: Provjeravamo odgovara li href linka trenutnom ID-u sekcije
-        // DODANA PROVJERA "current &&" da se izbjegne bug kad je current prazan string
-        if (current && link.href.includes(current)) {
-            link.classList.add('active');
-        }
-    });
-}
-
-// Pozivamo funkciju pri skrolanju i na učitavanju stranice
-window.addEventListener('scroll', updateActiveLink);
-window.addEventListener('load', updateActiveLink);
+    // Pozivamo funkciju pri skrolanju i na učitavanju stranice
+    window.addEventListener('scroll', updateActiveLink);
+    window.addEventListener('load', updateActiveLink);
     </script>
 </body>
 </html>
