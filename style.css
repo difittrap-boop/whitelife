@@ -931,8 +931,10 @@ footer h4 {
         padding: 10px 20px;
         position: static; 
     }
+    
+    /* ISPRAVKA #4: Komentiramo display:none da bi se navigacija vidjela */
     nav {
-        display: none; 
+        /* display: none; */ 
     }
     /* DODANO: Sakrij desktop gumb na mobitelu */
     .join-btn-desktop {
@@ -1117,18 +1119,23 @@ footer h4 {
     header {
         flex-direction: column;
         align-items: center;
-        /* Vertikalni 1px (uski), Horizontalni 20px (za pomak loga) */
-        padding: 1px 20px; 
+        /* ISPRAVKA #5: Povećan padding za mobitel */
+        padding: 10px 20px; 
     }
     
     /* KLJUČNO: OVO POSTAVLJA LOGO SKROZ LIJEVO (umjesto centralno) */
     header .header-left {
         width: 100%; 
         display: flex;
-        justify-content: flex-start; /* POSTAVLJA LOGO LIJEVO */
-        margin-bottom: 15px; 
+        justify-content: center; /* ISPRAVKA #6: Centriramo logo na mobitelu */
+        margin-bottom: 10px; /* ISPRAVKA #7: Smanjen razmak */
     }
     
+    /* NOVO: Uklanjamo marginu loga */
+    .logo {
+        margin-left: 0;
+    }
+
     /* NOVO: Manja visina loga za mobilni prikaz */
     .logo img {
         height: 60px; 
@@ -1137,10 +1144,24 @@ footer h4 {
     /* NAVIGACIJA NA MOBILNOM: Pretpostavka da je skrivena */
     header nav {
         margin-left: 0;
-        display: none; 
+        display: flex; /* ISPRAVKA #8: Prikazujemo navigaciju */
+        flex-wrap: wrap; /* NOVO: Omogućava prelamanje linkova */
+        justify-content: center; /* NOVO: Centrira linkove */
         width: 100%;
         text-align: center;
-        margin-bottom: -15px; 
+        margin-bottom: 0px; /* ISPRAVKA #9: Popravak margine */
+    }
+
+    /* NOVO: Stilovi za linkove na mobitelu */
+    header nav a {
+        margin: 5px 10px; /* Smanjujemo razmak */
+        font-size: 12px; /* Smanjujemo font */
+    }
+    header nav a i {
+        font-size: 13px; /* Smanjujemo ikone */
+    }
+    header nav a::after {
+        bottom: -3px; /* Dižemo podcrtu */
     }
     
     /* KRAJ LOGA I PORAVNANJA */
@@ -1267,4 +1288,5 @@ footer h4 {
     /* NOVO: Dodajemo minimalnu visinu da se box "O NAMA" podudara s visinom 
        "KLJUČNA PRAVILA" boxa kada su detalji zatvoreni. */
     min-height: 450px; 
+}
 }

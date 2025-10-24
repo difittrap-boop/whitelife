@@ -96,7 +96,7 @@
             </div>
             
             <div class="cta-buttons mt-40 scroll-reveal"> 
-                <a href="galerija" class="btn secondary-btn large-btn" id="gallery-cta">
+                <a href="galerija.html" class="btn secondary-btn large-btn" id="gallery-cta">
                     <i class="fas fa-car-side"></i> POGLEDAJ PUNU GALERIJU I CIJENE
                 </a>
             </div>
@@ -166,7 +166,7 @@
                 <a href="/">Početna</a>
                 <a href="#info">Pravila</a>
                 <a href="#trgovina">Donacije</a>
-                <a href="galerija">Vozila</a>
+                <a href="galerija.html">Vozila</a>
             </div>
             <div class="footer-social">
                 <h4>PRONAĐI NAS</h4>
@@ -213,7 +213,7 @@
                 sliderImage.alt = nextSlide.title;
                 sliderTitle.innerHTML = `${nextSlide.title}`;
                 // NAPOMENA: Ako unutar JS slidera dodate dugme s linkom, 
-                // taj link bi također trebao koristiti href="galerija"
+                // taj link bi također trebao koristiti href="galerija.html"
                 
                 // Fade-in efekt
                 sliderImage.style.opacity = 1;
@@ -292,8 +292,9 @@ function updateActiveLink() {
 
     navLinks.forEach(link => {
         link.classList.remove('active');
-        // Provjeravamo odgovara li href linka trenutnom ID-u sekcije
-        if (link.href.includes(current)) {
+        // ISPRAVKA #3: Provjeravamo odgovara li href linka trenutnom ID-u sekcije
+        // DODANA PROVJERA "current &&" da se izbjegne bug kad je current prazan string
+        if (current && link.href.includes(current)) {
             link.classList.add('active');
         }
     });
