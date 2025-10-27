@@ -8,7 +8,7 @@
 :root {
     --color-dark: #0A0A0A;           /* Ultra tamna pozadina */
     --color-medium: #141414;         /* Sekcija pozadina */
-    --color-accent-primary: #00BCD4; /* Primarni akcent (Plava) */
+    --color-accent-primary: #679afe; /* Primarni akcent (Plava) */
     --color-accent-secondary: #FFD700; /* Sekundarni akcent (Zlatna/Luxury) */
     --color-text-light: #F0F0F0;     /* Glavni tekst */
     --color-text-muted: #A0A0A0;     /* Muted tekst */
@@ -1522,3 +1522,20 @@ footer h4 {
     border-radius: 4px;
     transition: opacity 0.2s;
 }
+
+
+/* LIGHTBOX2 RJEŠENJE - Smanjuje veličinu otvorene slike */
+.lightbox .lb-image {
+    /* Podesite ovu maksimalnu širinu (npr. 600px) na željenu veličinu */
+    max-width: 1000px !important; 
+    
+    /* Osigurava da se proporcije zadrže */
+    width: auto !important; 
+    height: auto !important; 
+    
+    /* Centriranje u Lightbox prozoru */
+    display: block;
+    margin: 0 auto;
+}
+
+
