@@ -1634,4 +1634,356 @@ body.trgovina-page #footer .footer-info {
         
     z-index: 10;
 }
+/* ======================================================= */
+/* SEKCIJA: KAKO IGRATI? (#guide) */
+/* ======================================================= */
 
+.guide-steps-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); /* 4 stupca na većem ekranu */
+    gap: 30px;
+    margin-top: 50px;
+    text-align: center;
+}
+
+.guide-step {
+    background-color: var(--color-medium);
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    /* Animacija pri hoveru - kao u ostalim dijelovima */
+    transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+}
+
+.guide-step:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.4);
+}
+
+.guide-step h3 {
+    font-size: 1.5rem;
+    color: var(--color-accent-primary); /* Akcent boja */
+    margin-bottom: 15px;
+}
+
+.guide-step p {
+    color: var(--color-text-muted);
+}
+
+.icon-wrapper {
+    background-color: var(--color-dark); 
+    color: var(--color-accent-secondary); /* Zlatna/Luxury boja za ikone */
+    font-size: 2.5rem;
+    width: 70px;
+    height: 70px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0 auto 20px; /* Centriranje i odmak */
+    border: 2px solid var(--color-accent-secondary);
+}
+
+.guide-cta {
+    text-align: center;
+    margin-top: 50px;
+    padding: 20px;
+    background-color: rgba(103, 154, 254, 0.1); /* Svjetla pozadina od primarne akcent boje */
+    border: 1px solid var(--color-accent-primary);
+    border-radius: 8px;
+    color: var(--color-text-light);
+}
+
+.guide-cta a {
+    font-weight: 700;
+}
+
+/* Prilagodba za mobilne uređaje */
+@media (max-width: 768px) {
+    .guide-steps-grid {
+        grid-template-columns: 1fr; /* Samo jedan stupac na malim ekranima */
+    }
+}
+#guide {
+    background-color: #0A0A0A; 
+}
+/* ======================================================= */
+/* HEADER - DODAVANJE LOGIN GUMBA DESNO */
+/* ======================================================= */
+
+header {
+    /* Osigurava da je logo lijevo, a login desno */
+    display: flex;
+    justify-content: space-between; 
+    align-items: center;
+    /* Ako tvoj header već koristi display: flex, provjeri da li je space-between postavljen */
+}
+
+/* Primjer: Stil za gumb unutar header-right */
+.header-right .btn {
+    padding: 4px 8px; 
+    font-size: 0.9rem;
+}
+
+.header-right .btn i {
+    font-size: 0.9rem;
+    margin-right: 8px; 
+}
+
+
+/* ======================================================= */
+/* MANJI BUTTON ZA HEADER (SMANJENI PADDING) */
+/* ======================================================= */
+
+.small-btn {
+    /* KLJUČNO: Omogućuje slaganje elemenata u jednom redu */
+    display: flex !important; 
+    flex-direction: row !important; 
+    align-items: center !important; /* Centriranje po visini */
+
+    /* Smanjen padding, posebno horizontalni */
+    padding: 8px 15px !important; 
+    
+    /* Smanjena veličina fonta */
+    font-size: 0.9rem !important; 
+}
+
+/* Osiguraj da ikona unutar malog gumba odgovara veličini i da ima razmak */
+.small-btn i {
+    font-size: 0.9rem !important;
+    /* Podesi marginu da se odmakne od teksta */
+    margin-right: 8px !important; 
+    margin-bottom: 0 !important; /* Ukloni marginu s dna, ako je ostala od column stila */
+}
+/* ======================================================= */
+/* MODALNI PROZOR (POP-UP) - GLASSMORHPISM / FROSTED GLASS */
+/* ======================================================= */
+
+/* Pozadina (Overlay) */
+.modal-overlay {
+    /* KLJUČNO: Modal mora biti fiksiran da bi bio na sredini ekrana */
+    position: fixed; 
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    
+    backdrop-filter: blur(15px); 
+    background: rgba(0, 0, 0, 0.7); 
+    
+    /* SKRIVENO DOK NIJE AKTIVNO: Uvijek koristimo flex, ali ga gasimo opacityjem/pointer-events */
+    display: flex; 
+    justify-content: center;
+    align-items: center;
+    z-index: 10000;
+    
+    pointer-events: none; /* Ne dozvoljava klikanje ispod */
+    opacity: 0;
+    /* Dodana visible tranzicija da izbjegnemo skok */
+    visibility: hidden; 
+    transition: opacity 0.4s ease, visibility 0s 0.4s;
+}
+
+/* Stanje kada je modal AKTIVAN (pomoću JavaScripta) */
+.modal-overlay.modal-active {
+    pointer-events: auto; /* Dozvoli klikanje */
+    opacity: 1;
+    visibility: visible;
+    transition-delay: 0s; /* Prikazuj odmah */
+}
+
+/* Sadržaj modala (GLASS BOX) */
+.modal-content {
+    background: rgba(255, 255, 255, 0.05); 
+    backdrop-filter: blur(20px); 
+    
+    padding: 40px; 
+    border-radius: 15px; 
+    width: 90%;
+    max-width: 420px; 
+    text-align: center;
+    position: relative;
+    
+    border: 1px solid rgba(255, 255, 255, 0.2); 
+    box-shadow: 
+        0 4px 30px rgba(0, 0, 0, 0.5), 
+        0 0 40px rgba(255, 215, 0, 0.1); 
+    
+    /* Animacija (Dolazi s blagom 3D rotacijom) */
+    transform: perspective(1000px) rotateX(-5deg);
+    transition: all 0.5s cubic-bezier(0.17, 0.84, 0.44, 1);
+}
+
+/* Animacija modala kada je aktivan */
+.modal-overlay.modal-active .modal-content {
+    transform: perspective(1000px) rotateX(0deg);
+}
+
+/* Gumb za zatvaranje (X) - OSTATAK CSS-a OSTAJE ISTI */
+.close-modal {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    font-size: 1.5rem; 
+    color: var(--color-text-light); 
+    text-shadow: 0 0 5px rgba(255, 255, 255, 0.5);
+    transition: color 0.2s, transform 0.2s;
+}
+
+.close-modal:hover {
+    color: var(--color-accent-secondary);
+    transform: scale(1.1);
+}
+
+/* Tipografija */
+.modal-content h3 {
+    color: var(--color-accent-secondary); 
+    margin-bottom: 5px;
+    font-size: 1.9rem;
+    font-weight: 800;
+}
+
+.modal-content p:first-of-type {
+    color: var(--color-text-light);
+    margin-bottom: 35px; 
+    font-size: 1rem;
+}
+
+/* Opcije za prijavu (Kontejner za gumbe) */
+.login-options {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+/* Stil za GUMBE */
+.login-options .btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 18px 20px;
+    border-radius: 10px; 
+    font-size: 1.1rem;
+    font-weight: 700; 
+    text-decoration: none;
+    background: transparent;
+    color: var(--color-text-light);
+    border: 2px solid; 
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.3);
+    transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+}
+
+.login-options .btn:hover {
+    transform: translateY(-3px);
+    background: var(--color-dark); 
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.5);
+}
+
+.login-options .btn i {
+    margin-right: 15px;
+    font-size: 1.5rem;
+    color: inherit; 
+}
+
+/* FiveM Gumb */
+.login-fivem {
+    border-color: var(--color-accent-primary); 
+}
+.login-fivem:hover {
+    box-shadow: 0 8px 30px rgba(103, 154, 254, 0.4);
+}
+
+/* Discord Gumb */
+.login-discord {
+    border-color: #5865F2; 
+}
+.login-discord:hover {
+    box-shadow: 0 8px 30px rgba(88, 101, 242, 0.4);
+}
+
+/* Info Tekst ispod gumba */
+.modal-content p:last-of-type {
+    margin-top: 35px;
+    font-size: 0.85rem;
+    color: var(--color-text-muted);
+}
+
+/* ======================================================= */
+/* FIX ZA PREKLAPANJE: STIL ZA DVA STUPCA (GRID) */
+/* ======================================================= */
+
+.login-grid {
+    display: grid;
+    /* Postavi 2 stupca jednake širine */
+    grid-template-columns: 1fr 1fr; 
+    gap: 15px; /* Razmak između gumba */
+    margin-top: 25px; /* Dodatni razmak iznad gumba */
+}
+
+/* Stil za GUMBE unutar GRID-a (nasljeđuju stilove od .btn) */
+.login-grid .btn {
+    /* Uklanjamo sve što bi smetalo u gridu */
+    width: auto; 
+    padding: 15px 10px; /* Manji padding da se gumbi ne preklapaju */
+    font-size: 1rem;
+    flex-direction: column; /* Stavi tekst ispod ikone (izgleda bolje u 2 stupca) */
+    text-align: center;
+    height: 100%; /* Ista visina za oba gumba */
+}
+
+.login-grid .btn i {
+    /* Centriraj ikonu iznad teksta */
+    margin-right: 0; 
+    margin-bottom: 5px; 
+    font-size: 1.6rem;
+}
+
+/* Odzivnost (Za male mobitele, neka se vrate u jedan stupac) */
+@media (max-width: 500px) {
+    .login-grid {
+        grid-template-columns: 1fr;
+    }
+    .login-grid .btn {
+        flex-direction: row;
+        text-align: left;
+        padding: 18px 20px;
+        font-size: 1.1rem;
+    }
+    .login-grid .btn i {
+        margin-right: 15px;
+        margin-bottom: 0;
+    }
+}
+/* ======================================================= */
+/* STIL ZA LOGOTIP U MODALNOM PROZORU */
+/* ======================================================= */
+
+.modal-content .modal-logo {
+    /* Ograniči širinu loga */
+    max-width: 140px; /* SMANJENO */
+    height: auto;
+    /* Podesi marginu ispod loga */
+    margin-bottom: 25px; 
+    margin-top: 0;
+    
+    /* Dodaj blagi sjaj (opcionalno) */
+    filter: drop-shadow(0 0 5px rgba(255, 215, 0, 0.2));
+}
+/* ======================================================= */
+/* EFEKT ZAMAGLJIVANJA (BLUR) I ZAKLJUČAVANJE SKROLANJA */
+/* ======================================================= */
+
+/* Klasa koja se dodaje na <body> tag kada je modal otvoren */
+body.modal-open-blur {
+    /* KLJUČNO ZA ZAKLJUČAVANJE: Onemogući skrolanje cijele stranice */
+    overflow: hidden !important; 
+    
+    /* Jačina blur efekta (koristimo 10px kako si tražio) */
+    filter: blur(10px); 
+    
+    /* Osiguraj da animacija izgleda glatko */
+    transition: filter 0.4s ease-in-out;
+    
+    /* Spriječi lagano pomicanje ekrana koje se ponekad događa kod blura */
+    transform: scale(1.005); 
+}

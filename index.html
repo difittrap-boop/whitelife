@@ -48,6 +48,9 @@
                 <a href="#staff"><i class="fas fa-users"></i> STAFF</a>
             </nav>
         </div>
+
+</a>
+    </div>
 </header>
     <section id="home" class="hero-section" style="background: url('hero_background.jpg') no-repeat center center/cover;">
         <div class="container hero-content">
@@ -68,6 +71,52 @@
 
         </div>
     </section>
+
+<section class="section-padding" id="guide">
+    <div class="container">
+        <h2 class="section-title scroll-reveal">Kako igrati na serveru?</h2>
+        <p class="section-subtitle scroll-reveal delay-1">Prati ove jednostavne korake i pridruži se zajednici!</p>
+
+        <div class="guide-steps-grid">
+            
+            <div class="guide-step scroll-reveal">
+                <div class="icon-wrapper"><i class="fas fa-download"></i></div>
+                <h3>1. Instalacija</h3>
+                <p>Provjeri da imaš legalnu kopiju GTA V igre. Zatim, instaliraj <a href="https://fivem.net/" target="_blank">FiveM klijent</a> i pokreni ga barem jednom.</p>
+            </div>
+            
+            <div class="guide-step scroll-reveal delay-1">
+                <div class="icon-wrapper"><i class="fab fa-discord"></i></div>
+                <h3>2. Pridruži se Discordu</h3>
+                <p>Obavezno se pridruži našem <a href="https://discord.gg/7J3KZvF9rP" target="_blank">Discord</a> serveru! Ovdje dobivaš sve obavijesti, podršku i pravila.</p>
+            </div>
+            
+<div class="guide-step scroll-reveal delay-2">
+    <div class="icon-wrapper"><i class="fas fa-gamepad"></i></div>
+    <h3>3. Poveži se</h3>
+    <p>
+        Otvori FiveM, stisni F8 (ili Connect) i upiši: <code style="color: var(--color-accent-secondary);">connect whitelife.info</code>
+        <br>
+        Ili, klikni 
+        <a href="fivem://connect/whitelife.info" target="_blank" style="font-weight: 700;">
+            ovdje
+        </a> 
+        za automatski ulazak na server.
+    </p>
+</div>
+            
+            <div class="guide-step scroll-reveal delay-3">
+                <div class="icon-wrapper"><i class="fas fa-user-friends"></i></div>
+                <h3>4. Uživaj!</h3>
+                <p>Nakon što uđeš u igru, slijedi upute. Zabavi se i poštuj pravila RolePlay-a!</p>
+            </div>
+        </div>
+        
+        <div class="guide-cta scroll-reveal">
+            <p>Imaš problem? Posjeti naš <a href="https://discord.gg/7J3KZvF9rP">DISCORD</a> i zatraži pomoć.</p>
+        </div>
+    </div>
+</section>
 
     <section id="auto" class="content-section dark-bg">
         <div class="container">
@@ -146,6 +195,29 @@
         </div>
     </section>
 
+<div id="login-modal" class="modal-overlay">
+    <div class="modal-content">
+<a href="#" onclick="closeModal(event)" class="close-modal">&times;</a>
+    <img src="logo.png" alt="White Life RP Logo" class="modal-logo"> 
+    <p>Odaberite način za prijavu na server:</p>
+        
+        <div class="login-grid">
+            <a href="#" class="btn login-fivem large-btn">
+                <i class="fas fa-gamepad"></i> FiveM
+            </a>
+            
+            <a href="#" class="btn login-discord large-btn">
+                <i class="fab fa-discord"></i> Discord
+            </a>
+        </div>
+        
+        <p class="small-text mt-20" style="color: var(--color-text-light);">
+            Prijava je potrebna za pristup svim funkcionalnostima.
+        </p>
+    </div>  
+
+</div>
+
     <footer>
         <div class="container scroll-reveal">
             <div class="footer-info">
@@ -172,6 +244,8 @@
     </footer>
 
     <script>
+
+
         // --- KOD ZA AUTOMATSKI SLIDER (NETAKNUT) ---
 
         const slides = [
@@ -209,42 +283,36 @@
             setInterval(updateSlide, 5000); 
         }
         
-        // --- JAVASCRIPT ZA SMOOTH SCROLL (MODIFICIRAN - FiveM protokol se ignoriše) ---
-        document.querySelectorAll('a[href^="#"], a[href="/"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                const targetHref = this.getAttribute('href');
-                
-                // Ignoriramo fivem://connect link da ga preglednik sam hendla
-                if (targetHref && targetHref.startsWith('fivem://')) return; 
 
-                // Izbjegavamo smooth scroll ako link otvara novu stranicu u novom tabu (za eksterne linkove)
-                if (this.target === '_blank') return;
+// --- NOVE FUNKCIJE ZA OTVARANJE I ZATVARANJE MODALA (Zaobilazi smooth scroll) ---
 
+const loginModal = document.getElementById('login-modal');
 
-                if (targetHref === '#home' || targetHref === '/') {
-                    e.preventDefault();
-                    const homeElement = document.querySelector('#home');
-                    if(homeElement) {
-                        homeElement.scrollIntoView({
-                            behavior: 'smooth',
-                            block: 'start'
-                        });
-                    } else {
-                         window.scrollTo({ top: 0, behavior: 'smooth' });
-                    }
+function openModal(event) {
+    // Sprječava da href="#" skrola na vrh
+    event.preventDefault(); 
+    
+    // Dodaje klasu za otvaranje (Ovo koristi CSS modal-overlay.modal-active)
+    if(loginModal) loginModal.classList.add('modal-active');
+}
 
-                } else if (targetHref && targetHref.startsWith('#')) {
-                    e.preventDefault();
-                    const targetElement = document.querySelector(targetHref);
-                    if (targetElement) {
-                        targetElement.scrollIntoView({
-                            behavior: 'smooth',
-                            block: 'start'
-                        });
-                    }
-                }
-            });
-        });
+function closeModal(event) {
+    // Sprječava da href="#" skrola na vrh
+    event.preventDefault(); 
+    
+    // Uklanja klasu za zatvaranje
+    if(loginModal) loginModal.classList.remove('modal-active');
+}
+
+// Zatvaranje na klik izvan modala (na overlay)
+if(loginModal) {
+    loginModal.addEventListener('click', function(e) {
+        // Provjerava je li kliknut sam overlay, a ne modal-content
+        if (e.target === loginModal) {
+            loginModal.classList.remove('modal-active');
+        }
+    });
+}
 
 
         // --- KOD ZA ANIMACIJE PRI SKROLANJU (SCROLL REVEAL) - MODIFICIRAN ZA CTA GUMBE ---
@@ -298,11 +366,20 @@
         
         const scrollPosition = window.pageYOffset + offsetMargin;
 
-        sections.forEach(section => {
-            if (scrollPosition >= section.offsetTop) {
-                currentSectionId = section.getAttribute('id');
-            }
-        });
+sections.forEach(section => {
+        const sectionId = section.getAttribute('id');
+        
+        // NOVO: IGNORIRAJ SEKCIJU 'guide' i zadrži prethodno aktivnu sekciju
+        if (sectionId === 'guide') {
+            // Ako je trenutna sekcija 'guide', nemoj ažurirati 'currentSectionId', 
+            // nego ostavi ID prethodne sekcije (npr. 'staff').
+            return; 
+        }
+
+        if (scrollPosition >= section.offsetTop) {
+            currentSectionId = sectionId;
+        }
+    });
 
         navLinks.forEach(link => {
             link.classList.remove('active');
@@ -326,6 +403,7 @@
 
     window.addEventListener('scroll', updateActiveLink);
     window.addEventListener('load', updateActiveLink);
+
     </script>
 </body>
 </html>
