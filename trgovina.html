@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html lang="hr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>White Life RP | Trgovina</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700;800&family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+    <link rel="icon" type="image/x-icon" href="favicon.ico">
+    <style>
+        /* CSS specifičan za ovu stranicu */
+        #trgovina-hero {
+            padding-top: 120px;
+            padding-bottom: 40px; /* Smanjeno padding dno */
+            background: var(--color-dark); /* <-- SADA CRNA (#0A0A0A) */
+            text-align: center;
+        }
+
+        /* Glavni kontejner za kartice - Galery Grid stil */
+        .trgovina-grid {
+            display: grid;
+            /* Održavamo manje kartice */
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); 
+            gap: 30px; 
+            margin-top: 40px; 
+        }
+        
+        /* KARTICA PROIZVODA - GLAVNI REDIZAJN (MANJI) */
+        .product-card {
+            background-color: var(--color-medium);
+            border: 2px solid rgba(255, 255, 255, 0.05);
+            border-radius: 12px;
+            overflow: hidden;
+            text-align: center;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            display: flex;
+            flex-direction: column;
+            min-height: 480px; /* Održavamo manju visinu */
+        }
+
+        .product-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.4);
+            border-color: var(--color-accent-primary);
+        }
+
+        /* Slika u kartici */
+        .product-card .card-header img {
+            width: 100%;
+            height: 180px;
+            object-fit: cover;
+            border-bottom: 2px solid var(--color-dark);
+        }
+        
+        /* Sadržaj ispod slike */
+        .product-card .card-content {
+            padding: 20px;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+            align-items: stretch;
+        }
+
+        .product-card h3 {
+            font-size: 22px;
+            margin-bottom: 8px;
+            color: var(--color-text-light);
+            text-transform: uppercase;
+        }
+        
+        /* Lista pogodnosti */
+        .product-features {
+            list-style: none;
+            padding: 0;
+            margin: 15px 0 20px 0;
+            text-align: left;
+            flex-grow: 1;
+        }
+        
+        .product-features li {
+            font-size: 14px;
+            color: var(--color-text-muted);
+            margin-bottom: 7px;
+            display: flex;
+            align-items: center;
+        }
+        
+        .product-features li i {
+            color: var(--color-accent-secondary);
+            margin-right: 8px;
+            font-size: 16px;
+        }
+
+        /* Cijena stil */
+        .price-container {
+            margin-top: 10px; 
+            margin-bottom: 15px;
+            display: flex;
+            justify-content: center;
+            align-items: flex-end;
+            gap: 5px;
+        }
+        
+        .product-card .price {
+            font-size: 32px;
+            font-family: var(--font-secondary);
+            font-weight: 800;
+            color: var(--color-accent-primary);
+        }
+        
+        .product-card .price-suffix {
+            font-size: 12px;
+            color: var(--color-text-muted);
+            padding-bottom: 5px;
+        }
+
+        /* Gumb za kupovinu */
+        .product-card .buy-btn {
+            width: 100%;
+            padding: 15px 0;
+            border-radius: 0 0 12px 12px;
+            border-top: none;
+            background-color: var(--color-accent-primary);
+            color: var(--color-dark);
+            transition: background-color 0.2s, color 0.2s;
+            font-size: 16px;
+            font-weight: 800;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-transform: uppercase;
+        }
+        
+        .product-card .buy-btn:hover {
+             background-color: var(--color-accent-secondary);
+             color: var(--color-dark);
+        }
+        
+        /* OGRANIČENJE SEKCIJE ZA PRIKAZ SVEGA NA JEDNOM EKRANU */
+        .content-section.dark-bg {
+            padding-top: 20px;
+            padding-bottom: 40px; 
+        }
+        
+        /* Osiguravamo da scroll-reveal klase rade (stilovi su u style.css) */
+        .scroll-reveal {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+        }
+
+        .scroll-reveal.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    </style>
+</head>
+<body class="trgovina-page">
+    
+    <header>
+        <div class="header-left">
+            <a href="index.html" class="logo"><img src="logo.png" alt="White Life RP Logo"></a>
+            <nav>
+                <a href="index.html#home"><i class="fas fa-home"></i> POČETNA</a>
+                <a href="index.html#auto"><i class="fas fa-car"></i> CUSTOM AUTO</a>
+                <a href="trgovina.html" class="active"><i class="fas fa-store"></i> TRGOVINA</a>
+                <a href="index.html#staff"><i class="fas fa-users"></i> STAFF</a>
+            </nav>
+        </div>
+    </header>
+
+
+
+
+<div class="gallery-header">
+    <div class="container">
+        <h1>PREMIUM TRGOVINA</h1>
+        <p>Ekskluzivni predmeti, VIP statusi i kozmetički dodaci.</p>
+    </div>
+</div>
+
+
+    <section class="content-section dark-bg">
+        <div class="container">
+            
+            <div class="trgovina-grid">
+                
+                <div class="product-card scroll-reveal delay-2">
+                    <div class="card-header">
+                        
+                    </div>
+                    <div class="card-content">
+                        <h3>VIP Status</h3>
+                        <ul class="product-features">
+                            <li><i class="fas fa-check-circle"></i> Prioritetni ulazak na server</li>
+                            <li><i class="fas fa-check-circle"></i> Ekskluzivna Discord uloga</li>
+                            <li><i class="fas fa-check-circle"></i> Dodatni slotovi za karaktere</li>
+                            <li><i class="fas fa-check-circle"></i> Mogućnost 3 Custom Registarske Tablice</li>
+                            <li><i class="fas fa-check-circle"></i> 50.000$ Početnog Novca</li>
+                        </ul>
+                        <div class="price-container">
+                            <span class="price">20€</span>
+                            <span class="price-suffix">/ mjesečno</span>
+                        </div>
+                    </div>
+                    <a href="#" class="btn buy-btn">
+                        <i class="fas fa-shopping-cart"></i> KUPI
+                    </a>
+                </div>
+
+                <div class="product-card scroll-reveal delay-3">
+                    <div class="card-header">
+
+                    </div>
+                    <div class="card-content">
+                        <h3>Premium Odjeća Paket</h3>
+                        <ul class="product-features">
+                            <li><i class="fas fa-check-circle"></i> Trajni pristup Premium Odjeći</li>
+                            <li><i class="fas fa-check-circle"></i> Ekskluzivni kompleti (2 Muška / 2 Ženska)</li>
+                            <li><i class="fas fa-check-circle"></i> 5 Premium maski za lice</li>
+                            <li><i class="fas fa-check-circle"></i> Nema P2W prednosti, samo estetika</li>
+                            <li><i class="fas fa-check-circle"></i> Besplatna ponovna isporuka</li>
+                        </ul>
+                        <div class="price-container">
+                            <span class="price">15€</span>
+                            <span class="price-suffix">/ jednokratno</span>
+                        </div>
+                    </div>
+                     <a href="#" class="btn buy-btn">
+                        <i class="fas fa-shopping-cart"></i> KUPI
+                    </a>
+                </div>
+
+                <div class="product-card scroll-reveal delay-4">
+                    <div class="card-header">
+
+                    </div>
+                    <div class="card-content">
+                        <h3>Personalizirana Tablica</h3>
+                        <ul class="product-features">
+                            <li><i class="fas fa-check-circle"></i> Jedna custom tablica po želji (do 8 znakova)</li>
+                            <li><i class="fas fa-check-circle"></i> Tablica je vezana za jedno vozilo</li>
+                            <li><i class="fas fa-check-circle"></i> Mogućnost odabira boje teksta</li>
+                            <li><i class="fas fa-check-circle"></i> Brza implementacija u igru</li>
+                            <li><i class="fas fa-check-circle"></i> Dozvoljeno samo jednom kupcu po natpisu</li>
+                        </ul>
+                        <div class="price-container">
+                            <span class="price">10€</span>
+                            <span class="price-suffix">/ po tablici</span>
+                        </div>
+                    </div>
+                     <a href="#" class="btn buy-btn">
+                        <i class="fas fa-shopping-cart"></i> KUPI
+                    </a>
+                </div>
+                
+            </div>
+           
+
+        </div>
+    </section>
+
+
+    <footer>
+        <div class="container scroll-reveal">
+            <div class="footer-info">
+                <h4>WHITE LIFE RP</h4>
+                <p>Premium Roleplay iskustvo na Balkanu. Kreiraj svoju priču s nama. Pridruži se zajednici danas!</p>
+                <p class="small-text mt-20">IP ADRESA: <span class="ip-address">whitelife.info</span></p>
+                <span class="small-text">Platforma: FiveM / GTA V | &copy; 2025 White Life Roleplay</span>
+            </div>
+            <div class="footer-links">
+                <h4>BRZI LINKOVI</h4>
+                <a href="index.html">Početna</a>
+                <a href="galerija.html">Vozila</a>
+                <a href="trgovina.html">Trgovina</a>
+            </div>
+            <div class="footer-social">
+                <h4>PRONAĐI NAS</h4>
+                <a href="https://discord.gg/2GfEJR3tgM" target="_blank" rel="noopener noreferrer"><i class="fab fa-discord"></i> Discord Server</a>
+                <a href="#" target="_blank" rel="noopener noreferrer"><i class="fab fa-instagram"></i> Instagram (@WhiteLifeRP)</a>
+                <a href="#" target="_blank" rel="noopener noreferrer"><i class="fab fa-youtube"></i> YouTube Kanal</a>
+            </div>
+            <div class="copyright">
+                <p>Dizajn i razvoj od strane tima White Life RP. Sva prava pridržana.</p>
+            </div>
+        </div>
+    </footer>
+
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.3/js/lightbox-plus-jquery.min.js"></script>    
+
+
+    <script>
+        // --- VRAĆEN JAVASCRIPT KOD ZA SCROLL-REVEAL ---
+
+        // Poveznice unutar navigacije koje vode natrag na index.html sekcije
+        document.querySelectorAll('a[href^="index.html#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                // Ako kliknemo link natrag na index.html, pustimo ga da se učita normalno
+            });
+        });
+
+
+        // --- KOD ZA ANIMACIJE PRI SKROLANJU (SCROLL REVEAL) ---
+        const scrollRevealElements = document.querySelectorAll('.scroll-reveal');
+        const offset = 100; 
+
+        function checkVisibility() {
+            const viewportHeight = window.innerHeight;
+
+            scrollRevealElements.forEach(element => {
+                const elementTop = element.getBoundingClientRect().top;
+                const elementBottom = element.getBoundingClientRect().bottom;
+
+                const isEnteringViewport = elementTop < viewportHeight - offset; 
+                const isOffScreen = elementBottom < 0 || elementTop >= viewportHeight; 
+
+                if (isEnteringViewport) {
+                    element.classList.add('visible');
+                } 
+                
+                if (isOffScreen) {
+                    element.classList.remove('visible');
+                }
+            });
+        }
+        
+        window.addEventListener('load', checkVisibility); 
+        window.addEventListener('scroll', checkVisibility); 
+        checkVisibility(); 
+    </script>
+</body>
+</html>

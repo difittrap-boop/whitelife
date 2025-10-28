@@ -791,10 +791,9 @@ footer h4 {
 /* ************************************** */
 
 .gallery-header {
-    background-color: var(--color-medium);
+    background: transparent;
     padding: 80px 0 40px;
     text-align: center;
-    border-bottom: 3px solid var(--color-accent-primary);
 }
 
 .gallery-header h1 {
@@ -810,11 +809,28 @@ footer h4 {
     color: var(--color-text-muted);
 }
 
+/* Galerija vozila */
 .gallery-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); 
-    gap: 40px;
-    padding: 1px 0;
+    /* KLJUČNA PROMJENA: Ograničavamo na 3 kolone */
+    grid-template-columns: repeat(3, 1fr); 
+    gap: 30px;
+    margin-top: 50px;
+    margin-bottom: 50px;
+}
+
+/* MEDIJSKI UPIT: za tablete (manje od 1024px) bit će 2 kolone */
+@media (max-width: 1024px) {
+    .gallery-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+/* MEDIJSKI UPIT: za mobitele (manje od 768px) bit će 1 kolona */
+@media (max-width: 768px) {
+    .gallery-grid {
+        grid-template-columns: 1fr;
+    }
 }
 
 .gallery-item {
@@ -927,20 +943,7 @@ footer h4 {
 /* ************************************** */
 /* NOVO: STIL ZA PODNASLOV GALERIJE */
 /* ************************************** */
-.gallery-subtitle {
-    font-family: var(--font-secondary); /* Koristimo font za naslove */
-    font-size: 30px; 
-    font-weight: 700;
-    color: var(--color-text-light); 
-    text-align: center;
-    text-transform: uppercase;
-    letter-spacing: 2px;
-    margin-top: 30px;  /* Razmak od boxova iznad */
-    margin-bottom: 5px; /* Razmak do liste automobila ispod */
-    padding-bottom: 1px;
-    position: relative;
-    display: block;
-}
+
 
 /* Dekorativna linija ispod naslova */
 .gallery-subtitle::after {
@@ -1537,5 +1540,98 @@ footer h4 {
     display: block;
     margin: 0 auto;
 }
+.gallery-subtitle {
+    height: 0 !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    visibility: hidden !important; 
+}
+/* Pravilo koje boji veliku sekciju u sivo, vjerojatno nešto poput ovoga */
+#trgovina {
+    background-color: var(--color-dark); /* <-- PROMIJENITE OVO */
+    padding: 80px 0;
+}
 
+/* ILI */
+
+section {
+    background-color: var(--color-medium); /* <-- PROMIJENITE OVO */
+    padding: 80px 0;
+}
+/* Prisiljavanje crne pozadine za cijeli sadržaj trgovine */
+#glavni-sadrzaj-trgovine {
+    background-color: var(--color-dark) !important;
+}
+/* ======================================================= */
+/* FINALNI I KOMPLETNI CSS FIX ZA TRGOVINA.HTML */
+/* ======================================================= */
+
+/* 1. CILJA GLAVNI SADRŽAJ (SAD JE MANJE AGRESIVAN) */
+/* Cilja SVE glavne DIV elemente koji drže sadržaj (sekcije, containere, itd.) */
+.trgovina-page section, 
+.trgovina-page main, 
+.trgovina-page > div:not(#footer) {
+    background-color: var(--color-dark) !important;
+}
+
+/* 2. CILJA FOOTER - OVOM MORA POBIJEDITI */
+/* Koristimo sve moguće selektore da osiguramo da je crno */
+body.trgovina-page #footer,
+body.trgovina-page #footer .footer-bottom,
+body.trgovina-page #footer .footer-info {
+    background-color: var(--color-dark) !important; 
+}
+
+/* PRILAGODBA POZICIJE SADRŽAJA NA POČETNOJ STRANICI */
+#home .hero-content {
+    /* Povlači sadržaj (Logo i Tekst) 100 piksela prema gore.
+       Podesi ovu vrijednost (-100px) ako želiš da ide više ili manje. */
+    margin-top: -100px; 
+}
+
+/* OPASNOST: Ako je #home sekcija postavljena na visinu cijelog ekrana (100vh)
+   i sadržaj je centriran, možda ćeš morati smanjiti padding/min-height na #home. 
+   Ako gornje ne radi, probaj dodati i ovo: */
+#home {
+    /* Ako #home koristi veliki padding na vrhu, smanji ga */
+    padding-top: 50px !important; 
+    /* Ako je postavljen na 100% visine ekrana, promijeni način centriranja */
+    justify-content: flex-start;
+}
+/* ======================================================= */
+/* NOVA GLATKA ANIMACIJA ZA KARTICE TRGOVINE (KAO U GALERIJI) */
+/* ======================================================= */
+
+/* Primijeni na element koji predstavlja cijelu karticu/stavku unutar Trgovine */
+.trgovina-grid > div {
+    /* KLJUČNO ZA GLATKOĆU: Duža tranzicija (0.4s) s elegantnom funkcijom (ease-in-out) */
+    transition: transform 0.4s ease-in-out, box-shadow 0.4s ease-in-out; 
+    
+    position: relative; 
+    z-index: 1; 
+    cursor: pointer; 
+    
+    /* FORSIRANJE GLATKOĆE: Forsira hardversko ubrzanje (GPU) */
+    transform: translateZ(0); 
+    will-change: transform;
+}
+
+/* Stanje kada je miš iznad elementa (hover) */
+.trgovina-grid > div:hover {
+    /* PROMJENA: Manje agresivna, ali glatka animacija (kao u galeriji) */
+    transform: translateY(-8px) scale(1.01); 
+    
+    /* Sjaj (Glow) baziran na Zlatnoj boji (--color-accent-secondary) */
+    box-shadow: 
+        /* Zlatni sjaj (Glow) */
+        0 0 20px rgba(255, 215, 0, 0.4), /* Zlatni sjaj iz galerije */
+        
+        /* Srednja sjena (Podizanje) */
+        0 15px 40px rgba(0, 0, 0, 0.6), 
+        
+        /* Donja sjena */
+        0 5px 15px rgba(0, 0, 0, 0.4);
+        
+    z-index: 10;
+}
 
