@@ -20,14 +20,14 @@
             </a>
         </div>
 
-        <nav class="wl-nav">
-            <a href="#home">Početna</a>
-            <a href="#about">O serveru</a>
-            <a href="#features">Organizacije</a>
-            <a href="#autos">Custom vozila</a>
-            <a href="#shop">Shop</a>
-            <a href="#join">Kako ući</a>
-        </nav>
+<nav class="wl-nav">
+    <a href="#home">Početna</a>
+    <a href="#about">O serveru</a>
+    <a href="#features">Organizacije</a>
+    <a href="#join">Kako ući</a>
+    <a href="#shop" class="open-shop-link">Shop</a>
+</nav>
+
 
         <div class="header-right">
             <a href="https://discord.gg/xevuC87RK6" target="_blank" class="btn btn-outline">
@@ -40,18 +40,17 @@
         </div>
     </div>
 
-    <div class="mobile-nav">
-        <a href="#home">Početna</a>
-        <a href="#about">O serveru</a>
-        <a href="#features">Organizacije</a>
-        <a href="#autos">Custom vozila</a>
-        <a href="#shop">Shop</a>
-        <a href="#join">Kako ući</a>
-        <a href="https://discord.gg/xevuC87RK6" target="_blank" class="mobile-discord-link">
-            Discord zajednica
-            <i class="fa-brands fa-discord"></i>
-        </a>
-    </div>
+<div class="mobile-nav">
+    <a href="#home">Početna</a>
+    <a href="#about">O serveru</a>
+    <a href="#features">Organizacije</a>
+    <a href="#join">Kako ući</a>
+    <a href="#shop" class="open-shop-link">Shop</a>
+    <a href="https://discord.gg/xevuC87RK6" target="_blank" class="mobile-discord-link">
+        Discord zajednica
+        <i class="fa-brands fa-discord"></i>
+    </a>
+</div>
 </header>
 
 
@@ -66,7 +65,7 @@
                 <span class="dot"></span>
                 FiveM Balkan • White Life RolePlay
             </div>
-            <h1>NapravI Svoju Priču Na <span>White Life</span> RolePlay</h1>
+            <h1>Napravi Svoju Priču Na <span>White Life</span> RolePlay</h1>
             <p class="hero-text">
                 White Life je komercijalni FiveM RolePlay server s fokusom na organizacije, ulice, LSPD, bijegove, pljačke i jaku zajednicu.
                 Sve je stilizirano, optimizirano i spremno za streamanje.
@@ -233,14 +232,14 @@
                 </div>
             </div>
 
-            <!-- 5x CUSTOM AUTA -->
+            <!-- 3x CUSTOM AUTA -->
             <div class="auto-card reveal delay-1">
                 <div class="auto-img-wrap">
-                    <img src="auto_02.png" alt="Custom Auto 5x">
+                    <img src="auto_02.png" alt="Custom Auto 3x">
                 </div>
                 <div class="auto-info">
-                    <h3>5x Custom Auto</h3>
-                    <p>Set od pet custom vozila za jače organizacije, mafije ili frakcije.</p>
+                    <h3>3x Custom Auto</h3>
+                    <p>Set od tri custom vozila za jače organizacije, mafije ili frakcije.</p>
                     <div class="auto-meta">
                         <span class="pill-soft">Gang / Mafia pack</span>
 
@@ -258,13 +257,13 @@
                 </div>
             </div>
 
-            <!-- 10x CUSTOM AUTA -->
+            <!-- 5x CUSTOM AUTA -->
             <div class="auto-card reveal delay-2">
                 <div class="auto-img-wrap">
-                    <img src="auto_03.png" alt="Custom Auto 10x">
+                    <img src="auto_03.png" alt="Custom Auto 5x">
                 </div>
                 <div class="auto-info">
-                    <h3>10x Custom Auto</h3>
+                    <h3>5x Custom Auto</h3>
                     <p>Veliki fleet za kompletnu frakciju, event ili potpuni rework voznog parka.</p>
                     <div class="auto-meta">
                         <span class="pill-soft">Full fleet pack</span>
@@ -285,11 +284,12 @@
 
         </div>
 
-        <div class="autos-cta reveal delay-1">
-            <a href="#shop" class="btn btn-outline">
-                paketi i shop
-            </a>
-        </div>
+<div class="autos-cta reveal delay-1">
+    <a href="#shop" class="btn btn-outline open-shop-link">
+        paketi i shop
+    </a>
+</div>
+
     </div>
 </section>
 
@@ -330,7 +330,7 @@
                 <div class="shop-tag">Custom</div>
                 <h3>Custom Auto Paketi</h3>
                 <p>
-                    1x, 5x ili 10x custom vozila po narudžbi.
+                    1x, 3x ili 5x custom vozila po narudžbi.
                     Izrada modela, import, konfiguracija i brendiranje.
                 </p>
                 <div class="shop-small">
@@ -474,6 +474,103 @@
 </footer>
 
 
+<div class="shop-overlay" id="wlShopOverlay">
+    <div class="shop-modal">
+        <div class="shop-modal-header">
+            <h2>PAKETI I SHOP</h2>
+            <button class="shop-close" aria-label="Zatvori shop">
+                <i class="fa-solid fa-xmark"></i>
+            </button>
+        </div>
+
+        <div class="shop-modal-accent"></div>
+
+        <p class="shop-modal-sub">
+            Odaberi paket, klikni kupi i javi nam se na Discordu za detaljan dogovor.
+        </p>
+
+        <div class="shop-grid shop-modal-grid">
+            <div class="shop-card">
+                <div class="shop-tag">Organizacija</div>
+                <h3>Custom organizacija</h3>
+                <p>
+                    Full brendirana organizacija u White Life stilu – ime, logo, boje, vozila i HQ.
+                </p>
+                <ul class="shop-list">
+                    <li>Custom ime i logo</li>
+                    <li>Vozni park po želji</li>
+                    <li>HQ i interijer po priči</li>
+                </ul>
+                <div class="shop-card-footer">
+                    <span class="shop-note">Cijena po dogovoru</span>
+                    <a href="https://discord.gg/xevuC87RK6" target="_blank" class="btn btn-primary shop-buy-btn">
+                        Kupi
+                    </a>
+                </div>
+            </div>
+
+            <div class="shop-card">
+                <div class="shop-tag">Outfit</div>
+                <h3>Custom outfit</h3>
+                <p>
+                    Unikatni outfiti za članove – muški i ženski setovi, spremni za RP i streamanje.
+                </p>
+                <ul class="shop-list">
+                    <li>Kompletna kombinacija za ekipu</li>
+                    <li>Muški i ženski modeli</li>
+                    <li>Stil prilagođen vašoj priči</li>
+                </ul>
+                <div class="shop-card-footer">
+                    <span class="shop-note">Cijena po dogovoru</span>
+                    <a href="https://discord.gg/xevuC87RK6" target="_blank" class="btn btn-primary shop-buy-btn">
+                        Kupi
+                    </a>
+                </div>
+            </div>
+
+            <div class="shop-card">
+                <div class="shop-tag">Baza</div>
+                <h3>Custom baza</h3>
+                <p>
+                    Mapirana baza ili HQ – garaže, sefovi, soba za sastanke i prilaz zonama.
+                </p>
+                <ul class="shop-list">
+                    <li>HQ na lokaciji po izboru</li>
+                    <li>Interijer i eksterijer</li>
+                    <li>Prilagođeno tipu organizacije</li>
+                </ul>
+                <div class="shop-card-footer">
+                    <span class="shop-note">Cijena po dogovoru</span>
+                    <a href="https://discord.gg/xevuC87RK6" target="_blank" class="btn btn-primary shop-buy-btn">
+                        Kupi
+                    </a>
+                </div>
+            </div>
+
+            <div class="shop-card">
+                <div class="shop-tag">Kuća</div>
+                <h3>Custom kuća</h3>
+                <p>
+                    Luxury vila ili skrivena kuća u brdima – full interijer i dvorište u WL stilu.
+                </p>
+                <ul class="shop-list">
+                    <li>Lokacija po dogovoru</li>
+                    <li>Custom interijer</li>
+                    <li>Idealno za vlasnike biznisa i streamere</li>
+                </ul>
+                <div class="shop-card-footer">
+                    <span class="shop-note">Cijena po dogovoru</span>
+                    <a href="https://discord.gg/xevuC87RK6" target="_blank" class="btn btn-primary shop-buy-btn">
+                        Kupi
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+</div>
+
 <script>
 const observer = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
@@ -502,8 +599,46 @@ mobileLinks.forEach(function (link) {
         document.body.classList.remove('nav-open');
     });
 });
-</script>
 
+const shopOverlay = document.getElementById('wlShopOverlay');
+const openShopLinks = document.querySelectorAll('.open-shop-link');
+const closeShopBtn = document.querySelector('.shop-close');
+
+function openShop(e) {
+    if (e) e.preventDefault();
+    if (!shopOverlay) return;
+    shopOverlay.classList.add('active');
+    document.body.classList.add('modal-open');
+}
+
+function closeShop() {
+    if (!shopOverlay) return;
+    shopOverlay.classList.remove('active');
+    document.body.classList.remove('modal-open');
+}
+
+openShopLinks.forEach(link => {
+    link.addEventListener('click', openShop);
+});
+
+if (closeShopBtn) {
+    closeShopBtn.addEventListener('click', closeShop);
+}
+
+if (shopOverlay) {
+    shopOverlay.addEventListener('click', function (e) {
+        if (e.target === shopOverlay) {
+            closeShop();
+        }
+    });
+}
+
+document.addEventListener('keydown', function (e) {
+    if (e.key === 'Escape') {
+        closeShop();
+    }
+});
+</script>
 
 </body>
 </html>
