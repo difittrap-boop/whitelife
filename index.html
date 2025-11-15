@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>White Life RolePlay | V2</title>
+    <title>White Life RolePlay</title>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700;800&family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
     <link rel="icon" type="image/x-icon" href="favicon.ico">
@@ -30,7 +30,7 @@
 
 
         <div class="header-right">
-            <a href="https://discord.gg/xevuC87RK6" target="_blank" class="btn btn-outline">
+            <a href="https://discord.gg/29dyruD9U3" target="_blank" class="btn btn-outline">
                 <i class="fa-brands fa-discord"></i>
                 Discord
             </a>
@@ -46,7 +46,7 @@
     <a href="#features">Organizacije</a>
     <a href="#join">Kako ući</a>
     <a href="#shop" class="open-shop-link">Shop</a>
-    <a href="https://discord.gg/xevuC87RK6" target="_blank" class="mobile-discord-link">
+    <a href="https://discord.gg/29dyruD9U3" target="_blank" class="mobile-discord-link">
         Discord zajednica
         <i class="fa-brands fa-discord"></i>
     </a>
@@ -93,10 +93,18 @@
                     <span class="pill pill-online">White Life RolePlay</span>
                     <span class="pill pill-ip">IP: play.whitelife.info</span>
                 </div>
-                <div class="hero-map">
-                    <div class="map-overlay"></div>
-                    <img src="hero_city.jpg" alt="White Life City" class="hero-map-img">
-                </div>
+<div class="hero-map">
+    <div class="map-overlay"></div>
+
+    <div class="hero-slideshow">
+        <img src="city1.jpg" class="slide active">
+        <img src="city2.jpg" class="slide">
+        <img src="city3.jpg" class="slide">
+        <img src="city4.jpg" class="slide">
+        <img src="city5.jpg" class="slide">
+    </div>
+</div>
+
                 <div class="hero-card-footer">
                     <div class="server-pill">
                         <span class="dot dot-green"></span>
@@ -104,7 +112,7 @@
                     </div>
                     <div class="server-pill">
                         <i class="fa-solid fa-user-group"></i>
-                        Igrači: 0 / 128
+                        Igrači: 0 / 48
                     </div>
                 </div>
             </div>
@@ -453,7 +461,7 @@
                 </span>
             </div>
             <div class="footer-cta">
-                <a href="https://discord.gg/xevuC87RK6" target="_blank" class="btn btn-primary btn-small footer-discord-btn">
+                <a href="https://discord.gg/29dyruD9U3" target="_blank" class="btn btn-primary btn-small footer-discord-btn">
                     <i class="fa-brands fa-discord"></i>
                     Pridruži se Discordu
                 </a>
@@ -503,8 +511,8 @@
                 </ul>
                 <div class="shop-card-footer">
                     <span class="shop-note">Cijena po dogovoru</span>
-                    <a href="https://discord.gg/xevuC87RK6" target="_blank" class="btn btn-primary shop-buy-btn">
-                        Kupi
+                    <a href="https://discord.gg/29dyruD9U3" target="_blank" class="btn btn-primary shop-buy-btn">
+                        USKORO
                     </a>
                 </div>
             </div>
@@ -522,8 +530,8 @@
                 </ul>
                 <div class="shop-card-footer">
                     <span class="shop-note">Cijena po dogovoru</span>
-                    <a href="https://discord.gg/xevuC87RK6" target="_blank" class="btn btn-primary shop-buy-btn">
-                        Kupi
+                    <a href="https://discord.gg/29dyruD9U3" target="_blank" class="btn btn-primary shop-buy-btn">
+                        USKORO
                     </a>
                 </div>
             </div>
@@ -541,8 +549,8 @@
                 </ul>
                 <div class="shop-card-footer">
                     <span class="shop-note">Cijena po dogovoru</span>
-                    <a href="https://discord.gg/xevuC87RK6" target="_blank" class="btn btn-primary shop-buy-btn">
-                        Kupi
+                    <a href="https://discord.gg/29dyruD9U3" target="_blank" class="btn btn-primary shop-buy-btn">
+                        USKORO
                     </a>
                 </div>
             </div>
@@ -560,8 +568,8 @@
                 </ul>
                 <div class="shop-card-footer">
                     <span class="shop-note">Cijena po dogovoru</span>
-                    <a href="https://discord.gg/xevuC87RK6" target="_blank" class="btn btn-primary shop-buy-btn">
-                        Kupi
+                    <a href="https://discord.gg/29dyruD9U3" target="_blank" class="btn btn-primary shop-buy-btn">
+                        USKORO
                     </a>
                 </div>
             </div>
@@ -638,6 +646,18 @@ document.addEventListener('keydown', function (e) {
         closeShop();
     }
 });
+
+// HERO SLIDESHOW
+const slides = document.querySelectorAll('.hero-slideshow .slide');
+let currentSlide = 0;
+
+function nextSlide() {
+    slides[currentSlide].classList.remove('active');
+    currentSlide = (currentSlide + 1) % slides.length;
+    slides[currentSlide].classList.add('active');
+}
+
+setInterval(nextSlide, 4000); // mijenja sliku svake 4 sekunde
 </script>
 
 </body>

@@ -285,6 +285,29 @@ img {
     align-items: center;
 }
 
+.hero-slideshow {
+    position: relative;
+    width: 100%;
+    height: 210px;
+    overflow: hidden;
+    border-radius: 14px;
+}
+
+.hero-slideshow .slide {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    opacity: 0;
+    transition: opacity 1.2s ease-in-out;
+}
+
+.hero-slideshow .slide.active {
+    opacity: 1;
+}
+
+
 .badge-live {
     display: inline-flex;
     align-items: center;
