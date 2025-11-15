@@ -152,10 +152,6 @@
                     <span>Discord</span>
                     <span>discord.whitelife.info</span>
                 </div>
-                <div class="info-row">
-                    <span>Stil</span>
-                    <span>Neon / Glass UI</span>
-                </div>
                 <a href="#join" class="btn btn-primary full-width">Kako ući na server</a>
             </div>
         </div>
@@ -224,18 +220,23 @@
                     <h3>1x Custom Auto</h3>
                     <p>Jedno custom vozilo prilagođeno za tvoj lik, organizaciju ili biznis.</p>
                     <div class="auto-meta">
-                        <span class="pill-soft">Single pack</span>
-
-                        <!-- PayPal Form -->
-                        <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">
-                            <input type="hidden" name="cmd" value="_s-xclick" />
-                            <input type="hidden" name="hosted_button_id" value="363RRSKB657NG" />
-                            <input type="hidden" name="currency_code" value="EUR" />
+                        <div class="auto-price-block">
+                            <div class="price-row">
+                                <span class="pill-soft">Single pack</span>
+                                <span class="price-tag">15€</span>
+                            </div>
+                            <div class="price-sub">
+                                Idealno za solo igrače i vlasnike biznisa.
+                            </div>
+                        </div>
+                        <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top" class="auto-buy-form">
+                            <input type="hidden" name="cmd" value="_s-xclick">
+                            <input type="hidden" name="hosted_button_id" value="363RRSKB657NG">
+                            <input type="hidden" name="currency_code" value="EUR">
                             <button type="submit" class="btn btn-primary btn-small">
                                 <i class="fa-solid fa-credit-card"></i> KUPI
                             </button>
                         </form>
-
                     </div>
                 </div>
             </div>
@@ -249,18 +250,27 @@
                     <h3>3x Custom Auto</h3>
                     <p>Set od tri custom vozila za jače organizacije, mafije ili frakcije.</p>
                     <div class="auto-meta">
-                        <span class="pill-soft">Gang / Mafia pack</span>
-
-                        <!-- PayPal Form -->
-                        <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">
-                            <input type="hidden" name="cmd" value="_s-xclick" />
-                            <input type="hidden" name="hosted_button_id" value="W6LZSWQYH954G" />
-                            <input type="hidden" name="currency_code" value="EUR" />
+                        <div class="auto-price-block">
+                            <div class="best-deal-badge badge-top">Najbolja ponuda</div>
+                            <div class="price-row">
+                                <span class="pill-soft">Gang / Mafia pack</span>
+                                <div class="price-tag-group">
+                                    <span class="price-tag price-tag-main">35€</span>
+                                    <span class="price-off">-15%</span>
+                                </div>
+                            </div>
+                            <div class="price-sub">
+                                Najbolji omjer cijene i količine za ekipe.
+                            </div>
+                        </div>
+                        <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top" class="auto-buy-form">
+                            <input type="hidden" name="cmd" value="_s-xclick">
+                            <input type="hidden" name="hosted_button_id" value="S93N58K5BNR8U">
+                            <input type="hidden" name="currency_code" value="EUR">
                             <button type="submit" class="btn btn-primary btn-small">
                                 <i class="fa-solid fa-credit-card"></i> KUPI
                             </button>
                         </form>
-
                     </div>
                 </div>
             </div>
@@ -274,32 +284,39 @@
                     <h3>5x Custom Auto</h3>
                     <p>Veliki fleet za kompletnu frakciju, event ili potpuni rework voznog parka.</p>
                     <div class="auto-meta">
-                        <span class="pill-soft">Full fleet pack</span>
-
-                        <!-- PayPal Form -->
-                        <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">
-                            <input type="hidden" name="cmd" value="_s-xclick" />
-                            <input type="hidden" name="hosted_button_id" value="JNZDTXNBAEJ62" />
-                            <input type="hidden" name="currency_code" value="EUR" />
+                        <div class="auto-price-block">
+                            <div class="price-row">
+                                <span class="pill-soft">Full fleet pack</span>
+                            <span class="price-tag price-tag-main">60€</span>
+							<span class="price-off">-20%</span>
+                            </div>
+                            <div class="price-sub">
+                                Za cijele frakcije, velike mafije i projekte.
+                            </div>
+                        </div>
+                        <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top" class="auto-buy-form">
+                            <input type="hidden" name="cmd" value="_s-xclick">
+                            <input type="hidden" name="hosted_button_id" value="W6LZSWQYH954G">
+                            <input type="hidden" name="currency_code" value="EUR">
                             <button type="submit" class="btn btn-primary btn-small">
                                 <i class="fa-solid fa-credit-card"></i> KUPI
                             </button>
                         </form>
-
                     </div>
                 </div>
             </div>
 
         </div>
 
-<div class="autos-cta reveal delay-1">
-    <a href="#shop" class="btn btn-outline open-shop-link">
-        paketi i shop
-    </a>
-</div>
+        <div class="autos-cta reveal delay-1">
+            <a href="#shop" class="btn btn-outline open-shop-link">
+                paketi i shop
+            </a>
+        </div>
 
     </div>
 </section>
+
 
 
 <section id="shop" class="wl-section wl-section-alt">
