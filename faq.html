@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="hr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FAQ - White Life Roleplay</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * { margin:0; padding:0; box-sizing:border-box; font-family:'Inter',sans-serif; }
+        body { background:#050505; color:white; min-height:100vh; }
+        body::before { content:''; position:fixed; inset:0; background: linear-gradient(rgba(0,123,255,.05) 1px, transparent 1px), linear-gradient(90deg, rgba(0,123,255,.05) 1px, transparent 1px); background-size:70px 70px; pointer-events:none; z-index: -1; }
+
+        /* Header */
+        nav { position: fixed; top: 0; left: 0; width: 100%; z-index: 999; background: transparent; }
+        .nav { max-width:1400px; margin:auto; padding:20px 40px; display:flex; justify-content:space-between; align-items:center; }
+        .menu { display:flex; gap:35px; }
+        .menu a { text-decoration:none; color:white; font-weight:500; transition:.3s; }
+        .menu a:hover, .menu a.active { color:#007bff; }
+        .nav-right a { text-decoration: none; color: white; font-size: 20px; }
+
+        /* FAQ Content */
+        .wrapper { max-width: 800px; margin: 150px auto 60px; padding: 0 20px; }
+        h1 { font-size: 40px; margin-bottom: 40px; text-align: center; }
+        h1 span { color: #007bff; }
+        
+        .faq-item { margin-bottom: 20px; background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.06); border-radius: 12px; overflow: hidden; }
+        .faq-question { padding: 20px; cursor: pointer; display: flex; justify-content: space-between; align-items: center; font-weight: 600; }
+        .faq-question:hover { background: rgba(0,123,255,0.05); }
+        .faq-answer { padding: 0 20px 20px 20px; color: #aaa; font-size: 14px; line-height: 1.6; display: none; }
+        .faq-item.active .faq-answer { display: block; }
+    </style>
+</head>
+<body>
+
+<nav>
+    <div class="nav">
+        <a href="index.html"><img src="logo.png" alt="Logo" style="height: 40px;"></a>
+        <div class="menu">
+            <a href="index.html#trgovina"><i class="fas fa-shopping-cart"></i> TRGOVINA</a>
+            <a href="pravila.html"><i class="fas fa-file-alt"></i> PRAVILA</a>
+			<a href="faq.html" style="color:#007bff;"><i class="fas fa-question-circle"></i> FAQ</a>
+        </div>
+        <div class="nav-right">
+            <a href="#"><i class="fab fa-discord"></i></a>
+        </div>
+    </div>
+</nav>
+
+<div class="wrapper">
+    <h1>Često postavljana <span>pitanja</span></h1>
+
+    <div class="faq-item">
+        <div class="faq-question" onclick="toggle(this)">Kako se prijaviti na server? <span>+</span></div>
+        <div class="faq-answer">Potrebno je imati instaliran FiveM klijent, pretražiti "White Life Roleplay" u listi servera i kliknuti Connect.</div>
+    </div>
+
+    <div class="faq-item">
+        <div class="faq-question" onclick="toggle(this)">Da li je potrebna whitelist-a? <span>+</span></div>
+        <div class="faq-answer">Trenutno ne, server je otvoren za sve igrače koji poštuju pravila zajednice.</div>
+    </div>
+
+    <div class="faq-item">
+        <div class="faq-question" onclick="toggle(this)">Gdje prijaviti igrača koji krši pravila? <span>+</span></div>
+        <div class="faq-answer">Sve prijave se vrše isključivo putem našeg Discord servera u rubrici #report-igraca.</div>
+    </div>
+</div>
+
+<script>
+function toggle(el) {
+    el.parentElement.classList.toggle('active');
+}
+</script>
+</body>
+</html>

@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="hr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pravila - White Life Roleplay</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * { margin:0; padding:0; box-sizing:border-box; font-family:'Inter',sans-serif; }
+        body { background:#050505; color:white; min-height:100vh; }
+        body::before { content:''; position:fixed; inset:0; background: linear-gradient(rgba(0,123,255,.05) 1px, transparent 1px), linear-gradient(90deg, rgba(0,123,255,.05) 1px, transparent 1px); background-size:70px 70px; pointer-events:none; z-index: -1; }
+
+        /* Header (identičan kao na main) */
+        nav { position: fixed; top: 0; left: 0; width: 100%; z-index: 999; background: transparent; border: none; }
+        .nav { max-width:1400px; margin:auto; padding:20px 40px; display:flex; justify-content:space-between; align-items:center; }
+        .menu { display:flex; gap:35px; }
+        .menu a { text-decoration:none; color:white; font-weight:500; transition:.3s; }
+        .menu a:hover { color:#007bff; }
+        .nav-right a { text-decoration: none; color: white; font-size: 20px; }
+
+        /* Layout */
+        .wrapper { display: flex; max-width: 1200px; margin: 150px auto 60px; gap: 60px; padding: 0 20px; }
+        .sidebar { width: 220px; flex-shrink: 0; }
+        .sidebar a { display: block; color: #888; margin-bottom: 12px; text-decoration: none; font-size: 14px; padding: 8px; border-radius: 6px; cursor: pointer; transition: 0.3s; }
+        .sidebar a:hover, .sidebar a.active { color: #007bff; background: rgba(0,123,255,0.05); }
+        
+        /* OVO JE KLJUČNO ZA PRIKAZIVANJE */
+        .content { flex-grow: 1; }
+        .pravila-grupa { display: none; }
+        .pravila-grupa.active { display: block !important; }
+        
+        h1 { font-size: 36px; margin-bottom: 25px; font-weight: 800; }
+        h1 span { color: #007bff; }
+        .rule-item { padding: 20px; border-radius: 10px; background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.06); margin-bottom: 15px; }
+        .rule-item b { color: #007bff; font-size: 14px; display: block; margin-bottom: 5px; text-transform: uppercase; }
+        .rule-item p { color: #aaa; font-size: 13px; line-height: 1.6; }
+    </style>
+</head>
+<body>
+
+<nav>
+    <div class="nav">
+        <a href="index.html"><img src="logo.png" alt="Logo" style="height: 40px;"></a>
+        <div class="menu">
+            <a href="index.html#trgovina"><i class="fas fa-shopping-cart"></i> TRGOVINA</a>
+            <a href="pravila.html" style="color:#007bff;"><i class="fas fa-file-alt"></i> PRAVILA</a>
+            <a href="faq.html"><i class="fas fa-question-circle"></i> FAQ</a>
+        </div>
+        <div class="nav-right">
+            <a href="#"><i class="fab fa-discord"></i></a>
+        </div>
+    </div>
+</nav>
+
+<div class="wrapper">
+    <div class="sidebar">
+        <h3 style="margin-bottom: 20px; font-size: 12px; color:#555; letter-spacing: 1px;">KATEGORIJE</h3>
+        <a onclick="prikazi('gta')" class="active">GTA Pravila</a>
+        <a onclick="prikazi('opcenito')">Općenito</a>
+        <a onclick="prikazi('pljacke')">Pljačke</a>
+        <a onclick="prikazi('staff')">Staff pravila</a>
+    </div>
+    
+    <div class="content">
+        <div id="gta" class="pravila-grupa active">
+            <h1><span>GTA</span> PRAVILA</h1>
+            <div class="rule-item"><b>DM</b> <p>Zabranjeno ubijanje bez razloga.</p></div>
+        </div>
+        <div id="opcenito" class="pravila-grupa">
+            <h1><span>OPĆENITO</span></h1>
+            <div class="rule-item"><b>Pravilo</b> <p>Općenita pravila servera.</p></div>
+        </div>
+        <div id="pljacke" class="pravila-grupa">
+            <h1><span>PLJAČKE</span></h1>
+            <div class="rule-item"><b>BANKA</b> <p>Minimalno 4 policajca.</p></div>
+        </div>
+        <div id="staff" class="pravila-grupa">
+            <h1><span>STAFF</span></h1>
+            <div class="rule-item"><b>ADMIN</b> <p>Budi pošten.</p></div>
+        </div>
+    </div>
+</div>
+
+<script>
+function prikazi(id) {
+    // 1. Sakrij sve grupe
+    document.querySelectorAll('.pravila-grupa').forEach(g => g.classList.remove('active'));
+    // 2. Ukloni active klasu sa svih linkova
+    document.querySelectorAll('.sidebar a').forEach(a => a.classList.remove('active'));
+    
+    // 3. Pokaži traženu grupu
+    document.getElementById(id).classList.add('active');
+    
+    // 4. Postavi active na kliknuti link
+    event.target.classList.add('active');
+}
+</script>
+</body>
+</html>
