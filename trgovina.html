@@ -2,103 +2,201 @@
 <html lang="hr">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>TRGOVINA - White Life Roleplay</title>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800;900&display=swap" rel="stylesheet">
+    <title>White Life | Premium Inventory</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;700;900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         * { margin:0; padding:0; box-sizing:border-box; font-family:'Inter',sans-serif; }
-        body { background:#050505; color:white; min-height:100vh; }
-        body::before { content:''; position:fixed; inset:0; background: linear-gradient(rgba(0,123,255,.05) 1px, transparent 1px), linear-gradient(90deg, rgba(0,123,255,.05) 1px, transparent 1px); background-size:70px 70px; pointer-events:none; z-index: -1; }
+        body { background: #0a0a0a; color: white; overflow-x: hidden; height: 100vh; }
+        body::before { content:''; position:fixed; inset:0; background: linear-gradient(rgba(0,123,255,.05) 1px, transparent 1px), linear-gradient(90deg, rgba(0,123,255,.05) 1px, transparent 1px); background-size:70px 70px; pointer-events:none; z-index: 1; }
 
-        /* Navigacija */
-        nav { position: fixed; top: 0; left: 0; width: 100%; z-index: 999; background: #050505; border-bottom: 1px solid rgba(255,255,255,0.05); }
-        .nav { max-width:1400px; margin:auto; padding:20px 40px; display:flex; justify-content:space-between; align-items:center; }
-        .menu { display:flex; gap:35px; }
-        .menu a { text-decoration:none; color:white; font-weight:500; transition:.3s; }
-        .menu a:hover, .menu a.active { color:#007bff; }
+/* Navigacija - identična kao u index.html */
+nav { position: fixed; top: 0; left: 0; width: 100%; z-index: 999; background: transparent; border: none; }
+.nav { max-width: 1400px; margin: auto; padding: 20px 40px; display: flex; justify-content: space-between; align-items: center; }
+
+/* Meni */
+.menu { display: flex; gap: 35px; }
+.menu a { text-decoration: none; color: white; font-weight: 500; cursor: pointer; transition: .3s; }
+.menu a:hover, .menu a.active { color: #007bff; }
+
+        /* Kontejner sekcija */
+        .page { display: none; height: 100vh; width: 100%; position: absolute; top: 0; }
+        .page.active { display: flex; align-items: center; justify-content: center; z-index: 2; }
+
+        /* Slider - Vozila */
+        .slider { position: relative; width: 100%; height: 100vh; }
+        .slide { position: absolute; inset: 0; display: none; opacity: 0; transition: opacity 0.4s ease; }
+        .slide.active { display: flex; align-items: center; justify-content: center; opacity: 1; }
+        .car-container { position: absolute; width: 60%; display: flex; justify-content: center; }
+        .car-container img { max-width: 100%; filter: drop-shadow(0 20px 40px rgba(0,0,0,0.8)); }
+
+        /* Grid za Kutije i Coinse */
+        .grid-layout { display: grid; grid-template-columns: repeat(3, 1fr); gap: 30px; z-index: 2; }
+        .card { background: #111; padding: 30px; border: 1px solid #333; border-radius: 10px; text-align: center; width: 280px; transition: 0.3s; }
+        .card:hover { border-color: #007bff; }
+        .card i { font-size: 30px; color: #007bff; margin-bottom: 20px; }
+        .card h3 { margin-bottom: 15px; font-weight: 700; }
+
+        /* Button Stilovi */
+        .buy-btn { 
+            display: inline-block; padding: 10px 20px; background: #007bff; color: white; 
+            text-decoration: none; border-radius: 5px; font-weight: 700; font-size: 13px; 
+            transition: 0.3s; margin-top: 15px; border: none; cursor: pointer;
+        }
+        .buy-btn:hover { background: #0056b3; transform: translateY(-2px); }
+
+        /* Zajednički elementi */
+        .overlay-left { position: absolute; left: 5%; bottom: 80px; z-index: 3; width: 300px; }
+        .overlay-left h1 { font-size: 42px; font-weight: 900; margin-bottom: 15px; line-height: 1.1; }
         
-        /* Wrapper */
-        .wrapper { max-width: 1200px; margin: 150px auto 60px; padding: 0 20px; }
-        h1 { font-size: 52px; text-align: center; margin-bottom: 60px; font-weight: 900; }
-        h1 span { color: #007bff; }
-        
-        /* Shop Grid */
-        .shop-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 30px; }
-        .product-card { background: #0c0c0c; border: 1px solid rgba(255,255,255,0.08); border-radius: 24px; padding: 30px; text-align: center; transition: 0.4s; position: relative; overflow: hidden; }
-        .product-card:hover { border-color: #007bff; transform: translateY(-12px); box-shadow: 0 10px 30px rgba(0,123,255,0.15); }
-        
-        .img-container { width: 100%; height: 220px; background: #111; border-radius: 16px; margin-bottom: 25px; display: flex; align-items: center; justify-content: center; border: 1px dashed #333; overflow: hidden; }
-        .img-container img { max-width: 100%; max-height: 100%; object-fit: cover; }
-        
-        .product-card h3 { font-size: 24px; margin-bottom: 15px; font-weight: 700; }
-        .price { font-size: 28px; font-weight: 900; color: #007bff; margin: 20px 0; }
-        
-        .buy-btn { display: block; background: #007bff; color: white; padding: 18px; border-radius: 14px; text-decoration: none; font-weight: 800; font-size: 16px; transition: 0.3s; }
-        .buy-btn:hover { background: #0056b3; transform: scale(1.02); }
+        .stats-bar { position: absolute; bottom: 80px; right: 5%; display: flex; gap: 40px; z-index: 3; border-top: 1px solid #333; padding-top: 20px; }
+        .stat-item { width: 160px; }
+        .stat-item i { font-size: 24px; color: #007bff; margin-bottom: 10px; }
+        .stat-item h3 { font-size: 13px; text-transform: uppercase; }
+        .stat-item p { color: #555; font-size: 11px; }
+
+        .nav-btn { position: fixed; top: 50%; z-index: 9999; font-size: 40px; cursor: pointer; color: #444; padding: 20px; }
+        .nav-btn:hover { color: white; }
+        .prev { left: 0; } .next { right: 0; }
+		
+		<style>
+    * { margin:0; padding:0; box-sizing:border-box; font-family:'Inter', sans-serif; }
+    
+    /* Isti background kao u index.html */
+    body { background: #050505; color: white; overflow-x: hidden; height: 100vh; }
+    body::before { 
+        content:''; position:fixed; inset:0; 
+        background: linear-gradient(rgba(0,123,255,.05) 1px, transparent 1px), 
+                    linear-gradient(90deg, rgba(0,123,255,.05) 1px, transparent 1px); 
+        background-size:70px 70px; pointer-events:none; z-index: 1; 
+    }
+
+    /* Navigacija - sada potpuno identična indexu */
+    nav { position: fixed; top: 0; left: 0; width: 100%; z-index: 999; background: transparent; border: none; }
+    .nav { max-width: 1400px; margin: auto; padding: 20px 40px; display: flex; justify-content: space-between; align-items: center; position: relative; }
+    
+    .menu { display: flex; gap: 35px; }
+    .menu a { text-decoration: none; color: white; font-weight: 500; cursor: pointer; transition: .3s; display: flex; align-items: center; gap: 8px; }
+    .menu a:hover, .menu a.active { color: #007bff; }
+    
+    /* Ostatak tvojih stilova za kartice i stranice ostaje ispod... */
+    .page { display: none; height: 100vh; width: 100%; position: absolute; top: 0; z-index: 2; }
+    .page.active { display: flex; align-items: center; justify-content: center; }
+    
+    /* Dodaj ovdje ostale svoje klase (.grid-layout, .card, .buy-btn itd.) */
+	.logo-link {
+    display: flex;
+    align-items: center;
+}
+
+.logo-link img {
+    height: 40px;
+}
+
+/* Navigacija */
+nav { 
+    position: fixed; top: 0; left: 0; width: 100%; z-index: 999; 
+    background: transparent; 
+}
+
+.nav { 
+    max-width: 1400px; 
+    margin: auto; 
+    padding: 20px 40px; 
+    display: flex; 
+    justify-content: space-between; /* OVO JE KLJUČNO */
+    align-items: center; 
+}
+
+/* Osiguraj da logo link nema margine koje ga guraju */
+.nav a { 
+    display: flex; 
+    align-items: center; 
+}
+</style>
     </style>
 </head>
 <body>
 
 <nav>
     <div class="nav">
-        <a href="index"><img src="logo.png" alt="Logo" style="height: 40px;"></a>
+        <a href="index.html">
+            <img src="logo.png" alt="Logo" style="height: 40px;">
+        </a>
+        
         <div class="menu">
-			<a href="trgovina" style="color:#007bff;"><i class="fas fa-shopping-cart"></i> TRGOVINA</a>
-            <a href="pravila" <i class="fas fa-file-alt"></i> PRAVILA</a>
-            <a href="faq"><i class="fas fa-question-circle"></i> FAQ</a>
+            <a onclick="showPage('vozila-page', this)" class="active">
+                <i class="fas fa-car"></i> VOZILA
+            </a>
+            <a onclick="showPage('kutije-page', this)">
+                <i class="fas fa-box-open"></i> KUTIJE
+            </a>
+            <a onclick="showPage('coins-page', this)">
+                <i class="fas fa-coins"></i> COINSI
+            </a>
         </div>
-        <div class="nav-right">
-            <a href="#"><i class="fab fa-discord"></i></a>
-        </div>
+        
+        <div style="width: 40px;"></div>
     </div>
 </nav>
 
-<div class="wrapper">
-    <h1>White Life <span>Premium Shop</span></h1>
-    
-    <div class="shop-grid">
-        <!-- CUSTOM MAFIJA -->
-        <div class="product-card">
-            <div class="img-container">
-                <p style="color:#444;">SLIKA MAFIJE</p>
-            </div>
-            <h3>Custom Mafija</h3>
-            <div class="price">15€</div>
-            <a href="#" class="buy-btn">KUPI ODMAH</a>
+<div id="vozila-page" class="page active">
+    <div class="slider">
+        <div class="slide active">
+            <div class="overlay-left"><h1>Custom Auto<br>1X Serija</h1><a href="#" class="buy-btn">KUPI 10€</a></div>
+            <div class="car-container"><img src="auto_01.png" alt="Auto 1"></div>
+            <div class="stats-bar"><div class="stat-item"><i class="fas fa-tachometer-alt"></i><h3>Top Speed</h3><p>Vrhunski.</p></div><div class="stat-item"><i class="fas fa-cogs"></i><h3>Engine</h3><p>Modificiran.</p></div><div class="stat-item"><i class="fas fa-wheelchair"></i><h3>Steering</h3><p>Preciznost.</p></div></div>
         </div>
-        
-        <!-- CUSTOM AUTO 1X -->
-        <div class="product-card">
-            <div class="img-container">
-                <p style="color:#444;">SLIKA AUTA</p>
-            </div>
-            <h3>Custom Auto 1x</h3>
-            <div class="price">10€</div>
-            <a href="#" class="buy-btn">KUPI ODMAH</a>
+        <div class="slide">
+            <div class="overlay-left"><h1>Custom Auto<br>3X Serija</h1><a href="#" class="buy-btn">KUPI 25€</a></div>
+            <div class="car-container"><img src="auto_02.png" alt="Auto 2"></div>
+            <div class="stats-bar"><div class="stat-item"><i class="fas fa-fire"></i><h3>Snaga</h3><p>Turbo.</p></div><div class="stat-item"><i class="fas fa-shield-alt"></i><h3>Oklop</h3><p>Pojačan.</p></div><div class="stat-item"><i class="fas fa-bolt"></i><h3>Accel</h3><p>Trenutni odziv.</p></div></div>
         </div>
-        
-        <!-- CUSTOM AUTO 3X -->
-        <div class="product-card">
-            <div class="img-container">
-                <p style="color:#444;">SLIKA AUTA</p>
-            </div>
-            <h3>Custom Auto 3x</h3>
-            <div class="price">10€</div>
-            <a href="#" class="buy-btn">KUPI ODMAH</a>
-        </div>
-        
-        <!-- CUSTOM AUTO 5X -->
-        <div class="product-card">
-            <div class="img-container">
-                <p style="color:#444;">SLIKA AUTA</p>
-            </div>
-            <h3>Custom Auto 5x</h3>
-            <div class="price">10€</div>
-            <a href="#" class="buy-btn">KUPI ODMAH</a>
+        <div class="slide">
+            <div class="overlay-left"><h1>Custom Auto<br>5X Serija</h1><a href="#" class="buy-btn">KUPI 40€</a></div>
+            <div class="car-container"><img src="auto_03.png" alt="Auto 3"></div>
+            <div class="stats-bar"><div class="stat-item"><i class="fas fa-trophy"></i><h3>Elite</h3><p>Najbolje.</p></div><div class="stat-item"><i class="fas fa-tools"></i><h3>Tuning</h3><p>Full setup.</p></div><div class="stat-item"><i class="fas fa-tachometer-alt"></i><h3>Handling</h3><p>Savršeno.</p></div></div>
         </div>
     </div>
+    <div class="nav-btn prev" onclick="changeSlide(-1)"><i class="fas fa-chevron-left"></i></div>
+    <div class="nav-btn next" onclick="changeSlide(1)"><i class="fas fa-chevron-right"></i></div>
 </div>
+
+<div id="kutije-page" class="page">
+    <div class="grid-layout">
+        <div class="card"><i class="fas fa-gift"></i><h3>Bronze Box</h3><p>Sadrži osnovni loot.</p><a href="#" class="buy-btn">KUPI 5€</a></div>
+        <div class="card"><i class="fas fa-crown"></i><h3>Silver Box</h3><p>Sadrži bolji loot.</p><a href="#" class="buy-btn">KUPI 10€</a></div>
+        <div class="card"><i class="fas fa-gem"></i><h3>Gold Box</h3><p>Sadrži rare loot.</p><a href="#" class="buy-btn">KUPI 20€</a></div>
+    </div>
+</div>
+
+<div id="coins-page" class="page">
+    <div class="grid-layout" style="grid-template-columns: repeat(3, 1fr);">
+        <div class="card"><i class="fas fa-database"></i><h3>1000 Coins</h3><a href="#" class="buy-btn">KUPI 1€</a></div>
+        <div class="card"><i class="fas fa-database"></i><h3>5000 Coins</h3><a href="#" class="buy-btn">KUPI 5€</a></div>
+        <div class="card"><i class="fas fa-database"></i><h3>10000 Coins</h3><a href="#" class="buy-btn">KUPI 10€</a></div>
+        <div class="card"><i class="fas fa-database"></i><h3>15000 Coins</h3><a href="#" class="buy-btn">KUPI 15€</a></div>
+        <div class="card"><i class="fas fa-database"></i><h3>20000 Coins</h3><a href="#" class="buy-btn">KUPI 20€</a></div>
+        <div class="card"><i class="fas fa-database"></i><h3>25000 Coins</h3><a href="#" class="buy-btn">KUPI 25€</a></div>
+    </div>
+</div>
+
+<script>
+    function showPage(id, el) {
+        document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+        document.querySelectorAll('.menu a').forEach(a => a.classList.remove('active'));
+        document.getElementById(id).classList.add('active');
+        el.classList.add('active');
+    }
+
+    let currentSlide = 0;
+    const slides = document.querySelectorAll('.slide');
+    function changeSlide(n) {
+        slides[currentSlide].classList.remove('active');
+        currentSlide = (currentSlide + n + slides.length) % slides.length;
+        slides[currentSlide].classList.add('active');
+    }
+</script>
 
 </body>
 </html>
