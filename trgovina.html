@@ -2,63 +2,163 @@
 <html lang="hr">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>White Life | Premium Inventory</title>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         * { margin:0; padding:0; box-sizing:border-box; font-family:'Inter',sans-serif; }
-        body { 
-    background: #050505; 
-    color: white; 
-    overflow-x: hidden; 
-    height: 100vh; 
-}
-body::before { 
-    content:''; 
-    position:fixed; 
-    inset:0; 
-    background: linear-gradient(rgba(0,123,255,.05) 1px, transparent 1px), 
-                linear-gradient(90deg, rgba(0,123,255,.05) 1px, transparent 1px); 
-    background-size:70px 70px; 
-    pointer-events:none; 
-    z-index: 1; /* Ovo stavlja grid iznad crne pozadine, a ispod sadržaja */
-}
+        html { scroll-behavior: smooth; scroll-snap-type: y mandatory; }
+        body { background: #050505; color: white; overflow-x: hidden; }
+        body::before { 
+            content:''; 
+            position:fixed; 
+            inset:0; 
+            background: linear-gradient(rgba(0,123,255,.03) 1px, transparent 1px), 
+                        linear-gradient(90deg, rgba(0,123,255,.03) 1px, transparent 1px); 
+            background-size:70px 70px; 
+            pointer-events:none; 
+            z-index: 1;
+        }
 
-        nav { position: fixed; top: 0; left: 0; width: 100%; z-index: 999; background: transparent; }
-        .nav { max-width: 1400px; margin: auto; padding: 20px 40px; display: flex; justify-content: space-between; align-items: center; }
-        .menu { display: flex; gap: 35px; }
-        .menu a { text-decoration: none; color: white; font-weight: 500; cursor: pointer; transition: .3s; }
-        .menu a:hover, .menu a.active { color: #007bff; }
+        /* Navigacija preslikana sa index.html */
+        nav { position: fixed; top: 0; left: 0; width: 100%; z-index: 999; background: transparent; border: none; }
+        .nav { max-width:1400px; margin:auto; padding:20px 40px; display:flex; justify-content:space-between; align-items:center; }
+        .menu { display:flex; gap:35px; }
+        .menu a { text-decoration:none; color:white; font-weight:500; transition:.3s; }
+        .menu a:hover, .menu a.active { color:#007bff; }
+        .nav-right a { text-decoration: none; color: white; font-size: 20px; }
 
-        .page { display: none; height: 100vh; width: 100%; position: absolute; top: 0; }
-        .page.active { display: flex; align-items: center; justify-content: center; z-index: 2; }
+        /* TOČKASTA NAVIGACIJA */
+        .side-dots-nav {
+            position: fixed;
+            right: 30px;
+            top: 50%;
+            transform: translateY(-50%);
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            z-index: 1000;
+        }
+        .side-dots-nav .dot {
+            width: 10px;
+            height: 10px;
+            background: rgba(255,255,255,0.2);
+            border-radius: 50%;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+        .side-dots-nav .dot.active { background: #007bff; transform: scale(1.2); }
+        .side-dots-nav .dot.gold-active { background: #d4af37; transform: scale(1.2); }
 
-        /* VOZILA SLIDER (NE DIRANO) */
-        .slider { position: relative; width: 100%; height: 100vh; display: flex; align-items: center; justify-content: center; }
+        /* SEKCIJE */
+        section { min-height: 100vh; padding: 120px 40px 60px; display: flex; align-items: center; justify-content: center; scroll-snap-align: start; position: relative; width: 100%; }
+        .split-container { display: grid; grid-template-columns: 1fr 1.5fr; gap: 80px; align-items: center; max-width: 1400px; width: 100%; margin: auto; }
+        .split-container.reverse { grid-template-columns: 1.5fr 1fr; }
+
+        /* Tekstualna strana */
+        .text-side h3 { font-size: 14px; color: #007bff; font-weight: 700; letter-spacing: 3px; text-transform: uppercase; margin-bottom: 10px; }
+        .text-side h2 { font-size: 50px; font-weight: 800; letter-spacing: -1px; margin-bottom: 20px; line-height: 1.1; }
+        .text-side h2 span { color: #007bff; }
+        .text-side p { color: #666; font-size: 16px; line-height: 1.6; max-width: 450px; }
+
+        #kutije .text-side h3 { color: #d4af37; }
+        #kutije .text-side h2 span { color: #d4af37; }
+
+        .content-side { width: 100%; display: flex; justify-content: center; align-items: center; }
+
+        /* SLIDER ZA VOZILA */
+        .slider { position: relative; width: 100%; height: 500px; display: flex; align-items: center; justify-content: center; }
         .slide { position: absolute; inset: 0; display: none; opacity: 0; transition: opacity 0.4s ease; align-items: center; justify-content: center; }
         .slide.active { display: flex; opacity: 1; }
+        .car-container { width: 100%; display: flex; justify-content: center; align-items: center; z-index: 2; }
+        .car-container img { max-width: 85%; filter: drop-shadow(0 30px 50px rgba(0,123,255,0.15)); transition: transform 0.3s ease; }
+        .car-container:hover img { transform: scale(1.02); }
+        .overlay-info { position: absolute; left: 0; bottom: 0; z-index: 3; }
+        .overlay-info h1 { font-size: 36px; font-weight: 900; margin-bottom: 15px; line-height: 1.1; }
+        .stats-bar { position: absolute; bottom: 0; right: 0; display: flex; gap: 30px; z-index: 3; border-top: 1px solid rgba(255,255,255,0.08); padding-top: 15px; }
+        .stat-item { width: 110px; }
+        .stat-item i { font-size: 18px; color: #007bff; margin-bottom: 10px; }
+        .stat-item h3 { font-size: 16px; font-weight: 700; margin-bottom: 4px; }
+        .stat-item p { font-size: 12px; color: #777; }
 
-        /* CAROUSEL ZA KUTIJE I COINSE */
-        .carousel { display: flex; align-items: center; justify-content: center; gap: 40px; width: 100%; transition: 0.5s; }
-        .slide-content { background: #111; padding: 40px; border: 1px solid #333; border-radius: 15px; text-align: center; width: 300px; cursor: pointer; transition: 0.4s; opacity: 0.3; transform: scale(0.85); }
-        .slide-content.active { opacity: 1; transform: scale(1); border-color: #007bff; }
-        .slide-content i { font-size: 60px; color: #007bff; margin-bottom: 20px; display: block; }
-
-        .buy-btn { display: inline-block; padding: 10px 20px; background: #007bff; color: white; text-decoration: none; border-radius: 5px; font-weight: 700; font-size: 13px; transition: 0.3s; margin-top: 15px; border: none; cursor: pointer; }
-        .buy-btn:hover { background: #0056b3; transform: translateY(-2px); }
-
-        /* Ostali elementi */
-        .car-container { position: absolute; width: 60%; display: flex; justify-content: center; }
-        .car-container img { max-width: 100%; filter: drop-shadow(0 20px 40px rgba(0,0,0,0.8)); }
-        .overlay-left { position: absolute; left: 5%; bottom: 80px; z-index: 3; width: 300px; }
-        .overlay-left h1 { font-size: 42px; font-weight: 900; margin-bottom: 15px; line-height: 1.1; }
-        .stats-bar { position: absolute; bottom: 80px; right: 5%; display: flex; gap: 40px; z-index: 3; border-top: 1px solid #333; padding-top: 20px; }
-        .stat-item { width: 160px; }
-        .stat-item i { font-size: 24px; color: #007bff; margin-bottom: 10px; }
+        /* KARTICE */
+        .cards-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; width: 100%; }
         
-        .nav-btn { position: fixed; top: 50%; z-index: 9999; font-size: 40px; cursor: pointer; color: #444; padding: 20px; }
-        .nav-btn:hover { color: white; }
-        .prev { left: 0; } .next { right: 0; }
+        .slide-content { 
+            background: #0c0c0c; 
+            padding: 35px 25px; 
+            border: 1px solid #1a1a1a; 
+            border-radius: 20px; 
+            text-align: center; 
+            cursor: pointer; 
+            transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1); 
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .slide-content.active { 
+            background: #0e1118;
+            border-color: #007bff; 
+            box-shadow: 0 15px 40px rgba(0, 123, 255, 0.15);
+            transform: scale(1.03);
+            z-index: 5;
+        }
+
+        #kutije .slide-content.active {
+            background: #14120e;
+            border-color: #d4af37;
+            box-shadow: 0 15px 40px rgba(212, 175, 55, 0.1);
+        }
+
+        .slide-content i { font-size: 45px; color: #222; margin-bottom: 20px; transition: 0.3s; }
+        .slide-content.active i { color: #007bff; text-shadow: 0 0 20px rgba(0,123,255,0.4); }
+        
+        .slide-content.box-bronze.active i { color: #cd7f32; text-shadow: 0 0 20px rgba(205,127,50,0.4); }
+        .slide-content.box-silver.active i { color: #d1d1d1; text-shadow: 0 0 20px rgba(209,209,209,0.4); }
+        .slide-content.box-gold.active i { color: #ffd700; text-shadow: 0 0 20px rgba(255,215,0,0.4); }
+        
+        .slide-content h1 { font-size: 22px; font-weight: 800; margin-bottom: 10px; letter-spacing: -0.5px; }
+        .slide-content p { font-size: 13px; color: #666; margin-bottom: 20px; line-height: 1.5; }
+        .slide-content.active p { color: #8a99ad; }
+
+        .loot-info { list-style: none; text-align: left; margin: 15px 0; padding-top: 15px; border-top: 1px solid rgba(255,255,255,0.04); display: flex; flex-direction: column; gap: 8px; }
+        .loot-info li { font-size: 12px; color: #555; display: flex; align-items: center; gap: 8px; }
+        .slide-content.active .loot-info li { color: #999; }
+        .loot-info li i { font-size: 11px; margin-bottom: 0; color: #444; }
+        .slide-content.active .loot-info li i { color: #007bff; }
+        #kutije .slide-content.active .loot-info li i { color: #d4af37; }
+
+        .badge { position: absolute; top: 12px; right: 12px; background: rgba(0,123,255,0.1); color: #007bff; padding: 4px 10px; border-radius: 20px; font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px; }
+        .box-gold .badge { background: rgba(255,215,0,0.1); color: #ffd700; }
+
+        /* BOTUNI ZA KUPOVINU */
+        .buy-btn { display: block; width: 100%; padding: 12px; background: #111; color: white; text-decoration: none; border-radius: 10px; font-weight: 700; font-size: 13px; transition: all 0.3s ease; border: 1px solid rgba(255,255,255,0.05); cursor: pointer; text-align: center; }
+        
+        /* Hover efekt za botun u Vozilima (Da poplavi) */
+        #vozila .buy-btn:hover { background: #007bff; color: #000; border-color: #007bff; font-weight: 800; box-shadow: 0 4px 15px rgba(0,123,255,0.4); transform: translateY(-2px); }
+
+        .slide-content.active .buy-btn { background: #007bff; color: #000; border: none; font-weight: 800; box-shadow: 0 4px 15px rgba(0,123,255,0.3); }
+        #kutije .slide-content.active .buy-btn { background: #d4af37; color: #000; box-shadow: 0 4px 15px rgba(212,175,55,0.3); }
+        .slide-content.active .buy-btn:hover { transform: translateY(-2px); opacity: 0.9; }
+
+        .nav-btn { position: absolute; top: 50%; transform: translateY(-50%); z-index: 99; font-size: 20px; cursor: pointer; color: #444; background: rgba(12,12,12,0.5); border: 1px solid rgba(255,255,255,0.03); width: 50px; height: 50px; display: flex; align-items: center; justify-content: center; border-radius: 50%; transition: 0.3s; backdrop-filter: blur(5px); }
+        .nav-btn:hover { color: #007bff; border-color: rgba(0,123,255,0.3); background: #0c0c0c; }
+        .prev { left: -25px; } .next { right: -25px; }
+
+        @media (max-width: 1024px) {
+            section { padding: 100px 20px 40px; }
+            .split-container, .split-container.reverse { grid-template-columns: 1fr; gap: 40px; }
+            .split-container.reverse .text-side { grid-row: 1; }
+            .text-side { text-align: center; }
+            .text-side p { margin: 0 auto; }
+            .cards-grid { grid-template-columns: 1fr; }
+            .side-dots-nav { display: none; }
+            .slider { height: 400px; }
+            .stats-bar { position: relative; margin-top: 20px; justify-content: center; }
+            .overlay-info { position: relative; text-align: center; margin-top: 20px; }
+            .nav-btn { display: none; }
+        }
     </style>
 </head>
 <body>
@@ -66,81 +166,205 @@ body::before {
 <nav>
     <div class="nav">
         <a href="index.html"><img src="logo.png" alt="Logo" style="height: 40px;"></a>
+        
         <div class="menu">
-            <a onclick="showPage('vozila-page', this)" class="active"><i class="fas fa-car"></i> VOZILA</a>
-            <a onclick="showPage('kutije-page', this)"><i class="fas fa-box-open"></i> KUTIJE</a>
-            <a onclick="showPage('coins-page', this)"><i class="fas fa-coins"></i> COINSI</a>
+            <a href="trgovina.html" class="active"><i class="fas fa-shopping-cart"></i> TRGOVINA</a>
+            <a href="pravila.html"><i class="fas fa-file-alt"></i> PRAVILA</a>
+            <a href="faq.html"><i class="fas fa-question-circle"></i> FAQ</a>
         </div>
-        <div style="width: 40px;"></div>
+        
+        <div class="nav-right">
+            <a href="#"><i class="fab fa-discord"></i></a>
+        </div>
     </div>
 </nav>
 
-<div id="vozila-page" class="page active">
-    <div class="slider">
-        <div class="slide active">
-            <div class="overlay-left"><h1>Custom Auto<br>1X Serija</h1><a href="#" class="buy-btn">KUPI 10€</a></div>
-            <div class="car-container"><img src="auto_01.png" alt="Auto 1"></div>
-            <div class="stats-bar"><div class="stat-item"><i class="fas fa-tachometer-alt"></i><h3>Top Speed</h3><p>Vrhunski.</p></div><div class="stat-item"><i class="fas fa-cogs"></i><h3>Engine</h3><p>Modificiran.</p></div><div class="stat-item"><i class="fas fa-wheelchair"></i><h3>Steering</h3><p>Preciznost.</p></div></div>
+<div class="side-dots-nav">
+    <div class="dot active" data-target="vozila"></div>
+    <div class="dot" data-target="kutije"></div>
+    <div class="dot" data-target="coins"></div>
+</div>
+
+<section id="vozila">
+    <div class="split-container">
+        <div class="text-side">
+            <h3>PREMIUM SALON</h3>
+            <h2>CUSTOM <span>VOZILA</span></h2>
+            <p>Osiguraj sebi unikatne, najbrže jurilice na serveru sa prilagođenim zvukom, performansama i izgledom koji ostavlja bez daha.</p>
         </div>
-        <div class="slide">
-            <div class="overlay-left"><h1>Custom Auto<br>3X Serija</h1><a href="#" class="buy-btn">KUPI 25€</a></div>
-            <div class="car-container"><img src="auto_02.png" alt="Auto 2"></div>
-            <div class="stats-bar"><div class="stat-item"><i class="fas fa-fire"></i><h3>Snaga</h3><p>Turbo.</p></div><div class="stat-item"><i class="fas fa-shield-alt"></i><h3>Oklop</h3><p>Pojačan.</p></div><div class="stat-item"><i class="fas fa-bolt"></i><h3>Accel</h3><p>Trenutni odziv.</p></div></div>
+
+        <div class="content-side">
+            <div class="slider">
+                <div class="slide active">
+                    <div class="car-container"><img src="auto_01.png" alt="Auto 1"></div>
+                    <div class="overlay-info"><h1>Custom Auto<br>1X Serija</h1><a href="#" class="buy-btn">KUPI ZA 10€</a></div>
+                    <div class="stats-bar"><div class="stat-item"><i class="fas fa-tachometer-alt"></i><h3>Top Speed</h3><p>Vrhunski.</p></div><div class="stat-item"><i class="fas fa-cogs"></i><h3>Engine</h3><p>Modificiran.</p></div><div class="stat-item"><i class="fas fa-crosshairs"></i><h3>Steering</h3><p>Preciznost.</p></div></div>
+                </div>
+                <div class="slide">
+                    <div class="car-container"><img src="auto_02.png" alt="Auto 2"></div>
+                    <div class="overlay-info"><h1>Custom Auto<br>3X Serija</h1><a href="#" class="buy-btn">KUPI ZA 25€</a></div>
+                    <div class="stats-bar"><div class="stat-item"><i class="fas fa-fire"></i><h3>Snaga</h3><p>Turbo.</p></div><div class="stat-item"><i class="fas fa-shield-alt"></i><h3>Oklop</h3><p>Pojačan.</p></div><div class="stat-item"><i class="fas fa-bolt"></i><h3>Accel</h3><p>Trenutni odziv.</p></div></div>
+                </div>
+                <div class="slide">
+                    <div class="car-container"><img src="auto_03.png" alt="Auto 3"></div>
+                    <div class="overlay-info"><h1>Custom Auto<br>5X Serija</h1><a href="#" class="buy-btn">KUPI ZA 50€</a></div>
+                    <div class="stats-bar"><div class="stat-item"><i class="fas fa-meteor"></i><h3>Hyper Accel</h3><p>Brutalan.</p></div><div class="stat-item"><i class="fas fa-gem"></i><h3>Luxury</h3><p>Ekskluzivno.</p></div><div class="stat-item"><i class="fas fa-road"></i><h3>Handling</h3><p>Savršen grip.</p></div></div>
+                </div>
+                <div class="nav-btn prev" onclick="changeSlide(-1)"><i class="fas fa-chevron-left"></i></div>
+                <div class="nav-btn next" onclick="changeSlide(1)"><i class="fas fa-chevron-right"></i></div>
+            </div>
         </div>
     </div>
-</div>
+</section>
 
-<div id="kutije-page" class="page">
-    <div class="carousel">
-        <div class="slide-content" onclick="selectCard(this)"><i class="fas fa-gift"></i><h1>Bronze Box</h1><a href="#" class="buy-btn">KUPI 5€</a></div>
-        <div class="slide-content active" onclick="selectCard(this)"><i class="fas fa-crown"></i><h1>Silver Box</h1><a href="#" class="buy-btn">KUPI 10€</a></div>
-        <div class="slide-content" onclick="selectCard(this)"><i class="fas fa-gem"></i><h1>Gold Box</h1><a href="#" class="buy-btn">KUPI 20€</a></div>
+<section id="kutije">
+    <div class="split-container reverse">
+        <div class="content-side">
+            <div class="cards-grid">
+                <div class="slide-content box-bronze" onclick="selectCard(this)">
+                    <i class="fas fa-gift"></i>
+                    <h1>Bronze Box</h1>
+                    <p>Savršen start za svakog igrača. Sadrži osnovne resurse i jeftinije automobile.</p>
+                    <ul class="loot-info">
+                        <li><i class="fas fa-check-circle"></i> Nagrade do $50.000</li>
+                        <li><i class="fas fa-check-circle"></i> Low/Mid-tier vozila</li>
+                        <li><i class="fas fa-check-circle"></i> Šansa za skinove</li>
+                    </ul>
+                    <a href="#" class="buy-btn">KUPI ZA 5€</a>
+                </div>
+                
+                <div class="slide-content box-silver active" onclick="selectCard(this)">
+                    <div class="badge">Popularno</div>
+                    <i class="fas fa-crown"></i>
+                    <h1>Silver Box</h1>
+                    <p>Najbolji omjer uloženog i dobivenog. Garantovan vrijedan loot iznenađenja.</p>
+                    <ul class="loot-info">
+                        <li><i class="fas fa-check-circle"></i> Nagrade do $150.000</li>
+                        <li><i class="fas fa-check-circle"></i> Premium Vozila</li>
+                        <li><i class="fas fa-check-circle"></i> Ekskluzivni dodaci</li>
+                    </ul>
+                    <a href="#" class="buy-btn">KUPI ZA 10€</a>
+                </div>
+                
+                <div class="slide-content box-gold" onclick="selectCard(this)">
+                    <div class="badge">Vrhunski Loot</div>
+                    <i class="fas fa-gem"></i>
+                    <h1>Gold Box</h1>
+                    <p>Elite paket za najzahtjevnije. Najveća šansa za dobitak najbržih jurilica.</p>
+                    <ul class="loot-info">
+                        <li><i class="fas fa-check-circle"></i> Nagrade do $500.000</li>
+                        <li><i class="fas fa-check-circle"></i> Hypercars kategorija</li>
+                        <li><i class="fas fa-check-circle"></i> Unikatni VIP status</li>
+                    </ul>
+                    <a href="#" class="buy-btn">KUPI ZA 20€</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="text-side">
+            <h3>SREĆA & LUCK</h3>
+            <h2>PREMIUM <span>KUTIJE</span></h2>
+            <p>Iskušaj svoju sreću s našim misterioznim paketima. Svako otvaranje donosi vrijedne nagrade, novac ili luksuzne automobile.</p>
+        </div>
     </div>
-</div>
+</section>
 
-<div id="coins-page" class="page">
-    <div class="carousel">
-        <div class="slide-content active" onclick="selectCard(this)"><i class="fas fa-database"></i><h1>1000 Coins</h1><a href="#" class="buy-btn">KUPI 1€</a></div>
-        <div class="slide-content" onclick="selectCard(this)"><i class="fas fa-database"></i><h1>5000 Coins</h1><a href="#" class="buy-btn">KUPI 5€</a></div>
-        <div class="slide-content" onclick="selectCard(this)"><i class="fas fa-database"></i><h1>10000 Coins</h1><a href="#" class="buy-btn">KUPI 10€</a></div>
+<section id="coins">
+    <div class="split-container">
+        <div class="text-side">
+            <h3>VALUTA SERVERA</h3>
+            <h2>WL COINS <span>TRGOVINA</span></h2>
+            <p>Dopuni svoj račun službenom kovanicom servera. Iskoristi ih unutar igre za brze nadogradnje, kupovinu dodataka i personalizaciju.</p>
+        </div>
+
+        <div class="content-side">
+            <div class="cards-grid">
+                <div class="slide-content" onclick="selectCard(this)">
+                    <i class="fas fa-coins"></i>
+                    <h1>1.000 Coins</h1>
+                    <p>Dopuni svoj račun osnovnim paketom WL Coinsa za sitne nadogradnje.</p>
+                    <ul class="loot-info">
+                        <li><i class="fas fa-bolt"></i> Instant dostava</li>
+                        <li><i class="fas fa-star"></i> Osnovni paket</li>
+                    </ul>
+                    <a href="#" class="buy-btn">KUPI ZA 1€</a>
+                </div>
+                
+                <div class="slide-content active" onclick="selectCard(this)">
+                    <div class="badge">+10% Bonus</div>
+                    <i class="fas fa-coins" style="transform: scale(1.15);"></i>
+                    <h1>5.000 Coins</h1>
+                    <p>Najprodavaniji paket. Idealna količina za kupovinu premium stvari u igri.</p>
+                    <ul class="loot-info">
+                        <li><i class="fas fa-bolt"></i> Instant dostava</li>
+                        <li><i class="fas fa-gift"></i> Uključen bonus 500</li>
+                    </ul>
+                    <a href="#" class="buy-btn">KUPI ZA 5€</a>
+                </div>
+                
+                <div class="slide-content" onclick="selectCard(this)">
+                    <div class="badge">+25% Bonus</div>
+                    <i class="fas fa-coins" style="transform: scale(1.30);"></i>
+                    <h1>10.000 Coins</h1>
+                    <p>Maksimalna vrijednost. Osiguraj sebi masivnu prednost uz ogroman bonus.</p>
+                    <ul class="loot-info">
+                        <li><i class="fas fa-bolt"></i> Instant dostava</li>
+                        <li><i class="fas fa-gift"></i> Uključen bonus 2.500</li>
+                    </ul>
+                    <a href="#" class="buy-btn">KUPI ZA 10€</a>
+                </div>
+            </div>
+        </div>
     </div>
-</div>
-
-<div class="nav-btn prev" onclick="changeSlide(-1)"><i class="fas fa-chevron-left"></i></div>
-<div class="nav-btn next" onclick="changeSlide(1)"><i class="fas fa-chevron-right"></i></div>
+</section>
 
 <script>
-    function showPage(id, el) {
-        document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
-        document.querySelectorAll('.menu a').forEach(a => a.classList.remove('active'));
-        document.getElementById(id).classList.add('active');
-        el.classList.add('active');
-    }
+window.addEventListener('scroll', () => {
+    let current = '';
+    const sections = document.querySelectorAll('section');
+    const dots = document.querySelectorAll('.side-dots-nav .dot');
 
-    // Klik na karticu centrira je
-    function selectCard(el) {
-        const parent = el.parentElement;
-        parent.querySelectorAll('.slide-content').forEach(c => c.classList.remove('active'));
-        el.classList.add('active');
-    }
-
-    function changeSlide(n) {
-        const activePage = document.querySelector('.page.active');
-        
-        if(activePage.id === 'vozila-page') {
-            const slides = activePage.querySelectorAll('.slide');
-            let current = Array.from(slides).findIndex(s => s.classList.contains('active'));
-            slides[current].classList.remove('active');
-            let next = (current + n + slides.length) % slides.length;
-            slides[next].classList.add('active');
-        } else {
-            const cards = activePage.querySelectorAll('.slide-content');
-            let current = Array.from(cards).findIndex(c => c.classList.contains('active'));
-            cards[current].classList.remove('active');
-            let next = (current + n + cards.length) % cards.length;
-            cards[next].classList.add('active');
+    sections.forEach(section => {
+        const sectionTop = section.offsetTop;
+        const sectionHeight = section.clientHeight;
+        if (window.pageYOffset >= (sectionTop - sectionHeight / 3)) {
+            current = section.getAttribute('id');
         }
-    }
+    });
+
+    dots.forEach(dot => {
+        dot.classList.remove('active', 'gold-active');
+        if (dot.getAttribute('data-target') === current) {
+            if(current === 'kutije') {
+                dot.classList.add('gold-active');
+            } else {
+                dot.classList.add('active');
+            }
+        }
+    });
+});
+
+document.querySelectorAll('.side-dots-nav .dot').forEach(dot => {
+    dot.addEventListener('click', () => {
+        const targetId = dot.getAttribute('data-target');
+        document.getElementById(targetId).scrollIntoView({ behavior: 'smooth' });
+    });
+});
+
+function selectCard(el) {
+    const parent = el.parentElement;
+    parent.querySelectorAll('.slide-content').forEach(c => c.classList.remove('active'));
+    el.classList.add('active');
+}
+
+function changeSlide(n) {
+    const slides = document.querySelectorAll('#vozila .slide');
+    let current = Array.from(slides).findIndex(s => s.classList.contains('active'));
+    slides[current].classList.remove('active');
+    let next = (current + n + slides.length) % slides.length;
+    slides[next].classList.add('active');
+}
 </script>
+
 </body>
 </html>

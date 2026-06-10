@@ -8,45 +8,100 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         * { margin:0; padding:0; box-sizing:border-box; font-family:'Inter',sans-serif; }
-        body { background:#050505; color:white; min-height:100vh; }
-        body::before { content:''; position:fixed; inset:0; background: linear-gradient(rgba(0,123,255,.05) 1px, transparent 1px), linear-gradient(90deg, rgba(0,123,255,.05) 1px, transparent 1px); background-size:70px 70px; pointer-events:none; z-index: -1; }
+        body { background:#050505; color:white; min-height:100vh; overflow-x: hidden; }
+        body::before { content:''; position:fixed; inset:0; background: linear-gradient(rgba(0,123,255,.03) 1px, transparent 1px), linear-gradient(90deg, rgba(0,123,255,.03) 1px, transparent 1px); background-size:70px 70px; pointer-events:none; z-index: -1; }
 
-        /* Header (identičan kao na main) */
+        /* Navigacija preslikana iz index.html */
         nav { position: fixed; top: 0; left: 0; width: 100%; z-index: 999; background: transparent; border: none; }
         .nav { max-width:1400px; margin:auto; padding:20px 40px; display:flex; justify-content:space-between; align-items:center; }
         .menu { display:flex; gap:35px; }
         .menu a { text-decoration:none; color:white; font-weight:500; transition:.3s; }
-        .menu a:hover { color:#007bff; }
+        .menu a:hover, .menu a.active { color:#007bff; }
         .nav-right a { text-decoration: none; color: white; font-size: 20px; }
 
         /* Layout */
-        .wrapper { display: flex; max-width: 1200px; margin: 150px auto 60px; gap: 60px; padding: 0 20px; }
-        .sidebar { width: 220px; flex-shrink: 0; }
-        .sidebar a { display: block; color: #888; margin-bottom: 12px; text-decoration: none; font-size: 14px; padding: 8px; border-radius: 6px; cursor: pointer; transition: 0.3s; }
-        .sidebar a:hover, .sidebar a.active { color: #007bff; background: rgba(0,123,255,0.05); }
+        .wrapper { display: flex; max-width: 1300px; margin: 140px auto 60px; gap: 40px; padding: 0 40px; }
         
-        /* OVO JE KLJUČNO ZA PRIKAZIVANJE */
+        /* Premium Sidebar */
+        .sidebar { width: 240px; flex-shrink: 0; background: #0c0c0c; padding: 20px 12px; border-radius: 12px; border: 1px solid #1a1a1a; height: fit-content; position: sticky; top: 120px; }
+        .sidebar-title { margin-bottom: 15px; font-size: 11px; color:#444; letter-spacing: 1.5px; font-weight: 800; text-transform: uppercase; padding-left: 10px; }
+        .sidebar a { display: flex; align-items: center; gap: 10px; color: #777; margin-bottom: 4px; text-decoration: none; font-size: 13.5px; font-weight: 600; padding: 10px 12px; border-radius: 8px; cursor: pointer; transition: 0.3s; }
+        .sidebar a i { font-size: 14px; width: 18px; text-align: center; }
+        .sidebar a:hover { color: #fff; background: rgba(255,255,255,0.02); }
+        .sidebar a.active { color: #007bff; background: rgba(0,123,255,0.06); border: 1px solid rgba(0,123,255,0.12); }
+        
+        /* Content dio */
         .content { flex-grow: 1; }
         .pravila-grupa { display: none; }
         .pravila-grupa.active { display: block !important; }
         
-        h1 { font-size: 36px; margin-bottom: 25px; font-weight: 800; }
-        h1 span { color: #007bff; }
-        .rule-item { padding: 20px; border-radius: 10px; background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.06); margin-bottom: 15px; }
-        .rule-item b { color: #007bff; font-size: 14px; display: block; margin-bottom: 5px; text-transform: uppercase; }
-        .rule-item p { color: #aaa; font-size: 13px; line-height: 1.6; }
+        h1 { font-size: 28px; margin-bottom: 20px; font-weight: 900; letter-spacing: -0.5px; }
+        h1 span { color: #007bff; text-shadow: 0 0 30px rgba(0,123,255,0.2); }
+        
+        /* Ekstremno kompaktne i tanke kartice pravila */
+        .rule-item { 
+            position: relative;
+            padding: 14px 20px; 
+            border-radius: 8px; 
+            background: #0c0c0c; 
+            border: 1px solid #1a1a1a; 
+            margin-bottom: 10px; 
+            transition: all 0.2s ease;
+            overflow: hidden;
+        }
+        .rule-item:hover {
+            border-color: rgba(0,123,255,0.2);
+            background: #0d1017;
+            transform: translateX(3px);
+        }
+        
+        /* Lijeva tanka ukrasna linija */
+        .rule-item::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            bottom: 0;
+            width: 3px;
+            background: #1a1a1a;
+            transition: 0.2s;
+        }
+        .rule-item:hover::before { background: #007bff; }
+
+        /* Naslov i Bedž u istoj ravnini */
+        .rule-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 6px; }
+        .rule-item b { color: #fff; font-size: 15px; font-weight: 700; }
+        .rule-item:hover b { color: #007bff; }
+        
+        .rule-badge { background: rgba(255,255,255,0.02); border: 1px solid rgba(255,255,255,0.04); color: #555; font-size: 9px; font-weight: 700; padding: 2px 6px; border-radius: 4px; text-transform: uppercase; }
+        .rule-item:hover .rule-badge { background: rgba(0,123,255,0.06); border-color: rgba(0,123,255,0.12); color: #007bff; }
+
+        /* Smanjen tekst definicije */
+        .rule-item p { color: #7a889b; font-size: 12.5px; line-height: 1.45; font-weight: 400; margin-bottom: 6px; }
+        
+        /* Smanjena i zbijena sekcija za kaznu */
+        .punishment { display: inline-flex; align-items: center; gap: 5px; color: #ee5253; font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.3px; padding-top: 4px; border-top: 1px solid rgba(255,255,255,0.02); width: 100%; }
+        .punishment i { font-size: 10px; }
+
+        @media (max-width: 992px) {
+            .wrapper { flex-direction: column; gap: 25px; padding: 0 20px; margin-top: 110px; }
+            .sidebar { width: 100%; position: static; }
+            h1 { font-size: 24px; text-align: center; }
+        }
     </style>
 </head>
 <body>
 
 <nav>
     <div class="nav">
-        <a href="index"><img src="logo.png" alt="Logo" style="height: 40px;"></a>
+        <a href="index.html"><img src="logo.png" alt="Logo" style="height: 40px;"></a>
+        
         <div class="menu">
-            <a href="index#trgovina"><i class="fas fa-shopping-cart"></i> TRGOVINA</a>
-            <a href="pravila" style="color:#007bff;"><i class="fas fa-file-alt"></i> PRAVILA</a>
-            <a href="faq"><i class="fas fa-question-circle"></i> FAQ</a>
+            <a href="trgovina.html"><i class="fas fa-shopping-cart"></i> TRGOVINA</a>
+            <a href="pravila.html" class="active"><i class="fas fa-file-alt"></i> PRAVILA</a>
+            <a href="faq.html"><i class="fas fa-question-circle"></i> FAQ</a>
         </div>
+        
         <div class="nav-right">
             <a href="#"><i class="fab fa-discord"></i></a>
         </div>
@@ -55,45 +110,121 @@
 
 <div class="wrapper">
     <div class="sidebar">
-        <h3 style="margin-bottom: 20px; font-size: 12px; color:#555; letter-spacing: 1px;">KATEGORIJE</h3>
-        <a onclick="prikazi('gta')" class="active">GTA Pravila</a>
-        <a onclick="prikazi('opcenito')">Općenito</a>
-        <a onclick="prikazi('pljacke')">Pljačke</a>
-        <a onclick="prikazi('staff')">Staff pravila</a>
+        <div class="sidebar-title">Kategorije</div>
+        <a onclick="prikazi('gta', this)" class="active"><i class="fas fa-gamepad"></i> GTA Pravila</a>
+        <a onclick="prikazi('opcenito', this)"><i class="fas fa-globe"></i> Općenito</a>
+        <a onclick="prikazi('pljacke', this)"><i class="fas fa-vault"></i> Pljačke & Akcije</a>
+        <a onclick="prikazi('staff', this)"><i class="fas fa-shield-alt"></i> Staff Pravila</a>
     </div>
     
     <div class="content">
+        
         <div id="gta" class="pravila-grupa active">
-            <h1><span>GTA</span> PRAVILA</h1>
-            <div class="rule-item"><b>DM</b> <p>Zabranjeno ubijanje bez razloga.</p></div>
+            <h1><span>GTA ROLEPLAY</span> PRAVILA</h1>
+            
+            <div class="rule-item">
+                <div class="rule-header">
+                    <b>Deathmatch</b>
+                    <span class="rule-badge">DM</span>
+                </div>
+                <p>Zabranjeno je ubijanje ili nanošenje štete drugim igračima bez valjanog i debelog Roleplay razloga. Svakom ubistvu mora prethoditi verbalna konfrontacija i jasna namjera.</p>
+                <div class="punishment"><i class="fas fa-gavel"></i> Kazna: Prison 60 min / Warn</div>
+            </div>
+
+            <div class="rule-item">
+                <div class="rule-header">
+                    <b>Vehicle Deathmatch</b>
+                    <span class="rule-badge">VDM</span>
+                </div>
+                <p>Strogo je zabranjeno korištenje vozila kao oružja za gaženje, udaranje ili ubijanje drugih igrača ili njihovih vozila bez opravdanog RP razloga.</p>
+                <div class="punishment"><i class="fas fa-gavel"></i> Kazna: Prison 40 min / Warn</div>
+            </div>
+
+            <div class="rule-item">
+                <div class="rule-header">
+                    <b>Powergaming</b>
+                    <span class="rule-badge">PG</span>
+                </div>
+                <p>Radnje koje su suprotne zakonima fizike ili su nemoguće u stvarnom životu. To uključuje vožnju sportskih auta po planinama, pričanje dok ste mrtvi ili vezani sa lisicama bez ključa.</p>
+                <div class="punishment"><i class="fas fa-gavel"></i> Kazna: Prison 30 min</div>
+            </div>
+
+            <div class="rule-item">
+                <div class="rule-header">
+                    <b>MetaGaming</b>
+                    <span class="rule-badge">MG</span>
+                </div>
+                <p>Korištenje informacija koje ste saznali van igre (OOC) u samoj igri (IC). Primjer: čitanje imena iznad glave, korištenje informacija sa Discorda ili streamova kako biste locirali nekoga.</p>
+                <div class="punishment"><i class="fas fa-gavel"></i> Kazna: Warn / Ban 3 dana</div>
+            </div>
         </div>
+
         <div id="opcenito" class="pravila-grupa">
-            <h1><span>OPĆENITO</span></h1>
-            <div class="rule-item"><b>Pravilo</b> <p>Općenita pravila servera.</p></div>
+            <h1><span>OPĆENITA</span> PRAVILA</h1>
+            
+            <div class="rule-item">
+                <div class="rule-header">
+                    <b>Vrijeđanje i Toksičnost</b>
+                    <span class="rule-badge">OOC TOXIC</span>
+                </div>
+                <p>Bilo kakav vid psovanja, vrijeđanja na nacionalnoj, vjerskoj ili rasnoj osnovi izvan Roleplay konteksta (OOC) bit će najstrože sankcionisan. Poštujte članove zajednice.</p>
+                <div class="punishment"><i class="fas fa-gavel"></i> Kazna: Trajni Ban</div>
+            </div>
+
+            <div class="rule-item">
+                <div class="rule-header">
+                    <b>Vrijednost Života</b>
+                    <span class="rule-badge">FearRP</span>
+                </div>
+                <p>U svakom trenutku morate cijeniti svoj život kao da je stvarni. Ako u vas gledaju tri puške, nemate pravo bježati, vaditi oružje ili provocirati napadače.</p>
+                <div class="punishment"><i class="fas fa-gavel"></i> Kazna: Prison 50 min</div>
+            </div>
         </div>
+
         <div id="pljacke" class="pravila-grupa">
-            <h1><span>PLJAČKE</span></h1>
-            <div class="rule-item"><b>BANKA</b> <p>Minimalno 4 policajca.</p></div>
+            <h1><span>PLJAČKE I</span> AKCIJE</h1>
+            
+            <div class="rule-item">
+                <div class="rule-header">
+                    <b>Glavna Banka</b>
+                    <span class="rule-badge">BANK</span>
+                </div>
+                <p>Za pokretanje pljačke glavne banke potrebno je minimalno 5 aktivnih policajaca na dužnosti. Maksimalan broj pljačkaša unutar objekta je ograničen na 6.</p>
+                <div class="punishment"><i class="fas fa-gavel"></i> Kazna: FailRP / Skidanje Oružja</div>
+            </div>
+
+            <div class="rule-item">
+                <div class="rule-header">
+                    <b>Pregovori i Taoci</b>
+                    <span class="rule-badge">NEGOTIATION</span>
+                </div>
+                <p>Pljačkaši moraju obezbijediti legitimnog taoca. Lažni taoci (prijatelji iz organizacije) su strogo zabranjeni. Pregovori sa policijom moraju biti ozbiljni i realistični.</p>
+                <div class="punishment"><i class="fas fa-gavel"></i> Kazna: Warn Organizaciji</div>
+            </div>
         </div>
+
         <div id="staff" class="pravila-grupa">
-            <h1><span>STAFF</span></h1>
-            <div class="rule-item"><b>ADMIN</b> <p>Budi pošten.</p></div>
+            <h1><span>STAFF</span> ADMIN PRAVILA</h1>
+            
+            <div class="rule-item">
+                <div class="rule-header">
+                    <b>Iskorištavanje Pozicije</b>
+                    <span class="rule-badge">Abuse</span>
+                </div>
+                <p>Strogo je zabranjeno korištenje admin komandi (/god, /noclip, /giveitem) u privatne RP svrhe ili za pomaganje svojim prijateljima/organizacijama na serveru.</p>
+                <div class="punishment"><i class="fas fa-gavel"></i> Kazna: Skidanje Pozicije + Ban</div>
+            </div>
         </div>
+
     </div>
 </div>
 
 <script>
-function prikazi(id) {
-    // 1. Sakrij sve grupe
+function prikazi(id, el) {
     document.querySelectorAll('.pravila-grupa').forEach(g => g.classList.remove('active'));
-    // 2. Ukloni active klasu sa svih linkova
     document.querySelectorAll('.sidebar a').forEach(a => a.classList.remove('active'));
-    
-    // 3. Pokaži traženu grupu
     document.getElementById(id).classList.add('active');
-    
-    // 4. Postavi active na kliknuti link
-    event.target.classList.add('active');
+    el.classList.add('active');
 }
 </script>
 </body>

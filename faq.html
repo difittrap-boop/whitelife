@@ -8,68 +8,256 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         * { margin:0; padding:0; box-sizing:border-box; font-family:'Inter',sans-serif; }
-        body { background:#050505; color:white; min-height:100vh; }
+        html { scroll-behavior: smooth; scroll-snap-type: y mandatory; }
+        body { background:#050505; color:white; overflow-x: hidden; }
         body::before { content:''; position:fixed; inset:0; background: linear-gradient(rgba(0,123,255,.05) 1px, transparent 1px), linear-gradient(90deg, rgba(0,123,255,.05) 1px, transparent 1px); background-size:70px 70px; pointer-events:none; z-index: -1; }
 
-        /* Header */
-        nav { position: fixed; top: 0; left: 0; width: 100%; z-index: 999; background: transparent; }
+        /* Navigacija (IDENTIČNA KAO U INDEX.HTML) */
+        nav { position: fixed; top: 0; left: 0; width: 100%; z-index: 999; background: transparent; border: none; }
         .nav { max-width:1400px; margin:auto; padding:20px 40px; display:flex; justify-content:space-between; align-items:center; }
         .menu { display:flex; gap:35px; }
         .menu a { text-decoration:none; color:white; font-weight:500; transition:.3s; }
         .menu a:hover, .menu a.active { color:#007bff; }
         .nav-right a { text-decoration: none; color: white; font-size: 20px; }
 
-        /* FAQ Content */
-        .wrapper { max-width: 800px; margin: 150px auto 60px; padding: 0 20px; }
-        h1 { font-size: 40px; margin-bottom: 40px; text-align: center; }
-        h1 span { color: #007bff; }
+        /* SIDE DOTS NAVIGACIJA */
+        .side-dots-nav {
+            position: fixed;
+            right: 30px;
+            top: 50%;
+            transform: translateY(-50%);
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            z-index: 1000;
+        }
+        .side-dots-nav .dot {
+            width: 10px;
+            height: 10px;
+            background: rgba(255,255,255,0.2);
+            border-radius: 50%;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+        .side-dots-nav .dot.active {
+            background: #007bff;
+            transform: scale(1.2);
+        }
+        .side-dots-nav .dot.gold-active {
+            background: #d4af37;
+            transform: scale(1.2);
+        }
+
+        /* SEKCIJE */
+        section { min-height: 100vh; padding: 120px 40px 60px; display: flex; align-items: center; justify-content: center; scroll-snap-align: start; }
+        .split-container { display: grid; grid-template-columns: 1fr 1.5fr; gap: 80px; align-items: center; max-width: 1400px; width: 100%; margin: auto; }
         
-        .faq-item { margin-bottom: 20px; background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.06); border-radius: 12px; overflow: hidden; }
-        .faq-question { padding: 20px; cursor: pointer; display: flex; justify-content: space-between; align-items: center; font-weight: 600; }
-        .faq-question:hover { background: rgba(0,123,255,0.05); }
-        .faq-answer { padding: 0 20px 20px 20px; color: #aaa; font-size: 14px; line-height: 1.6; display: none; }
-        .faq-item.active .faq-answer { display: block; }
+        /* Kontra raspored (Tekst desno, kartice lijevo) */
+        .split-container.reverse { grid-template-columns: 1.5fr 1fr; }
+
+        /* Lijeva/Desna tekstualna strana */
+        .text-side h3 { font-size: 14px; color: #007bff; font-weight: 700; letter-spacing: 3px; text-transform: uppercase; margin-bottom: 10px; }
+        .text-side h2 { font-size: 50px; font-weight: 800; letter-spacing: -1px; margin-bottom: 20px; line-height: 1.1; }
+        .text-side h2 span { color: #007bff; }
+        .text-side p { color: #666; font-size: 16px; line-height: 1.6; max-width: 450px; }
+
+        /* Premium zlatni detalji za drugu rubriku */
+        .split-container.reverse .text-side h3 { color: #d4af37; }
+        .split-container.reverse .text-side h2 span { color: #d4af37; }
+
+        /* Grid s karticama */
+        .cards-side { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+        
+        .faq-card { 
+            background: #0c0c0c; 
+            border: 1px solid #1a1a1a; 
+            border-radius: 16px; 
+            padding: 30px; 
+            transition: all 0.3s ease;
+        }
+        
+        .faq-card:hover {
+            border-color: rgba(0, 123, 255, 0.3);
+            box-shadow: 0 10px 25px rgba(0, 123, 255, 0.05);
+            transform: translateY(-2px);
+        }
+
+        /* Hover efekt za zlatne kartice */
+        .split-container.reverse .faq-card:hover {
+            border-color: rgba(212, 175, 55, 0.3);
+            box-shadow: 0 10px 25px rgba(212, 175, 55, 0.05);
+        }
+
+        .faq-card i { 
+            font-size: 32px; 
+            color: #007bff; 
+            margin-bottom: 15px; 
+            display: inline-block;
+        }
+
+        .split-container.reverse .faq-card i {
+            color: #d4af37;
+        }
+        
+        .faq-card h4 { 
+            font-size: 18px; 
+            font-weight: 700; 
+            margin-bottom: 8px; 
+            color: #fff;
+        }
+        
+        .faq-card p { 
+            font-size: 14px; 
+            color: #777; 
+            line-height: 1.5; 
+        }
+
+        /* Responsive */
+        @media (max-width: 1024px) {
+            section { padding: 100px 20px 40px; }
+            .split-container, .split-container.reverse { grid-template-columns: 1fr; gap: 40px; }
+            .split-container.reverse .text-side { grid-row: 1; }
+            .text-side { text-align: center; }
+            .text-side p { margin: 0 auto; }
+            .cards-side { grid-template-columns: 1fr; }
+            .side-dots-nav { display: none; }
+        }
     </style>
 </head>
 <body>
 
 <nav>
     <div class="nav">
-        <a href="index"><img src="logo.png" alt="Logo" style="height: 40px;"></a>
+        <a href="index.html"><img src="logo.png" alt="Logo" style="height: 40px;"></a>
+        
         <div class="menu">
-            <a href="index#trgovina"><i class="fas fa-shopping-cart"></i> TRGOVINA</a>
-            <a href="pravila"><i class="fas fa-file-alt"></i> PRAVILA</a>
-			<a href="faq" style="color:#007bff;"><i class="fas fa-question-circle"></i> FAQ</a>
+            <a href="trgovina.html"><i class="fas fa-shopping-cart"></i> TRGOVINA</a>
+            <a href="pravila.html"><i class="fas fa-file-alt"></i> PRAVILA</a>
+            <a href="faq.html" class="active"><i class="fas fa-question-circle"></i> FAQ</a>
         </div>
+        
         <div class="nav-right">
             <a href="#"><i class="fab fa-discord"></i></a>
         </div>
     </div>
 </nav>
 
-<div class="wrapper">
-    <h1>Često postavljana <span>pitanja</span></h1>
-
-    <div class="faq-item">
-        <div class="faq-question" onclick="toggle(this)">Kako se prijaviti na server? <span>+</span></div>
-        <div class="faq-answer">Potrebno je imati instaliran FiveM klijent, pretražiti "White Life Roleplay" u listi servera i kliknuti Connect.</div>
-    </div>
-
-    <div class="faq-item">
-        <div class="faq-question" onclick="toggle(this)">Da li je potrebna whitelist-a? <span>+</span></div>
-        <div class="faq-answer">Trenutno ne, server je otvoren za sve igrače koji poštuju pravila zajednice.</div>
-    </div>
-
-    <div class="faq-item">
-        <div class="faq-question" onclick="toggle(this)">Gdje prijaviti igrača koji krši pravila? <span>+</span></div>
-        <div class="faq-answer">Sve prijave se vrše isključivo putem našeg Discord servera u rubrici #report-igraca.</div>
-    </div>
+<div class="side-dots-nav">
+    <div class="dot active" data-target="prijava"></div>
+    <div class="dot" data-target="trgovina"></div>
 </div>
 
+<section id="prijava">
+    <div class="split-container">
+        <div class="text-side">
+            <h3>POMOĆ & PODRŠKA</h3>
+            <h2>KAKO SE PRIJAVITI <span>NA SERVER?</span></h2>
+            <p>Prati ovih nekoliko jednostavnih koraka i postani dio naše zajednice u roku od par minuta. Kratko, jasno i direktno.</p>
+        </div>
+
+        <div class="cards-side">
+            <div class="faq-card">
+                <i class="fab fa-windows"></i>
+                <h4>Instaliraj GTA V i FiveM</h4>
+                <p>Trebaš legalno kupljen GTA V i instaliran najnoviji FiveM Launcher na svom računalu.</p>
+            </div>
+
+            <div class="faq-card">
+                <i class="fas fa-clipboard-list"></i>
+                <h4>Položi whitelistu</h4>
+                <p>Whitelist sistem pažljivo čuva kvalitetan i ozbiljan RP. Sve informacije i prijave naći ćeš na našem Discordu.</p>
+            </div>
+
+            <div class="faq-card">
+                <i class="fas fa-book"></i>
+                <h4>Pročitaj pravila</h4>
+                <p>Pravila servera su svetinja. Detaljno ih prouči kako bi izbjegao nepotrebne kazne i igrao fer prema drugima.</p>
+            </div>
+
+            <div class="faq-card">
+                <i class="fas fa-plug"></i>
+                <h4>Poveži se</h4>
+                <p>U FiveM klijentu pretraži "White Life Roleplay" unutar liste servera ili iskoristi opciju direktnog povezivanja.</p>
+            </div>
+
+            <div class="faq-card" style="grid-column: span 2;">
+                <i class="fas fa-gamepad" style="color: #d4af37;"></i>
+                <h4 style="color: #d4af37;">Uživaj u igri!</h4>
+                <p>Kreiraj jedinstven lik, pronađi svoj idealan posao u gradu i počni graditi svoju vlastitu, unikatnu RP priču!</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section id="trgovina">
+    <div class="split-container reverse">
+        <div class="cards-side">
+            <div class="faq-card">
+                <i class="fas fa-shopping-basket"></i>
+                <h4>1. Odaberi paket</h4>
+                <p>Posjeti našu web trgovinu, pregledaj ponudu (donatorski paketi, vozila, kovanice) i dodaj željeno u košaricu.</p>
+            </div>
+
+            <div class="faq-card">
+                <i class="fas fa-user-check"></i>
+                <h4>2. Unesi podatke</h4>
+                <p>Pažljivo unesi svoje točno FiveM korisničko ime ili ID kako bi sustav znao kome treba dodijeliti kupljene beneficije.</p>
+            </div>
+
+            <div class="faq-card">
+                <i class="fas fa-stopwatch"></i>
+                <h4>Koliko traje aktivacija?</h4>
+                <p>Većina paketa se aktivira automatski unutar 5 do 15 minuta od izvršenja uplate. U rijetkim slučajevima može potrajati do 24h.</p>
+            </div>
+
+            <div class="faq-card">
+                <i class="fas fa-credit-card"></i>
+                <h4>Koje metode plaćanja prihvaćate?</h4>
+                <p>PayPal, kartice i paysafecard. Sve transakcije su SSL zaštićene i potpuno sigurne.</p>
+            </div>
+        </div>
+
+        <div class="text-side">
+            <h3>DONACIJE & TRGOVINA</h3>
+            <h2>KAKO KUPITI NA <span>NAŠOJ TRGOVINI?</span></h2>
+            <p>Podrži rad servera i osiguraj si jedinstvene pogodnosti. Cijeli proces je siguran, brz i automatiziran.</p>
+        </div>
+    </div>
+</section>
+
 <script>
-function toggle(el) {
-    el.parentElement.classList.toggle('active');
-}
+window.addEventListener('scroll', () => {
+    let current = '';
+    const sections = document.querySelectorAll('section');
+    const dots = document.querySelectorAll('.side-dots-nav .dot');
+
+    sections.forEach(section => {
+        const sectionTop = section.offsetTop;
+        const sectionHeight = section.clientHeight;
+        if (window.pageYOffset >= (sectionTop - sectionHeight / 3)) {
+            current = section.getAttribute('id');
+        }
+    });
+
+    dots.forEach(dot => {
+        dot.classList.remove('active', 'gold-active');
+        if (dot.getAttribute('data-target') === current) {
+            if(current === 'trgovina') {
+                dot.classList.add('gold-active');
+            } else {
+                dot.classList.add('active');
+            }
+        }
+    });
+});
+
+document.querySelectorAll('.side-dots-nav .dot').forEach(dot => {
+    dot.addEventListener('click', () => {
+        const targetId = dot.getAttribute('data-target');
+        document.getElementById(targetId).scrollIntoView({ behavior: 'smooth' });
+    });
+});
 </script>
+
 </body>
 </html>
